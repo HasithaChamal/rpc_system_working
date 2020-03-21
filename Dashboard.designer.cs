@@ -51,11 +51,13 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.purchasing1 = new rpc_working.Purchasing();
+            this.stores1 = new rpc_working.Stores();
             this.client1 = new rpc_working.Client();
             this.supplier1 = new rpc_working.Supplier();
             this.users1 = new rpc_working.Users();
             this.home1 = new rpc_working.Home();
-            this.stores1 = new rpc_working.Stores();
+            this.recieving1 = new rpc_working.Recieving();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +71,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(210, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1165, 32);
+            this.panel2.Size = new System.Drawing.Size(1160, 32);
             this.panel2.TabIndex = 1;
             // 
             // userName_lbl
@@ -363,7 +365,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(210, 749);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1165, 0);
+            this.panel4.Size = new System.Drawing.Size(1160, 0);
             this.panel4.TabIndex = 2;
             // 
             // panel5
@@ -379,6 +381,24 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(0, 0);
             this.panel6.TabIndex = 4;
+            // 
+            // purchasing1
+            // 
+            this.purchasing1.AutoSize = true;
+            this.purchasing1.BackColor = System.Drawing.Color.White;
+            this.purchasing1.Location = new System.Drawing.Point(210, 26);
+            this.purchasing1.Name = "purchasing1";
+            this.purchasing1.Size = new System.Drawing.Size(1133, 719);
+            this.purchasing1.TabIndex = 10;
+            // 
+            // stores1
+            // 
+            this.stores1.BackColor = System.Drawing.Color.White;
+            this.stores1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stores1.Location = new System.Drawing.Point(210, 26);
+            this.stores1.Name = "stores1";
+            this.stores1.Size = new System.Drawing.Size(1165, 742);
+            this.stores1.TabIndex = 9;
             // 
             // client1
             // 
@@ -412,21 +432,22 @@
             this.home1.Size = new System.Drawing.Size(1165, 742);
             this.home1.TabIndex = 5;
             // 
-            // stores1
+            // recieving1
             // 
-            this.stores1.BackColor = System.Drawing.Color.White;
-            this.stores1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stores1.Location = new System.Drawing.Point(210, 26);
-            this.stores1.Name = "stores1";
-            this.stores1.Size = new System.Drawing.Size(1165, 742);
-            this.stores1.TabIndex = 9;
+            this.recieving1.BackColor = System.Drawing.Color.White;
+            this.recieving1.Location = new System.Drawing.Point(210, 26);
+            this.recieving1.Name = "recieving1";
+            this.recieving1.Size = new System.Drawing.Size(1165, 742);
+            this.recieving1.TabIndex = 11;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1375, 749);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.recieving1);
+            this.Controls.Add(this.purchasing1);
             this.Controls.Add(this.stores1);
             this.Controls.Add(this.client1);
             this.Controls.Add(this.supplier1);
@@ -446,6 +467,7 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -477,6 +499,8 @@
         private System.Windows.Forms.Label userName_lbl;
         private System.Windows.Forms.Label label4;
         private Stores stores1;
+        private Purchasing purchasing1;
+        private Recieving recieving1;
     }
 }
 

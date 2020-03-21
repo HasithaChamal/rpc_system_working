@@ -37,15 +37,15 @@ namespace rpc_working
         private void recievingBtn_Click(object sender, EventArgs e)
         {
             sidePanelLocation(recievingBtn);
-            //recieving1.BringToFront();
-            //recieving1.Recieving_Load(sender,e);
+            recieving1.BringToFront();
+            recieving1.Recieving_Load(sender,e);
         }
 
         private void purchasingBtn_Click(object sender, EventArgs e)
         {
             sidePanelLocation(purchasingBtn);
-            //purchasing1.BringToFront();
-            //purchasing1.Purchasing_Load(sender, e);
+            purchasing1.BringToFront();
+            purchasing1.Purchasing_Load(sender, e);
         }
 
         private void dispatchBtn_Click(object sender, EventArgs e)
