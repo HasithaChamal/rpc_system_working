@@ -33,15 +33,17 @@
             this.userName_lbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.logoutBtn = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
             this.homeBtn = new System.Windows.Forms.Button();
             this.storeBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bom_btn = new System.Windows.Forms.Button();
+            this.productionOrder_btn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.materialDispatch = new System.Windows.Forms.Button();
             this.ItemdispatchBtn = new System.Windows.Forms.Button();
             this.SidePanel = new System.Windows.Forms.Panel();
-            this.ExitBtn = new System.Windows.Forms.Button();
-            this.logoutBtn = new System.Windows.Forms.Button();
             this.clientsBtn = new System.Windows.Forms.Button();
             this.suppliersBtn = new System.Windows.Forms.Button();
             this.userBtn = new System.Windows.Forms.Button();
@@ -51,13 +53,16 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.bom1 = new rpc_working.BOM();
+            this.productionOrder1 = new rpc_working.ProductionOrder();
+            this.itemDispatch1 = new rpc_working.ItemDispatch();
+            this.recieving1 = new rpc_working.Recieving();
             this.purchasing1 = new rpc_working.Purchasing();
             this.stores1 = new rpc_working.Stores();
             this.client1 = new rpc_working.Client();
             this.supplier1 = new rpc_working.Supplier();
             this.users1 = new rpc_working.Users();
             this.home1 = new rpc_working.Home();
-            this.recieving1 = new rpc_working.Recieving();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +73,8 @@
             this.panel2.Controls.Add(this.userName_lbl);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.logoutBtn);
+            this.panel2.Controls.Add(this.ExitBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(210, 0);
             this.panel2.Name = "panel2";
@@ -80,11 +87,11 @@
             this.userName_lbl.BackColor = System.Drawing.Color.Black;
             this.userName_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userName_lbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.userName_lbl.Location = new System.Drawing.Point(888, 6);
+            this.userName_lbl.Location = new System.Drawing.Point(812, 6);
             this.userName_lbl.Name = "userName_lbl";
-            this.userName_lbl.Size = new System.Drawing.Size(18, 17);
+            this.userName_lbl.Size = new System.Drawing.Size(45, 17);
             this.userName_lbl.TabIndex = 12;
-            this.userName_lbl.Text = "U";
+            this.userName_lbl.Text = "Name";
             // 
             // label4
             // 
@@ -92,7 +99,7 @@
             this.label4.BackColor = System.Drawing.Color.Black;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(802, 6);
+            this.label4.Location = new System.Drawing.Point(726, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 17);
             this.label4.TabIndex = 11;
@@ -114,6 +121,40 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "\"RPC System\" - Purelac Coatings Ltd";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // logoutBtn
+            // 
+            this.logoutBtn.BackColor = System.Drawing.Color.MediumOrchid;
+            this.logoutBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.logoutBtn.FlatAppearance.BorderSize = 0;
+            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutBtn.ForeColor = System.Drawing.Color.White;
+            this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.logoutBtn.Location = new System.Drawing.Point(3, 1);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(140, 26);
+            this.logoutBtn.TabIndex = 8;
+            this.logoutBtn.Text = "Log Out";
+            this.logoutBtn.UseVisualStyleBackColor = false;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
+            // 
+            // ExitBtn
+            // 
+            this.ExitBtn.BackColor = System.Drawing.Color.OrangeRed;
+            this.ExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ExitBtn.FlatAppearance.BorderSize = 0;
+            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitBtn.ForeColor = System.Drawing.Color.White;
+            this.ExitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ExitBtn.Location = new System.Drawing.Point(1075, 1);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(85, 24);
+            this.ExitBtn.TabIndex = 9;
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.UseVisualStyleBackColor = false;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // homeBtn
             // 
@@ -143,10 +184,10 @@
             this.storeBtn.ForeColor = System.Drawing.Color.White;
             this.storeBtn.Image = ((System.Drawing.Image)(resources.GetObject("storeBtn.Image")));
             this.storeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.storeBtn.Location = new System.Drawing.Point(6, 120);
+            this.storeBtn.Location = new System.Drawing.Point(8, 120);
             this.storeBtn.Name = "storeBtn";
             this.storeBtn.Padding = new System.Windows.Forms.Padding(10);
-            this.storeBtn.Size = new System.Drawing.Size(184, 52);
+            this.storeBtn.Size = new System.Drawing.Size(182, 52);
             this.storeBtn.TabIndex = 1;
             this.storeBtn.Text = "     Store";
             this.storeBtn.UseVisualStyleBackColor = true;
@@ -155,12 +196,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.bom_btn);
+            this.panel1.Controls.Add(this.productionOrder_btn);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.materialDispatch);
             this.panel1.Controls.Add(this.ItemdispatchBtn);
             this.panel1.Controls.Add(this.SidePanel);
-            this.panel1.Controls.Add(this.ExitBtn);
-            this.panel1.Controls.Add(this.logoutBtn);
             this.panel1.Controls.Add(this.clientsBtn);
             this.panel1.Controls.Add(this.suppliersBtn);
             this.panel1.Controls.Add(this.userBtn);
@@ -175,6 +216,42 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // bom_btn
+            // 
+            this.bom_btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bom_btn.FlatAppearance.BorderSize = 0;
+            this.bom_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bom_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bom_btn.ForeColor = System.Drawing.Color.White;
+            this.bom_btn.Image = ((System.Drawing.Image)(resources.GetObject("bom_btn.Image")));
+            this.bom_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bom_btn.Location = new System.Drawing.Point(14, 670);
+            this.bom_btn.Name = "bom_btn";
+            this.bom_btn.Padding = new System.Windows.Forms.Padding(10);
+            this.bom_btn.Size = new System.Drawing.Size(219, 52);
+            this.bom_btn.TabIndex = 14;
+            this.bom_btn.Text = "       Bill of Material ";
+            this.bom_btn.UseVisualStyleBackColor = true;
+            this.bom_btn.Click += new System.EventHandler(this.Bom_btn_Click);
+            // 
+            // productionOrder_btn
+            // 
+            this.productionOrder_btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.productionOrder_btn.FlatAppearance.BorderSize = 0;
+            this.productionOrder_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.productionOrder_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productionOrder_btn.ForeColor = System.Drawing.Color.White;
+            this.productionOrder_btn.Image = ((System.Drawing.Image)(resources.GetObject("productionOrder_btn.Image")));
+            this.productionOrder_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.productionOrder_btn.Location = new System.Drawing.Point(14, 601);
+            this.productionOrder_btn.Name = "productionOrder_btn";
+            this.productionOrder_btn.Padding = new System.Windows.Forms.Padding(10);
+            this.productionOrder_btn.Size = new System.Drawing.Size(219, 52);
+            this.productionOrder_btn.TabIndex = 13;
+            this.productionOrder_btn.Text = "      Production Order";
+            this.productionOrder_btn.UseVisualStyleBackColor = true;
+            this.productionOrder_btn.Click += new System.EventHandler(this.ProductionOrder_btn_Click);
+            // 
             // button1
             // 
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -184,10 +261,10 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(6, 70);
+            this.button1.Location = new System.Drawing.Point(8, 70);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10);
-            this.button1.Size = new System.Drawing.Size(184, 52);
+            this.button1.Size = new System.Drawing.Size(182, 52);
             this.button1.TabIndex = 12;
             this.button1.Text = "       Reports";
             this.button1.UseVisualStyleBackColor = true;
@@ -201,12 +278,12 @@
             this.materialDispatch.ForeColor = System.Drawing.Color.White;
             this.materialDispatch.Image = ((System.Drawing.Image)(resources.GetObject("materialDispatch.Image")));
             this.materialDispatch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.materialDispatch.Location = new System.Drawing.Point(0, 294);
+            this.materialDispatch.Location = new System.Drawing.Point(8, 294);
             this.materialDispatch.Name = "materialDispatch";
             this.materialDispatch.Padding = new System.Windows.Forms.Padding(10);
-            this.materialDispatch.Size = new System.Drawing.Size(219, 52);
+            this.materialDispatch.Size = new System.Drawing.Size(225, 52);
             this.materialDispatch.TabIndex = 11;
-            this.materialDispatch.Text = "        Material Dispatch";
+            this.materialDispatch.Text = "       Material Dispatch";
             this.materialDispatch.UseVisualStyleBackColor = true;
             this.materialDispatch.Click += new System.EventHandler(this.MaterialDispatch_Click);
             // 
@@ -235,40 +312,6 @@
             this.SidePanel.Name = "SidePanel";
             this.SidePanel.Size = new System.Drawing.Size(12, 52);
             this.SidePanel.TabIndex = 2;
-            // 
-            // ExitBtn
-            // 
-            this.ExitBtn.BackColor = System.Drawing.Color.OrangeRed;
-            this.ExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ExitBtn.FlatAppearance.BorderSize = 0;
-            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitBtn.ForeColor = System.Drawing.Color.White;
-            this.ExitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ExitBtn.Location = new System.Drawing.Point(18, 674);
-            this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(172, 36);
-            this.ExitBtn.TabIndex = 9;
-            this.ExitBtn.Text = "Exit";
-            this.ExitBtn.UseVisualStyleBackColor = false;
-            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
-            // 
-            // logoutBtn
-            // 
-            this.logoutBtn.BackColor = System.Drawing.Color.MediumOrchid;
-            this.logoutBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.logoutBtn.FlatAppearance.BorderSize = 0;
-            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutBtn.ForeColor = System.Drawing.Color.White;
-            this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logoutBtn.Location = new System.Drawing.Point(18, 621);
-            this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(172, 36);
-            this.logoutBtn.TabIndex = 8;
-            this.logoutBtn.Text = "Log Out";
-            this.logoutBtn.UseVisualStyleBackColor = false;
-            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
             // clientsBtn
             // 
@@ -382,6 +425,40 @@
             this.panel6.Size = new System.Drawing.Size(0, 0);
             this.panel6.TabIndex = 4;
             // 
+            // bom1
+            // 
+            this.bom1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bom1.Location = new System.Drawing.Point(210, 26);
+            this.bom1.Name = "bom1";
+            this.bom1.Size = new System.Drawing.Size(1160, 723);
+            this.bom1.TabIndex = 14;
+            // 
+            // productionOrder1
+            // 
+            this.productionOrder1.AutoSize = true;
+            this.productionOrder1.BackColor = System.Drawing.Color.White;
+            this.productionOrder1.Location = new System.Drawing.Point(210, 27);
+            this.productionOrder1.Name = "productionOrder1";
+            this.productionOrder1.Size = new System.Drawing.Size(1133, 739);
+            this.productionOrder1.TabIndex = 13;
+            // 
+            // itemDispatch1
+            // 
+            this.itemDispatch1.BackColor = System.Drawing.Color.White;
+            this.itemDispatch1.Location = new System.Drawing.Point(210, 26);
+            this.itemDispatch1.Name = "itemDispatch1";
+            this.itemDispatch1.Size = new System.Drawing.Size(1165, 742);
+            this.itemDispatch1.TabIndex = 12;
+            this.itemDispatch1.Load += new System.EventHandler(this.ItemDispatch1_Load);
+            // 
+            // recieving1
+            // 
+            this.recieving1.BackColor = System.Drawing.Color.White;
+            this.recieving1.Location = new System.Drawing.Point(210, 26);
+            this.recieving1.Name = "recieving1";
+            this.recieving1.Size = new System.Drawing.Size(1165, 742);
+            this.recieving1.TabIndex = 11;
+            // 
             // purchasing1
             // 
             this.purchasing1.AutoSize = true;
@@ -432,20 +509,15 @@
             this.home1.Size = new System.Drawing.Size(1165, 742);
             this.home1.TabIndex = 5;
             // 
-            // recieving1
-            // 
-            this.recieving1.BackColor = System.Drawing.Color.White;
-            this.recieving1.Location = new System.Drawing.Point(210, 26);
-            this.recieving1.Name = "recieving1";
-            this.recieving1.Size = new System.Drawing.Size(1165, 742);
-            this.recieving1.TabIndex = 11;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.bom1);
+            this.Controls.Add(this.productionOrder1);
+            this.Controls.Add(this.itemDispatch1);
             this.Controls.Add(this.recieving1);
             this.Controls.Add(this.purchasing1);
             this.Controls.Add(this.stores1);
@@ -501,6 +573,11 @@
         private Stores stores1;
         private Purchasing purchasing1;
         private Recieving recieving1;
+        private ItemDispatch itemDispatch1;
+        private System.Windows.Forms.Button productionOrder_btn;
+        private ProductionOrder productionOrder1;
+        private System.Windows.Forms.Button bom_btn;
+        private BOM bom1;
     }
 }
 

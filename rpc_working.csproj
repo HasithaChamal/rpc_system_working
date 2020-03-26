@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BOM.designer.cs">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,11 +73,23 @@
     <Compile Include="Home.designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemDispatch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemDispatch.designer.cs">
+      <DependentUpon>ItemDispatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductionOrder.designer.cs">
+      <DependentUpon>ProductionOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +98,12 @@
     </Compile>
     <Compile Include="Purchasing.designer.cs">
       <DependentUpon>Purchasing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rawMaterialDispatch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="rawMaterialDispatch.designer.cs">
+      <DependentUpon>rawMaterialDispatch.cs</DependentUpon>
     </Compile>
     <Compile Include="Recieving.cs">
       <SubType>UserControl</SubType>
@@ -105,6 +129,9 @@
     <Compile Include="Users.designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BOM.resx">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,8 +141,14 @@
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ItemDispatch.resx">
+      <DependentUpon>ItemDispatch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductionOrder.resx">
+      <DependentUpon>ProductionOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +161,9 @@
     </Compile>
     <EmbeddedResource Include="Purchasing.resx">
       <DependentUpon>Purchasing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rawMaterialDispatch.resx">
+      <DependentUpon>rawMaterialDispatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Recieving.resx">
       <DependentUpon>Recieving.cs</DependentUpon>

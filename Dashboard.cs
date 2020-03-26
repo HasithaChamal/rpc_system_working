@@ -51,8 +51,8 @@ namespace rpc_working
         private void dispatchBtn_Click(object sender, EventArgs e)
         {
             sidePanelLocation(ItemdispatchBtn);
-            //dispatch1.BringToFront();
-            //dispatch1.Dispatch_Load(sender,e);
+            itemDispatch1.BringToFront();
+            itemDispatch1.Dispatch_Load(sender,e);
         }
 
         private void clientsBtn_Click(object sender, EventArgs e)
@@ -99,11 +99,7 @@ namespace rpc_working
             supplier1.Supplier_Load(sender, e);
         }
 
-        private void supplier1_Load(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void MaterialDispatch_Click(object sender, EventArgs e)
         {
            
@@ -112,6 +108,28 @@ namespace rpc_working
         private void Dashboard_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ItemDispatch1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProductionOrder_btn_Click(object sender, EventArgs e)
+        {
+            sidePanelLocation(productionOrder_btn);
+            productionOrder1.BringToFront();
+            productionOrder1.ProductionOrder_Load(sender, e);
+
+
+
+        }
+
+        private void Bom_btn_Click(object sender, EventArgs e)
+        {
+            sidePanelLocation(bom_btn);
+            bom1.BringToFront();
+            bom1.BOM_Load(sender, e);
         }
     }
 }
