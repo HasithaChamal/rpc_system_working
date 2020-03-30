@@ -63,6 +63,7 @@
             this.supplier1 = new rpc_working.Supplier();
             this.users1 = new rpc_working.Users();
             this.home1 = new rpc_working.Home();
+            this.rawMaterialDispatch1 = new rpc_working.rawMaterialDispatch();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -509,12 +510,21 @@
             this.home1.Size = new System.Drawing.Size(1165, 742);
             this.home1.TabIndex = 5;
             // 
+            // rawMaterialDispatch1
+            // 
+            this.rawMaterialDispatch1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.rawMaterialDispatch1.Location = new System.Drawing.Point(210, 26);
+            this.rawMaterialDispatch1.Name = "rawMaterialDispatch1";
+            this.rawMaterialDispatch1.Size = new System.Drawing.Size(1165, 742);
+            this.rawMaterialDispatch1.TabIndex = 15;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.rawMaterialDispatch1);
             this.Controls.Add(this.bom1);
             this.Controls.Add(this.productionOrder1);
             this.Controls.Add(this.itemDispatch1);
@@ -578,6 +588,7 @@
         private ProductionOrder productionOrder1;
         private System.Windows.Forms.Button bom_btn;
         private BOM bom1;
+        private rawMaterialDispatch rawMaterialDispatch1;
     }
 }
 

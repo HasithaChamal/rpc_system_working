@@ -102,7 +102,10 @@ namespace rpc_working
        
         private void MaterialDispatch_Click(object sender, EventArgs e)
         {
-           
+            sidePanelLocation(materialDispatch);
+            rawMaterialDispatch1.BringToFront();
+            rawMaterialDispatch1.RawMaterialDispatch_Load(sender, e);
+
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

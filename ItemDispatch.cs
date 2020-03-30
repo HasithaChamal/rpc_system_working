@@ -241,12 +241,6 @@ namespace rpc_working
                             Console.WriteLine("rows affected: "+rowsAffected);
                             if (rowsAffected == 1)
                             {
-                               /* string updateStore = "UPDATE item SET qty = qty - @qty WHERE item_id = @itemCode";
-                                paramList.Clear();
-                                paramList.Add(new MySqlParameter("@qty", qty));
-                                paramList.Add(new MySqlParameter("@itemCode", itemid));
-                                DatabaseHandler.insertOrDeleteRow(updateStore, paramList); */
-
                                 itemNameTxt.Clear();
                                 qtyTxt.Clear();
                                 dataGridView4.Rows.Clear();

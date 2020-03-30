@@ -13,7 +13,7 @@ namespace rpc_working
 {
     class DatabaseHandler
     {
-        static string MySQLConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=rpc";
+        public static string MySQLConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=rpc";
 
         //Get 1 value as result from query
         public static string returnOneValue(string query, List<MySqlParameter> paramsCollection, string column)
@@ -304,6 +304,57 @@ namespace rpc_working
 
         }
 
+        public static void populatebomDataGridView(string query, DataGridView dataGridView, string quantity )
+        {
+
+            var dataAdapter = new MySqlDataAdapter(query, MySQLConnectionString);
+            var commandBuilder = new MySqlCommandBuilder(dataAdapter);
+            var dt = new DataTable();
+      
+            dt.Columns.Add("material_id");
+            dt.Columns.Add("quantity");
+
+            dataAdapter.Fill(dt);
+            int noOfRows = dt.Rows.Count;
+
+            for (int i=0; i<noOfRows; i++)
+            {
+                string materialId = dt.Rows[i][0].ToString();
+                string qty = dt.Rows[i][1].ToString();
+                string materialName = returnOneValueWithoutParams("SELECT * FROM raw_material WHERE material_id='" + materialId + "'", "name");
+                string materialPrice = returnOneValueWithoutParams("SELECT * FROM raw_material WHERE material_id='" + materialId + "'", "unit_price");
+
+                int val = 0;
+                int count = dataGridView.DisplayedRowCount(true);
+                for (int row = 0; row < count - 1; row++)
+                {
+
+                    string ExsitingMaterialid = dataGridView.Rows[row].Cells[0].Value.ToString();
+                    string ExsistingQty = dataGridView.Rows[row].Cells[1].Value.ToString();
+
+                    if (ExsitingMaterialid== materialId)
+                    {
+                        dataGridView.Rows[row].Cells[1].Value = Int32.Parse(ExsistingQty) + (Int32.Parse(qty)* Int32.Parse(quantity)).ToString();
+                        val++;
+                    }
+
+                }
+
+                if (val == 0)
+                {
+                    dataGridView.Rows[count - 1].Cells[0].Value = materialId;
+                    dataGridView.Rows[count - 1].Cells[1].Value = (Int32.Parse(qty) * Int32.Parse(quantity)).ToString();
+                    dataGridView.Rows[count - 1].Cells[2].Value = materialName;
+                    dataGridView.Rows[count - 1].Cells[3].Value = materialPrice;
+
+                }
+
+            }
+
+
+
+            }
+
 
     }
-}
+    }

@@ -119,7 +119,7 @@
             this.createPurchaseOrderBtn.Name = "createPurchaseOrderBtn";
             this.createPurchaseOrderBtn.Size = new System.Drawing.Size(181, 23);
             this.createPurchaseOrderBtn.TabIndex = 30;
-            this.createPurchaseOrderBtn.Text = "Create Purchase Order";
+            this.createPurchaseOrderBtn.Text = "Create Production Order";
             this.createPurchaseOrderBtn.UseVisualStyleBackColor = true;
             this.createPurchaseOrderBtn.Click += new System.EventHandler(this.createPurchaseOrderBtn_Click);
             // 

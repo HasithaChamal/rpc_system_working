@@ -15,7 +15,7 @@ namespace rpc_working
 {
     public partial class BOM : UserControl
     {
-        int globalLastPo;
+        int globalLastbom;
         public BOM()
         {
             InitializeComponent();
@@ -34,21 +34,27 @@ namespace rpc_working
 
             List<MySqlParameter> paramList2 = new List<MySqlParameter>();
             paramList2.Add(new MySqlParameter("@poNum", poNum));
-            int returnedRowCount2 = DatabaseHandler.returnRowCount("SELECT * FROM bom WHERE pro_id = @poNum", paramList);
+            int returnedRowCount2 = DatabaseHandler.returnRowCount("SELECT * FROM bom WHERE pro_id = @poNum", paramList2);
 
 
 
 
-            if (returnedRowCount == 1 && returnedRowCount2==0)
+            if (returnedRowCount == 1 && returnedRowCount2 == 0)
             {
-               // poText.Enabled = false;
+                // poText.Enabled = false;
                 string select = "SELECT productionorder_item.pro_id as 'Order #', productionorder_item.item_id as 'Item Code', item.name as 'Item Name', productionorder_item.qty as 'Qty' FROM productionorder_item INNER JOIN item ON productionorder_item.item_id = item.item_id WHERE productionorder_item.pro_id = '" + poNum + "'";
                 DatabaseHandler.populateGridViewWithBinding(select, dataGridView2);
-                 setPoNum();
-               
+                setPoNum();
 
-        
+
+
             }
+            else if (returnedRowCount2 == 1) {
+
+                MessageBox.Show("BOM already created for that production order. Please Try again..");
+
+            }
+
             else
             {
                 poText.Enabled = true;
@@ -79,19 +85,19 @@ namespace rpc_working
 
         private void setPoNum()
         {
-            string lastPo = DatabaseHandler.returnOneValueWithoutParams("SELECT * FROM bom", "bom_id");
+            string lastbom = DatabaseHandler.returnOneValueWithoutParams("SELECT * FROM bom", "bom_id");
             int lastbomNum;
-            if (lastPo == "Null Data!")
+            if (lastbom == "Null Data!")
             {
                 lastbomNum = 0;
             }
             else
             {
-                lastbomNum = Int32.Parse(lastPo);
+                lastbomNum = Int32.Parse(lastbom);
             }
 
             bom_lbl.Text = (lastbomNum + 1).ToString();
-            globalLastPo = lastbomNum;
+            globalLastbom = lastbomNum;
 
 
 
@@ -103,6 +109,8 @@ namespace rpc_working
             dataGridView2.DataSource = null;
             dataGridView2.Refresh();
             poText.Enabled = true;
+            dataGridView1.DataSource = null;
+            dataGridView1.Refresh();
 
         }
 
@@ -137,8 +145,6 @@ namespace rpc_working
 
 
 
-
-            //populate datagridview1
             int i = dataGridView2.DisplayedRowCount(true);
             Console.WriteLine("Special i Value: " + i);
             string itemid;
@@ -150,18 +156,57 @@ namespace rpc_working
                 itemid = dataGridView2.Rows[row].Cells[1].Value.ToString();
                 qty = dataGridView2.Rows[row].Cells[3].Value.ToString();
 
-                Console.WriteLine(itemid + "   " + qty);
+                string querry = "SELECT material_id as 'material_id', quantity as 'quantity' FROM composition WHERE item_id= '" + itemid + "'";
 
-                List<MySqlParameter> paramList1 = new List<MySqlParameter>();
-                paramList1.Add(new MySqlParameter("@bomId", bomId));
-                paramList1.Add(new MySqlParameter("@itemid", itemid));
-                int returnedRowCount2 = DatabaseHandler.returnRowCount("SELECT * FROM bom_item WHERE bom_id = @bomId AND material_id= @itemid", paramList1);
-
-
-
+                DatabaseHandler.populatebomDataGridView(querry, dataGridView1, qty);
 
             }
+
+
+
+            int j = dataGridView1.DisplayedRowCount(true);
+            Console.WriteLine("Special j Value: " + j);
+          
+       
+            for (int row = 0; row < j ; row++)
+            {
+               
+                itemid = dataGridView1.Rows[row].Cells[0].Value.ToString();
+                qty = dataGridView1.Rows[row].Cells[1].Value.ToString();
+                Console.WriteLine(itemid + "   " + qty);
+                try
+                {
+                    string query = "INSERT INTO bom_item VALUES (@material_id, @bom_id, @qty)";
+                    List<MySqlParameter> paramList = new List<MySqlParameter>();
+                    paramList.Add(new MySqlParameter("@material_id", itemid));
+                    paramList.Add(new MySqlParameter("@bom_id", bomId));
+                    paramList.Add(new MySqlParameter("@qty", qty));
+
+                    int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
+
+                    if (rowsAffected != 0)
+                    {
+
+                        MessageBox.Show("BOM Created Successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Occured! BOM-material Link Broken!");
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error Occured!");
+                }
+                
+
+            }
+
+
+
         }
+
         }
 
 

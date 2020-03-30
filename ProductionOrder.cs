@@ -23,7 +23,11 @@ namespace rpc_working
 
         public void ProductionOrder_Load(object sender, EventArgs e)
         {
-
+            if (GlobalLoginData.userRole == "StoreKeeper")
+            {
+                approveBtn.Enabled = false;
+                declineBtn.Enabled = false;
+            }
 
             //Populate dataViewGrid1 (Items by that supplier)
             populateGrid();

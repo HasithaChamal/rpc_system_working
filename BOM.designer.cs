@@ -36,11 +36,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.create_bom_btn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.material_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.applyBtn = new System.Windows.Forms.Button();
             this.bom_lbl = new System.Windows.Forms.Label();
             this.clear_btn = new System.Windows.Forms.Button();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -116,10 +120,27 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.material_id,
+            this.quantity,
+            this.name,
+            this.unit_price});
             this.dataGridView1.Location = new System.Drawing.Point(564, 72);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(588, 584);
             this.dataGridView1.TabIndex = 62;
+            // 
+            // material_id
+            // 
+            this.material_id.HeaderText = "Material ID";
+            this.material_id.Name = "material_id";
+            this.material_id.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
             // 
             // label8
             // 
@@ -171,6 +192,18 @@
             this.clear_btn.UseVisualStyleBackColor = true;
             this.clear_btn.Click += new System.EventHandler(this.Clear_btn_Click);
             // 
+            // name
+            // 
+            this.name.HeaderText = "Material Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // unit_price
+            // 
+            this.unit_price.HeaderText = "Material Price";
+            this.unit_price.Name = "unit_price";
+            this.unit_price.ReadOnly = true;
+            // 
             // BOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,5 +247,9 @@
         private System.Windows.Forms.Button applyBtn;
         private System.Windows.Forms.Label bom_lbl;
         private System.Windows.Forms.Button clear_btn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit_price;
     }
 }
