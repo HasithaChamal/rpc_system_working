@@ -14,6 +14,7 @@ namespace rpc_working
     class DatabaseHandler
     {
         public static string MySQLConnectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=rpc";
+        public static MySqlConnection con = new MySqlConnection(MySQLConnectionString);
 
         //Get 1 value as result from query
         public static string returnOneValue(string query, List<MySqlParameter> paramsCollection, string column)

@@ -53,6 +53,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.rawMaterialDispatch1 = new rpc_working.rawMaterialDispatch();
             this.bom1 = new rpc_working.BOM();
             this.productionOrder1 = new rpc_working.ProductionOrder();
             this.itemDispatch1 = new rpc_working.ItemDispatch();
@@ -63,14 +64,14 @@
             this.supplier1 = new rpc_working.Supplier();
             this.users1 = new rpc_working.Users();
             this.home1 = new rpc_working.Home();
-            this.rawMaterialDispatch1 = new rpc_working.rawMaterialDispatch();
+            this.dash1 = new rpc_working.Dash();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Controls.Add(this.userName_lbl);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label1);
@@ -262,10 +263,10 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(8, 70);
+            this.button1.Location = new System.Drawing.Point(11, 70);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10);
-            this.button1.Size = new System.Drawing.Size(182, 52);
+            this.button1.Size = new System.Drawing.Size(179, 52);
             this.button1.TabIndex = 12;
             this.button1.Text = "       Reports";
             this.button1.UseVisualStyleBackColor = true;
@@ -279,10 +280,10 @@
             this.materialDispatch.ForeColor = System.Drawing.Color.White;
             this.materialDispatch.Image = ((System.Drawing.Image)(resources.GetObject("materialDispatch.Image")));
             this.materialDispatch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.materialDispatch.Location = new System.Drawing.Point(8, 294);
+            this.materialDispatch.Location = new System.Drawing.Point(14, 294);
             this.materialDispatch.Name = "materialDispatch";
             this.materialDispatch.Padding = new System.Windows.Forms.Padding(10);
-            this.materialDispatch.Size = new System.Drawing.Size(225, 52);
+            this.materialDispatch.Size = new System.Drawing.Size(219, 52);
             this.materialDispatch.TabIndex = 11;
             this.materialDispatch.Text = "       Material Dispatch";
             this.materialDispatch.UseVisualStyleBackColor = true;
@@ -426,6 +427,14 @@
             this.panel6.Size = new System.Drawing.Size(0, 0);
             this.panel6.TabIndex = 4;
             // 
+            // rawMaterialDispatch1
+            // 
+            this.rawMaterialDispatch1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.rawMaterialDispatch1.Location = new System.Drawing.Point(210, 26);
+            this.rawMaterialDispatch1.Name = "rawMaterialDispatch1";
+            this.rawMaterialDispatch1.Size = new System.Drawing.Size(1165, 742);
+            this.rawMaterialDispatch1.TabIndex = 15;
+            // 
             // bom1
             // 
             this.bom1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -510,13 +519,13 @@
             this.home1.Size = new System.Drawing.Size(1165, 742);
             this.home1.TabIndex = 5;
             // 
-            // rawMaterialDispatch1
+            // dash1
             // 
-            this.rawMaterialDispatch1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rawMaterialDispatch1.Location = new System.Drawing.Point(210, 26);
-            this.rawMaterialDispatch1.Name = "rawMaterialDispatch1";
-            this.rawMaterialDispatch1.Size = new System.Drawing.Size(1165, 742);
-            this.rawMaterialDispatch1.TabIndex = 15;
+            this.dash1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.dash1.Location = new System.Drawing.Point(210, 26);
+            this.dash1.Name = "dash1";
+            this.dash1.Size = new System.Drawing.Size(1160, 720);
+            this.dash1.TabIndex = 16;
             // 
             // Dashboard
             // 
@@ -524,6 +533,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.dash1);
             this.Controls.Add(this.rawMaterialDispatch1);
             this.Controls.Add(this.bom1);
             this.Controls.Add(this.productionOrder1);
@@ -589,6 +599,7 @@
         private System.Windows.Forms.Button bom_btn;
         private BOM bom1;
         private rawMaterialDispatch rawMaterialDispatch1;
+        private Dash dash1;
     }
 }
 

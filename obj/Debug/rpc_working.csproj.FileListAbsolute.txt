@@ -26,3 +26,10 @@ D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.csp
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.exe
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.pdb
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.BOM.resources
+D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.Dash.resources
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\LiveCharts.dll
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\LiveCharts.Wpf.dll
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\LiveCharts.pdb
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\LiveCharts.xml
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\LiveCharts.Wpf.pdb
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\LiveCharts.Wpf.xml

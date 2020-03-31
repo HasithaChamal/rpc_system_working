@@ -16,7 +16,7 @@ namespace rpc_working
             InitializeComponent();
             SidePanel.Height = homeBtn.Height;
             SidePanel.Top = homeBtn.Top;
-            home1.BringToFront();
+            dash1.BringToFront();
             userName_lbl.Text = GlobalLoginData.Name;
 
         }
@@ -24,7 +24,7 @@ namespace rpc_working
         private void HomeBtn(object sender, EventArgs e)
         {
             sidePanelLocation(homeBtn);
-            home1.BringToFront();
+            dash1.BringToFront();
         }
 
         private void storeBtn_Click(object sender, EventArgs e)
