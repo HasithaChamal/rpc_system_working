@@ -12,6 +12,22 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +49,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -42,6 +63,8 @@
     <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,6 +89,54 @@
     <Compile Include="Client.designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReportsViewer\BOMReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\BOMReportViewer.Designer.cs">
+      <DependentUpon>BOMReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\itemOrderReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\itemOrderReportViewer.Designer.cs">
+      <DependentUpon>itemOrderReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\materialUseageVeiwer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\materialUseageVeiwer.Designer.cs">
+      <DependentUpon>materialUseageVeiwer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\productionReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\productionReportViewer.Designer.cs">
+      <DependentUpon>productionReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReports\BOMReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BOMReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\itemOrderReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>itemOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\MaterialUseage.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialUseage.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\ProductionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dash.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -79,6 +150,35 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseHandler.cs" />
+    <Compile Include="dataset\dsBOM.cs">
+      <DependentUpon>dsBOM.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\dsBOM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBOM.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\itemOrder.cs">
+      <DependentUpon>itemOrder.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\itemOrder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>itemOrder.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\MaterialuseageData.cs">
+      <DependentUpon>MaterialuseageData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\MaterialuseageData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialuseageData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\productionOrder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>productionOrder.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GlobalLoginData.cs" />
     <Compile Include="Home.cs">
       <SubType>UserControl</SubType>
@@ -124,6 +224,12 @@
     <Compile Include="Recieving.designer.cs">
       <DependentUpon>Recieving.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports.designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stores.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +253,34 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\BOMReportViewer.resx">
+      <DependentUpon>BOMReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\itemOrderReportViewer.resx">
+      <DependentUpon>itemOrderReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\materialUseageVeiwer.resx">
+      <DependentUpon>materialUseageVeiwer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\productionReportViewer.resx">
+      <DependentUpon>productionReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\BOMReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BOMReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\itemOrderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>itemOrderReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\MaterialUseage.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MaterialUseage.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ProductionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Dash.resx">
       <DependentUpon>Dash.cs</DependentUpon>
@@ -174,6 +308,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Purchasing.resx">
       <DependentUpon>Purchasing.cs</DependentUpon>
@@ -184,6 +319,9 @@
     <EmbeddedResource Include="Recieving.resx">
       <DependentUpon>Recieving.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stores.resx">
       <DependentUpon>Stores.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +331,50 @@
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="dataset\dsBOM.xsc">
+      <DependentUpon>dsBOM.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\dsBOM.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBOM.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\dsBOM.xss">
+      <DependentUpon>dsBOM.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\itemOrder.xsc">
+      <DependentUpon>itemOrder.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\itemOrder.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>itemOrder.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\itemOrder.xss">
+      <DependentUpon>itemOrder.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\MaterialuseageData.xsc">
+      <DependentUpon>MaterialuseageData.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\MaterialuseageData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MaterialuseageData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\MaterialuseageData.xss">
+      <DependentUpon>MaterialuseageData.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\productionOrder.xsc">
+      <DependentUpon>productionOrder.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\productionOrder.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>productionOrder.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\productionOrder.xss">
+      <DependentUpon>productionOrder.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -206,6 +388,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

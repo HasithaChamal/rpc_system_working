@@ -15,7 +15,9 @@ namespace rpc_working
 {
     public partial class BOM : UserControl
     {
-        int globalLastbom;
+        public static int globalLastbom;
+        public static string bomNo;
+        public static DataTable data;
         public BOM()
         {
             InitializeComponent();
@@ -81,6 +83,7 @@ namespace rpc_working
         public void BOM_Load(object sender, EventArgs e)
         {
             setPoNum();
+           
         }
 
         private void setPoNum()
@@ -98,7 +101,7 @@ namespace rpc_working
 
             bom_lbl.Text = (lastbomNum + 1).ToString();
             globalLastbom = lastbomNum;
-
+            bomNo = bom_lbl.Text;
 
 
         }
@@ -119,7 +122,7 @@ namespace rpc_working
             setPoNum();
             try
             {
-                string query = "insert into bom( approval ,postedUser, pro_id) values ('Pending',@user, @proId);";
+                string query = "insert into bom( postedUser, pro_id) values (@user, @proId);";
                 List<MySqlParameter> paramList = new List<MySqlParameter>();
                 paramList.Clear();
                 paramList.Add(new MySqlParameter("@user", GlobalLoginData.username));
@@ -203,11 +206,41 @@ namespace rpc_working
 
             }
 
-
-
-        }
+            data = GetDataTableFromDGV(dataGridView1);
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CrystalReportsViewer.BOMReportViewer bomview = new CrystalReportsViewer.BOMReportViewer();
+            bomview.ShowDialog();
+       
+        }
+
+        private DataTable GetDataTableFromDGV(DataGridView dgv)
+        {
+            var dt = new DataTable();
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                if (column.Visible)
+                {
+                       dt.Columns.Add();
+                }
+            }
+
+            object[] cellValues = new object[dgv.Columns.Count];
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    cellValues[i] = row.Cells[i].Value;
+                }
+                dt.Rows.Add(cellValues);
+            }
+
+            return dt;
+        }
+    }
 
 
 }

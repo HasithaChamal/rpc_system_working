@@ -134,5 +134,12 @@ namespace rpc_working
             bom1.BringToFront();
             bom1.BOM_Load(sender, e);
         }
+
+        private void rpt_btn_Click(object sender, EventArgs e)
+        {
+            sidePanelLocation(rpt_btn);
+            reports1.BringToFront();
+
+        }
     }
 }

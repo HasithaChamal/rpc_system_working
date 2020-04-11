@@ -184,7 +184,7 @@ namespace rpc_working
             string qty;
             for(int row = 0; row<i-1; row++)
             {
-                string lastPo = DatabaseHandler.returnOneValueWithoutParams("SELECT*FROM purchaseorder", "po_id");
+                string lastPo = DatabaseHandler.returnOneValueWithoutParams("SELECT * FROM purchaseorder", "po_id");
 
                 itemid = dataGridView4.Rows[row].Cells[0].Value.ToString();
                 qty = dataGridView4.Rows[row].Cells[2].Value.ToString();

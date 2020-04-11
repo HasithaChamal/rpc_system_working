@@ -16,6 +16,8 @@ namespace rpc_working
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+       
+
             Login logScreen = new Login();
             Application.Run(logScreen);
         }

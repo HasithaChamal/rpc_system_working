@@ -238,6 +238,7 @@ namespace rpc_working
 
         private void AddItemBtn_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("In Add Btn: Current Index1: " + composition_dataGridView.DisplayedRowCount(true));
 
             string itemCode = addmaterialCodeTxt.Text;
             string itemQty = addmaterialQty.Text;
@@ -257,7 +258,7 @@ namespace rpc_working
                 //Add to composition_dataGridView
                 int index = composition_dataGridView.DisplayedRowCount(true);
                 composition_dataGridView.Rows.Add();
-                Console.WriteLine("In Add Btn: Current Index: " + index);
+
                 composition_dataGridView.Rows[index - 1].Cells[0].Value = itemCode;
                 composition_dataGridView.Rows[index - 1].Cells[1].Value = itemName;
                 composition_dataGridView.Rows[index - 1].Cells[2].Value = itemQty;
@@ -267,6 +268,9 @@ namespace rpc_working
             {
                 MessageBox.Show("Invalid Item Code!");
             }
+
+            Console.WriteLine("In Add Btn: Current Index2: " + composition_dataGridView.DisplayedRowCount(true));
+
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -274,11 +278,12 @@ namespace rpc_working
             String product_id = prodctId_txt.Text;
             String productName = productName_txt.Text;
             String unitPrice = unitPrice_txt.Text;
-
+            int i = composition_dataGridView.DisplayedRowCount(true);
+            Console.WriteLine("Special i Value: " + i);
 
             try
             {
-                string query = "insert into item(item_id, name , unit_price) values (@product_id,@productName,@unitPrice);";
+                string query = "insert into item(item_id, name , unit_price) values (@product_id,@productName,@unitPrice)";
                 List<MySqlParameter> paramList = new List<MySqlParameter>();
                 paramList.Clear();
                 paramList.Add(new MySqlParameter("@product_id", product_id));
@@ -289,7 +294,7 @@ namespace rpc_working
 
                 if (rowsAffected != 0)
                 {
-                   // MessageBox.Show("New product added Successfully!");
+                   MessageBox.Show("New product added Successfully!");
 
 
                     populateGrid();
@@ -297,6 +302,7 @@ namespace rpc_working
                 else
                 {
                     MessageBox.Show("Error Occured! Please check input details!");
+                    return;
                 }
 
             }
@@ -306,8 +312,7 @@ namespace rpc_working
             }
 
 
-            int i = composition_dataGridView.DisplayedRowCount(true);
-            Console.WriteLine("Special i Value: " + i);
+          
             string materialId;
             string material_qty;
             string material_name;
@@ -333,10 +338,10 @@ namespace rpc_working
                     if (rowsAffected == 0)
                     {
                         MessageBox.Show("Error Occured! Item-material Link Broken!");
-
+                        
                     }
                     else {
-                        MessageBox.Show("Item added sucsessfully");
+                       // MessageBox.Show("Item added sucsessfully");
                     }
 
                 }
@@ -344,14 +349,11 @@ namespace rpc_working
                 {
                     MessageBox.Show("Error Occured! Please check if the Product already exists!");
                 }
-                finally
-                {
-                    populateGrid();
-                }
+            
 
 
             }
-
+            populateGrid();
             prodctId_txt.Text = "";
             productName_txt.Text = "";
             unitPrice_txt.Text = "";

@@ -40,7 +40,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bom_btn = new System.Windows.Forms.Button();
             this.productionOrder_btn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.rpt_btn = new System.Windows.Forms.Button();
             this.materialDispatch = new System.Windows.Forms.Button();
             this.ItemdispatchBtn = new System.Windows.Forms.Button();
             this.SidePanel = new System.Windows.Forms.Panel();
@@ -65,6 +65,7 @@
             this.users1 = new rpc_working.Users();
             this.home1 = new rpc_working.Home();
             this.dash1 = new rpc_working.Dash();
+            this.reports1 = new rpc_working.Reports();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -200,7 +201,7 @@
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.bom_btn);
             this.panel1.Controls.Add(this.productionOrder_btn);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.rpt_btn);
             this.panel1.Controls.Add(this.materialDispatch);
             this.panel1.Controls.Add(this.ItemdispatchBtn);
             this.panel1.Controls.Add(this.SidePanel);
@@ -254,22 +255,23 @@
             this.productionOrder_btn.UseVisualStyleBackColor = true;
             this.productionOrder_btn.Click += new System.EventHandler(this.ProductionOrder_btn_Click);
             // 
-            // button1
+            // rpt_btn
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(11, 70);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10);
-            this.button1.Size = new System.Drawing.Size(179, 52);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "       Reports";
-            this.button1.UseVisualStyleBackColor = true;
+            this.rpt_btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rpt_btn.FlatAppearance.BorderSize = 0;
+            this.rpt_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rpt_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rpt_btn.ForeColor = System.Drawing.Color.White;
+            this.rpt_btn.Image = ((System.Drawing.Image)(resources.GetObject("rpt_btn.Image")));
+            this.rpt_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rpt_btn.Location = new System.Drawing.Point(11, 70);
+            this.rpt_btn.Name = "rpt_btn";
+            this.rpt_btn.Padding = new System.Windows.Forms.Padding(10);
+            this.rpt_btn.Size = new System.Drawing.Size(179, 52);
+            this.rpt_btn.TabIndex = 12;
+            this.rpt_btn.Text = "       Reports";
+            this.rpt_btn.UseVisualStyleBackColor = true;
+            this.rpt_btn.Click += new System.EventHandler(this.rpt_btn_Click);
             // 
             // materialDispatch
             // 
@@ -522,10 +524,18 @@
             // dash1
             // 
             this.dash1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.dash1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dash1.Location = new System.Drawing.Point(210, 26);
             this.dash1.Name = "dash1";
             this.dash1.Size = new System.Drawing.Size(1160, 720);
             this.dash1.TabIndex = 16;
+            // 
+            // reports1
+            // 
+            this.reports1.Location = new System.Drawing.Point(213, 26);
+            this.reports1.Name = "reports1";
+            this.reports1.Size = new System.Drawing.Size(1165, 742);
+            this.reports1.TabIndex = 17;
             // 
             // Dashboard
             // 
@@ -533,6 +543,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.reports1);
             this.Controls.Add(this.dash1);
             this.Controls.Add(this.rawMaterialDispatch1);
             this.Controls.Add(this.bom1);
@@ -586,7 +597,7 @@
         private Supplier supplier1;
         private System.Windows.Forms.Button materialDispatch;
         private System.Windows.Forms.Button ItemdispatchBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button rpt_btn;
         private Client client1;
         private System.Windows.Forms.Label userName_lbl;
         private System.Windows.Forms.Label label4;
@@ -600,6 +611,7 @@
         private BOM bom1;
         private rawMaterialDispatch rawMaterialDispatch1;
         private Dash dash1;
+        private Reports reports1;
     }
 }
 
