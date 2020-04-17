@@ -78,6 +78,7 @@
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clear_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.products_tab.SuspendLayout();
@@ -494,7 +495,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(95, 677);
+            this.button2.Location = new System.Drawing.Point(34, 682);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(195, 23);
             this.button2.TabIndex = 43;
@@ -504,6 +505,7 @@
             // 
             // composition_dataGridView
             // 
+            this.composition_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -525,7 +527,7 @@
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.composition_dataGridView.DefaultCellStyle = dataGridViewCellStyle10;
-            this.composition_dataGridView.Location = new System.Drawing.Point(19, 600);
+            this.composition_dataGridView.Location = new System.Drawing.Point(18, 590);
             this.composition_dataGridView.Name = "composition_dataGridView";
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
@@ -535,14 +537,15 @@
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.composition_dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.composition_dataGridView.Size = new System.Drawing.Size(406, 60);
+            this.composition_dataGridView.Size = new System.Drawing.Size(406, 86);
             this.composition_dataGridView.TabIndex = 46;
             // 
             // ItemCode
             // 
-            this.ItemCode.HeaderText = "Material ID";
+            this.ItemCode.HeaderText = "Material Code";
             this.ItemCode.Name = "ItemCode";
             this.ItemCode.ReadOnly = true;
+            this.ItemCode.Width = 97;
             // 
             // Item
             // 
@@ -555,12 +558,24 @@
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 71;
+            // 
+            // clear_btn
+            // 
+            this.clear_btn.Location = new System.Drawing.Point(279, 683);
+            this.clear_btn.Name = "clear_btn";
+            this.clear_btn.Size = new System.Drawing.Size(75, 23);
+            this.clear_btn.TabIndex = 47;
+            this.clear_btn.Text = "Clear";
+            this.clear_btn.UseVisualStyleBackColor = true;
+            this.clear_btn.Click += new System.EventHandler(this.clear_btn_Click);
             // 
             // Stores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.composition_dataGridView);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.products_tab);
@@ -645,5 +660,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.Button clear_btn;
     }
 }

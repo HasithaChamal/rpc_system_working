@@ -110,12 +110,16 @@ namespace rpc_working
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            if (GlobalLoginData.userRole != "Owner")
+            {
+                userBtn.Enabled = false;
 
+            }
         }
 
         private void ItemDispatch1_Load(object sender, EventArgs e)
         {
-
+          
         }
 
         private void ProductionOrder_btn_Click(object sender, EventArgs e)

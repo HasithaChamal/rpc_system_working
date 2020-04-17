@@ -45,7 +45,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
+            this.print_btn = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.declineBtn = new System.Windows.Forms.Button();
@@ -65,6 +65,7 @@
             this.material_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.clear_btn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -144,7 +145,7 @@
             // createPurchaseOrderBtn
             // 
             this.createPurchaseOrderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createPurchaseOrderBtn.Location = new System.Drawing.Point(322, 531);
+            this.createPurchaseOrderBtn.Location = new System.Drawing.Point(322, 547);
             this.createPurchaseOrderBtn.Name = "createPurchaseOrderBtn";
             this.createPurchaseOrderBtn.Size = new System.Drawing.Size(181, 23);
             this.createPurchaseOrderBtn.TabIndex = 30;
@@ -201,7 +202,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.print_btn);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -211,14 +212,15 @@
             this.tabPage2.Text = "Approved Purchase Orders";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // print_btn
             // 
-            this.button5.Location = new System.Drawing.Point(475, 493);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(103, 23);
-            this.button5.TabIndex = 40;
-            this.button5.Text = "Print";
-            this.button5.UseVisualStyleBackColor = true;
+            this.print_btn.Location = new System.Drawing.Point(475, 493);
+            this.print_btn.Name = "print_btn";
+            this.print_btn.Size = new System.Drawing.Size(103, 23);
+            this.print_btn.TabIndex = 40;
+            this.print_btn.Text = "Print";
+            this.print_btn.UseVisualStyleBackColor = true;
+            this.print_btn.Click += new System.EventHandler(this.print_btn_Click);
             // 
             // dataGridView2
             // 
@@ -436,12 +438,24 @@
             this.label3.TabIndex = 42;
             this.label3.Text = "PO Item View";
             // 
+            // clear_btn
+            // 
+            this.clear_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clear_btn.Location = new System.Drawing.Point(97, 547);
+            this.clear_btn.Name = "clear_btn";
+            this.clear_btn.Size = new System.Drawing.Size(84, 23);
+            this.clear_btn.TabIndex = 43;
+            this.clear_btn.Text = "Clear";
+            this.clear_btn.UseVisualStyleBackColor = true;
+            this.clear_btn.Click += new System.EventHandler(this.clear_btn_Click);
+            // 
             // Purchasing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView5);
             this.Controls.Add(this.dataGridView4);
@@ -502,10 +516,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button declineBtn;
         private System.Windows.Forms.Button approveBtn;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button print_btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn material_price;
+        private System.Windows.Forms.Button clear_btn;
     }
 }

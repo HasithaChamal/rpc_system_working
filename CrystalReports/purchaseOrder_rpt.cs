@@ -16,14 +16,14 @@ namespace rpc_working.CrystalReports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class MaterialUseage : ReportClass {
+    public class purchaseOrder_rpt : ReportClass {
         
-        public MaterialUseage() {
+        public purchaseOrder_rpt() {
         }
         
         public override string ResourceName {
             get {
-                return "MaterialUseage.rpt";
+                return "purchaseOrder_rpt.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace rpc_working.CrystalReports {
         
         public override string FullResourceName {
             get {
-                return "rpc_working.CrystalReports.MaterialUseage.rpt";
+                return "rpc_working.CrystalReports.purchaseOrder_rpt.rpt";
             }
             set {
                 // Do nothing
@@ -154,9 +154,9 @@ namespace rpc_working.CrystalReports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedMaterialUseage : Component, ICachedReport {
+    public class CachedpurchaseOrder_rpt : Component, ICachedReport {
         
-        public CachedMaterialUseage() {
+        public CachedpurchaseOrder_rpt() {
         }
         
         [Browsable(false)]
@@ -193,7 +193,7 @@ namespace rpc_working.CrystalReports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            MaterialUseage rpt = new MaterialUseage();
+            purchaseOrder_rpt rpt = new purchaseOrder_rpt();
             rpt.Site = this.Site;
             return rpt;
         }

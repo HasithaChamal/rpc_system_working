@@ -23,6 +23,11 @@ namespace rpc_working
 
         public void Dispatch_Load(object sender, EventArgs e)
         {
+            if (GlobalLoginData.userRole == "StoreKeeper")
+            {
+                approveBtn.Enabled = false;
+                declineBtn.Enabled = false;
+            }
             setReqNum();
             populateDataGrid();
             populateDispatchCombo();
@@ -83,6 +88,8 @@ namespace rpc_working
 
             string selectStatement3 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Approved' AND itemorder.released='Yes'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement3, dataGridView3);
+            dataGridView6.DataSource = null;
+            dataGridView6.Rows.Clear();
         }
 
         private void itemName_TextChanged(object sender, EventArgs e)
@@ -105,6 +112,7 @@ namespace rpc_working
             string itemCode;
             string itemQty;
             string itemName;
+            Console.WriteLine("In Add Btn: Current Index1: " + dataGridView4.DisplayedRowCount(true));
             try
             {
                 itemCode = dataGridView5.SelectedRows[0].Cells["Item Code"].Value.ToString();
@@ -153,10 +161,13 @@ namespace rpc_working
                     //Add to dataViewGrid4
                     int index = dataGridView4.DisplayedRowCount(true);
                     dataGridView4.Rows.Add();
-                    Console.WriteLine("In Add Btn: Current Index: " + index);
                     dataGridView4.Rows[index - 1].Cells[0].Value = itemCode;
                     dataGridView4.Rows[index - 1].Cells[1].Value = itemName;
                     dataGridView4.Rows[index - 1].Cells[2].Value = itemQty;
+                    Console.WriteLine("In Add Btn: Current Index2: " + dataGridView4.DisplayedRowCount(true));
+                itemNameTxt.Clear();
+                qtyTxt.Clear();
+
             }
           
         }
@@ -172,6 +183,8 @@ namespace rpc_working
             try
             {
                 itemNameTxt.Text = dataGridView5.SelectedRows[0].Cells["Item Name"].Value.ToString();
+                dataGridView6.DataSource = null;
+                dataGridView6.Rows.Clear();
             }
             catch (Exception)
             {
@@ -220,6 +233,7 @@ namespace rpc_working
                     
                     try
                     {
+                        Console.WriteLine("displayed rows" + dataGridView4.DisplayedRowCount(true));
                         int i = dataGridView4.DisplayedRowCount(true);
                         string itemid;
                         string qty;
@@ -241,10 +255,6 @@ namespace rpc_working
                             Console.WriteLine("rows affected: "+rowsAffected);
                             if (rowsAffected == 1)
                             {
-                                itemNameTxt.Clear();
-                                qtyTxt.Clear();
-                                dataGridView4.Rows.Clear();
-                                dataGridView7.Rows.Clear();
                             }
                             else
                             {
@@ -257,13 +267,20 @@ namespace rpc_working
                     {
 
                     }
+
+                    
                 }
                 else
                 {
                     MessageBox.Show("Update Failed!");
+                    return;
                 }
-                MessageBox.Show("Purchase Order : Posted!");
+                MessageBox.Show("Item Order : Posted!");
                 populateDataGrid();
+                itemNameTxt.Clear();
+                qtyTxt.Clear();
+                dataGridView4.Rows.Clear();
+                dataGridView7.Rows.Clear();
             }
             catch (Exception)
             {
@@ -290,13 +307,13 @@ namespace rpc_working
                 string itemCode= null;
                 string itemQty= null;
                 string itemName = null;
-                for (int i = 0; i < dataGridView6.RowCount - 1; i++)
+                for (int i = 0; i < dataGridView6.DisplayedRowCount(true) - 1; i++)
                 {
                     try
                     {
-                        itemCode = dataGridView6.SelectedRows[i].Cells["Item Code"].Value.ToString();
-                        itemQty = dataGridView6.SelectedRows[i].Cells["Qty"].Value.ToString();
-                        itemName= dataGridView6.SelectedRows[i].Cells["Item Name"].Value.ToString();
+                        itemCode = dataGridView6.Rows[i].Cells[1].Value.ToString();
+                        itemQty = dataGridView6.Rows[i].Cells[3].Value.ToString();
+                        itemName= dataGridView6.Rows[i].Cells[2].Value.ToString();
                         List<MySqlParameter> paramlist = new List<MySqlParameter>();
                         paramlist.Clear();
                         paramlist.Add(new MySqlParameter("@itemCode", itemCode));
@@ -312,7 +329,7 @@ namespace rpc_working
                             paramlist2.Add(new MySqlParameter("@itemCode", itemCode));
                             string query = "SELECT qty FROM item WHERE item_id = @itemCode";
                             string available_qty = DatabaseHandler.returnOneValue(query, paramlist2, "qty");
-                            Console.WriteLine("Availabel qty " + available_qty);
+                            Console.WriteLine("Available qty " + available_qty);
                             //Add to dataViewGrid7
                             int index2 = dataGridView7.DisplayedRowCount(true);
                             dataGridView7.Rows.Add();
@@ -323,9 +340,9 @@ namespace rpc_working
                     }
 
 
-                    catch (Exception err)
+                    catch (Exception )
                     {
-                        Console.WriteLine(err);
+                        
 
                     }
 
@@ -334,9 +351,8 @@ namespace rpc_working
 
                 }
 
-            catch (Exception err)
+            catch (Exception )
             {
-                Console.WriteLine(err);
             }
         }
 
@@ -386,35 +402,7 @@ namespace rpc_working
 
             if (rowsAffected != 0)
             {
-                /* string itemCodeTemp;
-                 string putBack;
-                string putBackqty;
-                for (int i = 0; i < dataGridView6.RowCount - 1; i++)
-               {
-                 try
-               {
-                         itemCodeTemp = dataGridView6.SelectedRows[i].Cells["Item Code"].Value.ToString();
-                         putBackqty = dataGridView6.SelectedRows[i].Cells["Qty"].Value.ToString();
-                         putBack = "UPDATE STORE SET qty = qty + @putbackQty WHERE item_code = @itemCode";
-
-                         Console.WriteLine("GridView Row Count: " + dataGridView6.RowCount);
-                         Console.WriteLine("itemCodeTemp: " + itemCodeTemp);
-                         Console.WriteLine("putBackqty " + putBackqty);
-
-                         List<MySqlParameter> paramList2 = new List<MySqlParameter>();
-                         paramList2.Add(new MySqlParameter("@putbackQty", putBackqty));
-                         paramList2.Add(new MySqlParameter("@itemCode", itemCodeTemp));
-
-                         Console.WriteLine("query :" + putBack);
-                         DatabaseHandler.insertOrDeleteRow(putBack, paramList2);
-                     }catch(Exception err)
-                     {
-                         Console.WriteLine(err);
-                     }
-
-                 } 
-                 */
-
+               
                 MessageBox.Show("Purchase Order Declined!");
                 populateDataGrid();
             }
@@ -430,11 +418,13 @@ namespace rpc_working
             try
             {
                 val = dataGridView2.SelectedRows[0].Cells["Order #"].Value.ToString();
-            }catch(Exception)
+            }
+            catch(Exception)
             {
                 MessageBox.Show("Nothing Selected");
             }
-            if (dataGridView7.DisplayedRowCount(true) != 1) {
+            if (dataGridView7.DisplayedRowCount(true) != 1) 
+            {
                 MessageBox.Show("INSUFFICIANT ITEMS IN THE STORE CANNOT DISPATCH ITEMS ");
                 return;
             }
@@ -451,15 +441,15 @@ namespace rpc_working
                 string putout;
                string putoutqty;
                 
-               for (int i = 0; i < dataGridView6.RowCount - 1; i++)
+               for (int i = 0; i < dataGridView6.DisplayedRowCount(true) - 1; i++)
               {
                 try
               {
-                        itemCodeTemp = dataGridView6.SelectedRows[i].Cells["Item Code"].Value.ToString();
-                        putoutqty = dataGridView6.SelectedRows[i].Cells["Qty"].Value.ToString();
+                        itemCodeTemp = dataGridView6.Rows[i].Cells["Item Code"].Value.ToString();
+                        putoutqty = dataGridView6.Rows[i].Cells["Qty"].Value.ToString();
                         putout = "UPDATE item SET qty = qty - @putoutQty WHERE item_id = @itemCode";
 
-                        Console.WriteLine("GridView Row Count: " + dataGridView6.RowCount);
+                        Console.WriteLine("GridView Row Count: " + dataGridView6.DisplayedRowCount(true));
                         Console.WriteLine("itemCodeTemp: " + itemCodeTemp);
                         Console.WriteLine("putoutqty " + putoutqty);
 

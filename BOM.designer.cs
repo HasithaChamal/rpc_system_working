@@ -210,12 +210,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.bom_lbl);
             this.Controls.Add(this.applyBtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.create_bom_btn);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView2);

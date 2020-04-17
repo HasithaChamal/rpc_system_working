@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="purchaseOrderRptData" targetNamespace="http://tempuri.org/purchaseOrderRptData.xsd" xmlns:mstns="http://tempuri.org/purchaseOrderRptData.xsd" xmlns="http://tempuri.org/purchaseOrderRptData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="purchaseOrderRptData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="purchaseOrderRptData" msprop:Generator_UserDSName="purchaseOrderRptData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="materialtbl" msprop:Generator_TableClassName="materialtblDataTable" msprop:Generator_TableVarName="tablematerialtbl" msprop:Generator_TablePropName="materialtbl" msprop:Generator_RowDeletingName="materialtblRowDeleting" msprop:Generator_RowChangingName="materialtblRowChanging" msprop:Generator_RowEvHandlerName="materialtblRowChangeEventHandler" msprop:Generator_RowDeletedName="materialtblRowDeleted" msprop:Generator_UserTableName="materialtbl" msprop:Generator_RowChangedName="materialtblRowChanged" msprop:Generator_RowEvArgName="materialtblRowChangeEvent" msprop:Generator_RowClassName="materialtblRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="po_id" msprop:Generator_ColumnVarNameInTable="columnpo_id" msprop:Generator_ColumnPropNameInRow="po_id" msprop:Generator_ColumnPropNameInTable="po_idColumn" msprop:Generator_UserColumnName="po_id" type="xs:string" minOccurs="0" />
+              <xs:element name="supplier_id" msprop:Generator_ColumnVarNameInTable="columnsupplier_id" msprop:Generator_ColumnPropNameInRow="supplier_id" msprop:Generator_ColumnPropNameInTable="supplier_idColumn" msprop:Generator_UserColumnName="supplier_id" type="xs:string" minOccurs="0" />
+              <xs:element name="creation_time" msprop:Generator_ColumnVarNameInTable="columncreation_time" msprop:Generator_ColumnPropNameInRow="creation_time" msprop:Generator_ColumnPropNameInTable="creation_timeColumn" msprop:Generator_UserColumnName="creation_time" type="xs:string" minOccurs="0" />
+              <xs:element name="material_id" msprop:Generator_ColumnVarNameInTable="columnmaterial_id" msprop:Generator_ColumnPropNameInRow="material_id" msprop:Generator_ColumnPropNameInTable="material_idColumn" msprop:Generator_UserColumnName="material_id" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

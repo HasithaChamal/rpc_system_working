@@ -17,7 +17,7 @@ namespace rpc_working
     {
         public static int globalLastbom;
         public static string bomNo;
-        public static DataTable data;
+        public static DataTable data; 
         public BOM()
         {
             InitializeComponent();
@@ -48,13 +48,11 @@ namespace rpc_working
                 DatabaseHandler.populateGridViewWithBinding(select, dataGridView2);
                 setPoNum();
 
-
-
             }
             else if (returnedRowCount2 == 1) {
 
                 MessageBox.Show("BOM already created for that production order. Please Try again..");
-
+                
             }
 
             else
@@ -169,9 +167,9 @@ namespace rpc_working
 
             int j = dataGridView1.DisplayedRowCount(true);
             Console.WriteLine("Special j Value: " + j);
-          
-       
-            for (int row = 0; row < j ; row++)
+
+            int temp = 0;
+            for (int row = 0; row < j-1 ; row++)
             {
                
                 itemid = dataGridView1.Rows[row].Cells[0].Value.ToString();
@@ -190,11 +188,13 @@ namespace rpc_working
                     if (rowsAffected != 0)
                     {
 
-                        MessageBox.Show("BOM Created Successfully!");
+                      //  MessageBox.Show("BOM Created Successfully!");
+                        temp++;
                     }
                     else
                     {
                         MessageBox.Show("Error Occured! BOM-material Link Broken!");
+                        return;
                     }
 
                 }
@@ -207,7 +207,10 @@ namespace rpc_working
             }
 
             data = GetDataTableFromDGV(dataGridView1);
-
+            if (temp != 0) 
+            {
+                MessageBox.Show("BOM Created Successfully!");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

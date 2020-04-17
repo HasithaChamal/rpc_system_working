@@ -16,6 +16,13 @@ namespace rpc_working
         public void Stores_Load(object sender, EventArgs e)
         {
             populateGrid();
+            if (GlobalLoginData.userRole != "Owner")
+            {
+                addItemBtn.Enabled = false;
+                button2.Enabled = false;
+                removeProduct_btn.Enabled = false;
+                clear_btn.Enabled = false;
+            }
         }
 
         
@@ -266,7 +273,7 @@ namespace rpc_working
             }
             else
             {
-                MessageBox.Show("Invalid Item Code!");
+                MessageBox.Show("Invalid Material Code!");
             }
 
             Console.WriteLine("In Add Btn: Current Index2: " + composition_dataGridView.DisplayedRowCount(true));
@@ -440,6 +447,17 @@ namespace rpc_working
             }
 
 
+        }
+
+        private void clear_btn_Click(object sender, EventArgs e)
+        {
+            composition_dataGridView.DataSource = null;
+            composition_dataGridView.Rows.Clear();
+            prodctId_txt.Clear();
+            productName_txt.Clear();
+            unitPrice_txt.Clear();
+            addmaterialCodeTxt.Clear();
+            addmaterialQty.Clear();
         }
     }
 }

@@ -42,6 +42,11 @@ namespace rpc_working
 
         public void RawMaterialDispatch_Load(object sender, EventArgs e)
         {
+            if (GlobalLoginData.userRole == "StoreKeeper")
+            {
+                approveBtn.Enabled = false;
+                declineBtn.Enabled = false;
+            }
             setReqNum();
             populateDataGrid();
         }
@@ -60,6 +65,9 @@ namespace rpc_working
 
             string selectStatement3 = "SELECT bom_id as 'BOM ID', creation_time as 'BOM creation time', postedUser as 'Posted User', pro_id as 'Production Order ID' FROM bom ";
             DatabaseHandler.populateGridViewWithBinding(selectStatement3, dataGridView5);
+
+            dataGridView6.DataSource = null;
+            dataGridView6.Rows.Clear();
         }
 
         private void BomId_txt_TextChanged(object sender, EventArgs e)
@@ -128,6 +136,11 @@ namespace rpc_working
                 {
                     MessageBox.Show("Material dispatch request posted sucessfully!!");
                     populateDataGrid();
+
+                    dataGridView4.DataSource = null;
+                    dataGridView4.Rows.Clear();
+                    bomId_txt.Clear();
+                    setReqNum();
                 }
                 else {
                     MessageBox.Show("Error!!");
@@ -233,17 +246,18 @@ namespace rpc_working
                 string selectStatement = "SELECT bom_item.material_id as 'Material ID', bom_item.qty as 'Quantity', raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price' FROM raw_material INNER JOIN bom_item ON bom_item.material_id = raw_material.material_id WHERE bom_item.bom_id = '" + val + "' ";
                 DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView6);
 
+               
                 dataGridView7.Rows.Clear();
                 string itemCode = null;
                 string itemQty = null;
                 string itemName = null;
-                for (int i = 0; i < dataGridView6.RowCount - 1; i++)
+                for (int i = 0; i < dataGridView6.DisplayedRowCount(true) - 1; i++)
                 {
                     try
                     {
-                        itemCode = dataGridView6.SelectedRows[i].Cells["Material ID"].Value.ToString();
-                        itemQty = dataGridView6.SelectedRows[i].Cells["Quantity"].Value.ToString();
-                        itemName = dataGridView6.SelectedRows[i].Cells["Material Name"].Value.ToString();
+                        itemCode = dataGridView6.Rows[i].Cells[1].Value.ToString();
+                        itemQty = dataGridView6.Rows[i].Cells[2].Value.ToString();
+                        itemName = dataGridView6.Rows[i].Cells[3].Value.ToString();
                         List<MySqlParameter> paramlist = new List<MySqlParameter>();
                         paramlist.Clear();
                         paramlist.Add(new MySqlParameter("@itemCode", itemCode));
@@ -260,13 +274,13 @@ namespace rpc_working
                             paramlist2.Add(new MySqlParameter("@itemCode", itemCode));
                             string query = "SELECT qty FROM raw_material WHERE material_id = @itemCode";
                             string available_qty = DatabaseHandler.returnOneValue(query, paramlist2, "qty");
-                            Console.WriteLine("Availabel qty " + available_qty);
+                            Console.WriteLine("Available qty " + available_qty);
                             //Add to dataViewGrid7
                             int index2 = dataGridView7.DisplayedRowCount(true);
                             dataGridView7.Rows.Add();
                             dataGridView7.Rows[index2 - 1].Cells[0].Value = itemCode;
                             dataGridView7.Rows[index2 - 1].Cells[1].Value = itemName;
-                            dataGridView7.Rows[index2 - 1].Cells[2].Value = Int32.Parse(itemQty) - Int32.Parse(available_qty);
+                            dataGridView7.Rows[index2 - 1].Cells[2].Value = (Int32.Parse(itemQty) - Int32.Parse(available_qty)).ToString();
                         }
                     }
 

@@ -15,7 +15,7 @@ namespace rpc_working
         string selectedSupplier = null;
         DataRowView selectedRow;
         int globalLastPo;
-
+        public static string selectedPONo= null;
 
         public Purchasing()
         {
@@ -123,6 +123,8 @@ namespace rpc_working
             {
                 MessageBox.Show("Invalid Item Code!");
             }
+            Console.WriteLine("In Add Btn: Current Index2: " + dataGridView4.DisplayedRowCount(true));
+
         }
 
         private void addItemQty_TextChanged(object sender, EventArgs e)
@@ -304,7 +306,16 @@ namespace rpc_working
 
         private void declineBtn_Click(object sender, EventArgs e)
         {
-            string val = dataGridView3.SelectedRows[0].Cells["Order #"].Value.ToString();
+            string val = null;
+            try
+            {
+                 val = dataGridView3.SelectedRows[0].Cells["Order #"].Value.ToString();
+            }
+            catch 
+            {
+                MessageBox.Show("Error Occured! Please check Selection!");
+                return;
+            }
             string update = "UPDATE purchaseorder set approval='Declined' where po_id=@ponum";
             List<MySqlParameter> paramList = new List<MySqlParameter>();
             paramList.Add(new MySqlParameter("@poNum", val));
@@ -322,6 +333,39 @@ namespace rpc_working
             }
 
             populateNonComboGrids();
+        }
+
+        private void clear_btn_Click(object sender, EventArgs e)
+        {
+            addItemCodeTxt.Clear();
+            addItemQty.Clear();
+            dataGridView4.DataSource = null;
+            dataGridView4.Rows.Clear();
+
+        }
+
+        private void print_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                selectedPONo = dataGridView2.SelectedRows[0].Cells["Order #"].Value.ToString();
+            }
+            catch 
+            {
+                MessageBox.Show("Please select an Purchase Order");
+                return;
+            }
+            if (selectedPONo == null)
+            {
+                MessageBox.Show("Please select an Purchase Order");
+                return;
+            }
+            else 
+            {
+                CrystalReportsViewer.PurchaseOrderReportViewer poview = new CrystalReportsViewer.PurchaseOrderReportViewer();
+                poview.ShowDialog();
+            }
+           
         }
     }
 }

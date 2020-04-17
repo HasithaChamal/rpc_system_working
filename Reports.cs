@@ -53,6 +53,12 @@ namespace rpc_working
                 productionOrders.StartPosition = FormStartPosition.CenterScreen;
                 productionOrders.Show();
             }
+            else if (rpt_typ_cmb.SelectedIndex == 3)
+            {
+                CrystalReportsViewer.PurchaseOrderViewer purchaseOrder = new CrystalReportsViewer.PurchaseOrderViewer();
+                purchaseOrder.StartPosition = FormStartPosition.CenterScreen;
+                purchaseOrder.Show();
+            }
         }
 
         private void reset_btn_Click(object sender, EventArgs e)
@@ -64,7 +70,9 @@ namespace rpc_working
         {
             from_calander.MaxSelectionCount = 1;
             to_calander.MaxSelectionCount = 1;
-            
+            from_calander.MaxDate = DateTime.Today;
+            to_calander.MaxDate = DateTime.Today;
+
         }
     }
 }

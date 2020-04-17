@@ -312,12 +312,11 @@ namespace rpc_working
             var commandBuilder = new MySqlCommandBuilder(dataAdapter);
             var dt = new DataTable();
       
-            dt.Columns.Add("material_id");
-            dt.Columns.Add("quantity");
+           
 
             dataAdapter.Fill(dt);
             int noOfRows = dt.Rows.Count;
-
+            Console.WriteLine("no of rows"+noOfRows);
             for (int i=0; i<noOfRows; i++)
             {
                 string materialId = dt.Rows[i][0].ToString();
@@ -327,6 +326,7 @@ namespace rpc_working
 
                 int val = 0;
                 int count = dataGridView.DisplayedRowCount(true);
+                Console.WriteLine("BOM no of rows1" + dataGridView.DisplayedRowCount(true));
                 for (int row = 0; row < count - 1; row++)
                 {
 
@@ -335,7 +335,7 @@ namespace rpc_working
 
                     if (ExsitingMaterialid== materialId)
                     {
-                        dataGridView.Rows[row].Cells[1].Value = Int32.Parse(ExsistingQty) + (Int32.Parse(qty)* Int32.Parse(quantity)).ToString();
+                        dataGridView.Rows[row].Cells[1].Value = (Int32.Parse(ExsistingQty) + (Int32.Parse(qty)* Int32.Parse(quantity))).ToString();
                         val++;
                     }
 
@@ -343,18 +343,20 @@ namespace rpc_working
 
                 if (val == 0)
                 {
+                    dataGridView.Rows.Add();
                     dataGridView.Rows[count - 1].Cells[0].Value = materialId;
                     dataGridView.Rows[count - 1].Cells[1].Value = (Int32.Parse(qty) * Int32.Parse(quantity)).ToString();
                     dataGridView.Rows[count - 1].Cells[2].Value = materialName;
                     dataGridView.Rows[count - 1].Cells[3].Value = materialPrice;
 
                 }
+                Console.WriteLine("BOM no of rows2" + dataGridView.DisplayedRowCount(true));
 
             }
 
 
 
-            }
+        }
 
 
     }

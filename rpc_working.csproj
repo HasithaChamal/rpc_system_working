@@ -113,6 +113,18 @@
     <Compile Include="CrystalReportsViewer\productionReportViewer.Designer.cs">
       <DependentUpon>productionReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReportsViewer\PurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\PurchaseOrder.Designer.cs">
+      <DependentUpon>PurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\PurchaseOrderViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\PurchaseOrderViewer.Designer.cs">
+      <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrystalReports\BOMReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,6 +147,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\PurchaseOrderReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\purchaseOrder_rpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>purchaseOrder_rpt.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dash.cs">
@@ -178,6 +202,19 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>productionOrder.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\PurchaseOrderData.cs">
+      <DependentUpon>PurchaseOrderData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\PurchaseOrderData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseOrderData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\purchaseOrderRptData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>purchaseOrderRptData.xsd</DependentUpon>
     </Compile>
     <Compile Include="GlobalLoginData.cs" />
     <Compile Include="Home.cs">
@@ -266,6 +303,12 @@
     <EmbeddedResource Include="CrystalReportsViewer\productionReportViewer.resx">
       <DependentUpon>productionReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\PurchaseOrder.resx">
+      <DependentUpon>PurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\PurchaseOrderViewer.resx">
+      <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\BOMReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BOMReport.cs</LastGenOutput>
@@ -281,6 +324,14 @@
     <EmbeddedResource Include="CrystalReports\ProductionReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProductionReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\PurchaseOrderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseOrderReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\purchaseOrder_rpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>purchaseOrder_rpt.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Dash.resx">
       <DependentUpon>Dash.cs</DependentUpon>
@@ -374,6 +425,28 @@
     </None>
     <None Include="dataset\productionOrder.xss">
       <DependentUpon>productionOrder.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\PurchaseOrderData.xsc">
+      <DependentUpon>PurchaseOrderData.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\PurchaseOrderData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PurchaseOrderData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\PurchaseOrderData.xss">
+      <DependentUpon>PurchaseOrderData.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\purchaseOrderRptData.xsc">
+      <DependentUpon>purchaseOrderRptData.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\purchaseOrderRptData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>purchaseOrderRptData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\purchaseOrderRptData.xss">
+      <DependentUpon>purchaseOrderRptData.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
