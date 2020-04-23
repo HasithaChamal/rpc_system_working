@@ -185,7 +185,7 @@ namespace rpc_working
 
                 
             }
-
+            Email.sendMail("RPC SYSTEM: Please approve the production order requisition, ID= " + PO.Text);
             setPoNum();
             addItemCodeTxt.Text = "";
             addItemQty.Text = "";

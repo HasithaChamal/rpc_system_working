@@ -276,11 +276,13 @@ namespace rpc_working
                     return;
                 }
                 MessageBox.Show("Item Order : Posted!");
+                Email.sendMail("RPC SYSTEM: Please release the Item dispatch order requisition, ID= " + reqestNum.Text);
                 populateDataGrid();
                 itemNameTxt.Clear();
                 qtyTxt.Clear();
                 dataGridView4.Rows.Clear();
                 dataGridView7.Rows.Clear();
+                setReqNum();
             }
             catch (Exception)
             {
@@ -403,7 +405,7 @@ namespace rpc_working
             if (rowsAffected != 0)
             {
                
-                MessageBox.Show("Purchase Order Declined!");
+                MessageBox.Show("Item Order Declined!");
                 populateDataGrid();
             }
             else

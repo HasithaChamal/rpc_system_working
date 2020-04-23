@@ -216,6 +216,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>purchaseOrderRptData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Email.cs" />
     <Compile Include="GlobalLoginData.cs" />
     <Compile Include="Home.cs">
       <SubType>UserControl</SubType>

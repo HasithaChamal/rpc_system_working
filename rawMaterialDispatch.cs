@@ -137,6 +137,7 @@ namespace rpc_working
                     MessageBox.Show("Material dispatch request posted sucessfully!!");
                     populateDataGrid();
 
+                    Email.sendMail("RPC SYSTEM: Please release the Material dispatch order requisition, ID= " + dispatchId_lbl.Text);
                     dataGridView4.DataSource = null;
                     dataGridView4.Rows.Clear();
                     bomId_txt.Clear();

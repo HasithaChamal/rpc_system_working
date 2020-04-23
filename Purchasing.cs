@@ -223,7 +223,7 @@ namespace rpc_working
 
                 
             }
-
+            Email.sendMail("RPC SYSTEM: Please approve the purchase order requisition, ID= "+ poNumLbl.Text);
             setPoNum();
             addItemCodeTxt.Text = "";
             addItemQty.Text = "";
