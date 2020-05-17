@@ -16,7 +16,7 @@ namespace rpc_working
 
         public static void sendMail(String subject)
         {
-            DataTable mailList = new DataTable();
+            /*DataTable mailList = new DataTable();
             String query = "SELECT email from user where role !='StoreKeeper' ";
             var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
             var commandBuilder = new MySqlCommandBuilder(dataAdapter);
@@ -51,6 +51,8 @@ namespace rpc_working
                 MessageBox.Show(e.Message);
             
            }
+           */
         }
+
     }
 }

@@ -91,26 +91,8 @@ namespace rpc_working
             string selectStatement = "SELECT supplier_id as 'Supplier ID', name as 'Supplier Name' , contact_no as 'Contact Number', email as 'Email' FROM SUPPLIER";
             DatabaseHandler.populateViewwithNoParameters(selectStatement, dataGridView1);
 
-            string selectStatement4 = "SELECT raw_material.material_id as 'Material ID', raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price',  SUPPLIER.supplier_ID as 'Supplier ID', SUPPLIER.name as 'Supplier Name' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id "; 
-            DatabaseHandler.populateViewwithNoParameters(selectStatement4, dataGridView2);
-
-            if (!String.IsNullOrEmpty(findById.Text))
-            {
-                string selectStatement2 = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price', SUPPLIER.supplier_ID as 'Supplier ID', SUPPLIER.name as 'Supplier Name' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id WHERE SUPPLIER.supplier_id like '%" + findById.Text + "%'";
-                DatabaseHandler.populateViewwithNoParameters(selectStatement2, dataGridView2);
-            }
-            else if(!String.IsNullOrEmpty(findByName.Text))
-            {
-                string selectStatement3 = "SELECT raw_material.material_id as 'Material ID', raw_material.name as 'Material Name',  raw_material.unit_price as 'Unit Price', SUPPLIER.supplier_ID as 'Supplier ID', SUPPLIER.name as 'Supplier Name' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id WHERE SUPPLIER.supplier_name like '%" + findByName.Text + "%'";
-                DatabaseHandler.populateViewwithNoParameters(selectStatement3, dataGridView2);
-            }
-            else
-            {
-                   DatabaseHandler.populateViewwithNoParameters(selectStatement4, dataGridView2);
-            }
-           
-
-           
+            string selectStatement4 = "SELECT raw_material.material_id as 'Material ID', raw_material.name as 'Material Name', raw_material.qty as 'Quantity' FROM raw_material "; 
+            DatabaseHandler.populateViewwithNoParameters(selectStatement4, dataGridView2);        
         }
 
         private void addItemBtn_Click(object sender, EventArgs e)
@@ -119,43 +101,52 @@ namespace rpc_working
             string itemId = itemIdTxt.Text;
             string itemName = itemNameTxt.Text;
             string unitPrice = unitPriceText.Text;
+            string lead_time = leadTime_txt.Text;
             if (String.IsNullOrEmpty(itemSupplierCode) || String.IsNullOrEmpty(itemId) || String.IsNullOrEmpty(itemName) || String.IsNullOrEmpty(unitPrice))
             {
                 MessageBox.Show("One or more feilds are empty!");
             }
             else if (!String.IsNullOrEmpty(itemSupplierCode) && !String.IsNullOrEmpty(itemId) && !String.IsNullOrEmpty(itemName) && !String.IsNullOrEmpty(unitPrice))
             {
-                try
+                if (DatabaseHandler.returnRowCountWithoutParams("SELECT * FROM raw_material where material_id='" + itemIdTxt.Text + "'") != 0)
                 {
-                    string query = "INSERT INTO raw_material(supplier_id,material_id,name,unit_price) VALUES (@itemSupplierCode,@itemId,@itemName,@unitPrice)";
-                    List<MySqlParameter> paramList = new List<MySqlParameter>();
-                    paramList.Add(new MySqlParameter("@itemSupplierCode", itemSupplierCode));
-                    paramList.Add(new MySqlParameter("@itemId", itemId));
-                    paramList.Add(new MySqlParameter("@itemName", itemName));
-                    paramList.Add(new MySqlParameter("@unitPrice", unitPrice));
-                    
-                    int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
-
-                    if(rowsAffected != 0)
+                    try
                     {
-                        MessageBox.Show("Item Added Successfully!");
-                        itemSupplierCodeTxt.Text="";
-                        itemIdTxt.Text = "";
-                        itemNameTxt.Text = "";
-                        unitPriceText.Text = "";
-                        populateGrid();
+                       // MessageBox.Show("Such material exists, it will be added to the supplier mentioned");
+                        
+                        string query = "INSERT INTO supplier_material(material_id,supplier_id,unit_price,lead_time) VALUES (@itemId,@itemSupplierCode,@unitPrice,@leadTime)";
+                        List<MySqlParameter> paramList = new List<MySqlParameter>();
+                        paramList.Add(new MySqlParameter("@itemSupplierCode", itemSupplierCode));
+                        paramList.Add(new MySqlParameter("@itemId", itemId));
+                        paramList.Add(new MySqlParameter("@unitPrice", unitPrice));
+                        paramList.Add(new MySqlParameter("@leadTime", lead_time));
+
+                        int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
+
+                        if (rowsAffected != 0)
+                        {
+                            MessageBox.Show("Item Added Successfully!");
+                            itemSupplierCodeTxt.Text = "";
+                            itemIdTxt.Text = "";
+                            itemNameTxt.Text = "";
+                            unitPriceText.Text = "";
+                            leadTime_txt.Text = "";
+                            populateGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error Occured! Please check the Info entered!");
+
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        MessageBox.Show("Error Occured! Please check if the Item already exists/Info entered!");
-
+                        MessageBox.Show("Error Occured! Please check if the Item already exists with the mentioned supplier!");
                     }
-
-
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Error Occured! Please check if the Item already exists/Info entered!");
+                    MessageBox.Show("Error Occured! No such material exists!");
                 }
             }
         }
@@ -220,9 +211,7 @@ namespace rpc_working
  
                 string selectStatement = "SELECT supplier_id as 'Supplier Code', name as 'Supplier' , contact_no as 'Contact Number', email as 'Email' FROM SUPPLIER WHERE supplier_id like '%" + findById.Text + "%'";
                 DatabaseHandler.populateViewwithNoParameters(selectStatement, dataGridView1);
-
-                string selectStatement2 = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price', SUPPLIER.supplier_ID as 'Supplier ID', SUPPLIER.name as 'Supplier Name' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id WHERE SUPPLIER.supplier_id like '%" + findById.Text + "%'";
-                DatabaseHandler.populateViewwithNoParameters(selectStatement2, dataGridView2);
+            
             }
             catch (Exception err)
             {
@@ -236,9 +225,6 @@ namespace rpc_working
             {
                 string selectStatement = "SELECT supplier_id as 'Supplier Code', name as 'Supplier' , contact_no as 'Contact Number', email as 'Email' FROM SUPPLIER WHERE name like '%" + findByName.Text + "%'";
                  DatabaseHandler.populateViewwithNoParameters(selectStatement, dataGridView1);
-
-                string selectStatement2 = "SELECT raw_material.material_id as 'Material ID', raw_material.name as 'Material Name',  raw_material.unit_price as 'Unit Price', SUPPLIER.supplier_ID as 'Supplier ID', SUPPLIER.name as 'Supplier Name' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id WHERE SUPPLIER.supplier_name like '%" + findByName.Text + "%'";
-                DatabaseHandler.populateViewwithNoParameters(selectStatement2, dataGridView2);
             }
             catch (Exception err)
             {
@@ -286,6 +272,89 @@ namespace rpc_working
             }
         }
 
-       
+        private void itemIdTxt_Leave(object sender, EventArgs e)
+        {
+            if (DatabaseHandler.returnRowCountWithoutParams("SELECT * FROM raw_material where material_id='" + itemIdTxt.Text + "'") != 0)
+            {
+                String matrialName;
+                matrialName = DatabaseHandler.returnOneValueWithoutParams("SELECT name FROM raw_material WHERE material_id='" + itemIdTxt.Text + "'", "name").ToString();
+                itemNameTxt.Text = matrialName;
+                itemNameTxt.Enabled = false;
+                addNewMaterial_btn.Enabled = false;
+                addItemBtn.Enabled = true;
+
+
+            }
+            else 
+            {
+                itemNameTxt.Enabled = true;
+                addNewMaterial_btn.Enabled = true;
+                addItemBtn.Enabled = false;
+            }
+        }
+
+        private void addNewMaterial_btn_Click(object sender, EventArgs e)
+        {
+            string itemId = itemIdTxt.Text;
+            string itemName = itemNameTxt.Text;
+
+            if (String.IsNullOrEmpty(itemId) || String.IsNullOrEmpty(itemName))
+            {
+                MessageBox.Show("One or more feilds are empty!");
+            }
+
+
+            string query = "INSERT INTO raw_material(material_id,name) VALUES (@itemId,@itemName)";
+            List<MySqlParameter> paramList = new List<MySqlParameter>();
+            paramList.Add(new MySqlParameter("@itemId", itemId));
+            paramList.Add(new MySqlParameter("@itemName", itemName));
+
+            int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
+
+            if (rowsAffected != 0 )
+            {
+                MessageBox.Show("New material Added Successfully!");
+                itemNameTxt.Enabled = false;
+                addNewMaterial_btn.Enabled = false;
+                addItemBtn.Enabled = true;
+                populateGrid();
+            }
+            else
+            {
+                MessageBox.Show("Error Occured! Please check if the Info entered!");
+
+            }
+        }
+
+        private void dataGridView2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string val = dataGridView2.SelectedRows[0].Cells["Material ID"].Value.ToString();
+
+                string select = "SELECT material_id as 'Material Code',  supplier_id as 'Supplier ID', unit_price as 'Unit Price', lead_time as 'Lead Time'  FROM supplier_material  WHERE material_id = '" + val + "'";
+                DatabaseHandler.populateGridViewWithBinding(select, dataGridView5);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+            }
+
+        }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string val = dataGridView1.SelectedRows[0].Cells["Supplier ID"].Value.ToString();
+
+                string select = "SELECT material_id as 'Material Code',  supplier_id as 'Supplier ID', unit_price as 'Unit Price', lead_time as 'Lead Time'  FROM supplier_material  WHERE  supplier_id = '" + val + "'";
+                DatabaseHandler.populateGridViewWithBinding(select, dataGridView5);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+            }
+        }
     }
 }

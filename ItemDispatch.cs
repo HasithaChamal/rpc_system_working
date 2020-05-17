@@ -23,10 +23,18 @@ namespace rpc_working
 
         public void Dispatch_Load(object sender, EventArgs e)
         {
+            latestDeliveryTimeCal.MaxSelectionCount = 1;
+            latestDeliveryTimeCal.MaxSelectionCount = 1;
+            latestDeliveryTimeCal.MinDate = DateTime.Today;
+          
             if (GlobalLoginData.userRole == "StoreKeeper")
             {
                 approveBtn.Enabled = false;
                 declineBtn.Enabled = false;
+                latestDeliveryTimeCal.MaxSelectionCount = 1;
+                latestDeliveryTimeCal.MaxSelectionCount = 1;
+                latestDeliveryTimeCal.MinDate = DateTime.Today;
+
             }
             setReqNum();
             populateDataGrid();
@@ -80,13 +88,13 @@ namespace rpc_working
             string selectStatement = "SELECT item.item_id as 'Item Code', item.name as 'Item Name', item.unit_price as 'Item Price', item.qty as 'Available Quantity' FROM item ";
             DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView5);
 
-            string selectStatement1 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Pending' AND itemorder.released='No'";
+            string selectStatement1 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User', itemorder.latest_delivery_time as 'Latest Delivery Time' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Pending' AND itemorder.released='No'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement1, dataGridView1);
 
-            string selectStatement2 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Approved' AND itemorder.released='No'";
+            string selectStatement2 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User', itemorder.latest_delivery_time as 'Latest Delivery Time' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Approved' AND itemorder.released='No'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement2, dataGridView2);
 
-            string selectStatement3 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Approved' AND itemorder.released='Yes'";
+            string selectStatement3 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User', itemorder.latest_delivery_time as 'Latest Delivery Time' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Approved' AND itemorder.released='Yes'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement3, dataGridView3);
             dataGridView6.DataSource = null;
             dataGridView6.Rows.Clear();
@@ -127,8 +135,18 @@ namespace rpc_working
                 MessageBox.Show("Invalid Selection!");
             }
             else
-            {   
-                itemQty = qtyTxt.Text;
+            {
+                int i = dataGridView4.DisplayedRowCount(true);
+                for (int row = 0; row < i - 1; row++)
+                {
+                    if (dataGridView4.Rows[row].Cells[0].Value.ToString()== itemCode) 
+                    {
+                        MessageBox.Show("Item already entered !!!");
+                        return;                
+                    }
+                
+                }
+                    itemQty = qtyTxt.Text;
                 itemName = dataGridView5.SelectedRows[0].Cells["Item Name"].Value.ToString();
 
                 List<MySqlParameter> paramlist = new List<MySqlParameter>();
@@ -211,6 +229,7 @@ namespace rpc_working
 
         private void dispatchRequestBtn_Click(object sender, EventArgs e)
         {
+            string ldt = latestDeliveryTimeCal.SelectionRange.Start.ToShortDateString();
             setReqNum();
             int index3 = dataGridView4.DisplayedRowCount(true);
             if (index3 == 1) {
@@ -220,11 +239,12 @@ namespace rpc_working
             }
             try
             {
-                string query = "insert into itemorder(client_id, approval,postedUser) values (@clientCode,'Pending',@user)";
+                string query = "insert into itemorder(client_id, approval,postedUser,latest_delivery_time) values (@clientCode,'Pending',@user,@ldt)";
                 List<MySqlParameter> paramList = new List<MySqlParameter>();
                 paramList.Clear();
                 paramList.Add(new MySqlParameter("@clientCode", selectedClient));
                 paramList.Add(new MySqlParameter("@user", GlobalLoginData.username));
+                paramList.Add(new MySqlParameter("@ldt", ldt));
 
                 int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
 

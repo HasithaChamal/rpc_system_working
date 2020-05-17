@@ -12,7 +12,7 @@ namespace rpc_working
 {
     public partial class Purchasing : UserControl
     {
-        string selectedSupplier = null;
+        public static string selectedSupplier = null;
         DataRowView selectedRow;
         int globalLastPo;
         public static string selectedPONo= null;
@@ -46,7 +46,7 @@ namespace rpc_working
             }
 
             //Populate dataViewGrid1 (Items by that supplier)
-            populateGrid();
+            //populateGrid();
             dataViewDesign(dataGridView4);
 
             //Populate Other Grids
@@ -75,7 +75,7 @@ namespace rpc_working
 
         private void populateGrid()
         {
-            string selectStatement = "SELECT raw_material.material_id as 'Material Code', raw_material.name as 'Material Name', SUPPLIER.name as 'Supplier' FROM raw_material INNER JOIN SUPPLIER ON raw_material.supplier_id = SUPPLIER.supplier_id WHERE SUPPLIER.supplier_id = '" + selectedSupplier+"'";
+            string selectStatement = "SELECT supplier_material.material_id as 'Material Code', raw_material.name as 'Material Name', supplier_material.supplier_id as 'Supplier ID', supplier_material.unit_price as 'Unit Price' FROM supplier_material INNER JOIN raw_material ON raw_material.material_id = supplier_material.material_id WHERE supplier_material.supplier_id = '" + selectedSupplier+"'";
             DatabaseHandler.populateViewwithNoParameters(selectStatement, dataGridView1);
 
             populateNonComboGrids();
@@ -99,29 +99,32 @@ namespace rpc_working
             List<MySqlParameter> paramList = new List<MySqlParameter>();
             paramList.Add(new MySqlParameter("@itemCode", itemCode));
             int returnedRowCount = DatabaseHandler.returnRowCount("SELECT * FROM raw_material WHERE material_id = @itemCode", paramList);
-
-            if(returnedRowCount != 0)
+            int returnedRowCount2 = DatabaseHandler.returnRowCountWithoutParams("SELECT * FROM supplier_material WHERE material_id='" + itemCode + "' AND supplier_id='" + selectedSupplier + "'");
+            if (returnedRowCount != 0 && returnedRowCount2 != 0)
             {
                 //Get Item Name from DB
                 paramList.Clear();
                 paramList.Add(new MySqlParameter("@itemCode", itemCode));
                 string itemName = DatabaseHandler.returnOneValue("SELECT name as 'Material Name' from raw_material where material_id=@itemCode", paramList, "Material Name");
-                String unitPrice = DatabaseHandler.returnOneValue("SELECT unit_price as 'Material Price' from raw_material where material_id=@itemCode", paramList, "Material Price");
+                String unitPrice = DatabaseHandler.returnOneValueWithoutParams("SELECT unit_price as 'Material Price' from supplier_material where material_id='" + itemCode + "' AND supplier_id='" + selectedSupplier + "'", "Material Price");
 
                 //Add to dataViewGrid4
                 int index = dataGridView4.DisplayedRowCount(true);
                 dataGridView4.Rows.Add();
                 Console.WriteLine("In Add Btn: Current Index: " + index);
-                dataGridView4.Rows[index-1].Cells[0].Value = itemCode;
-                dataGridView4.Rows[index-1].Cells[1].Value = itemName;
-                dataGridView4.Rows[index-1].Cells[2].Value = itemQty;
+                dataGridView4.Rows[index - 1].Cells[0].Value = itemCode;
+                dataGridView4.Rows[index - 1].Cells[1].Value = itemName;
+                dataGridView4.Rows[index - 1].Cells[2].Value = itemQty;
                 dataGridView4.Rows[index - 1].Cells[3].Value = unitPrice;
 
                 supplierComboBox.Enabled = false;
             }
-            else
+            else if (returnedRowCount == 0)
             {
                 MessageBox.Show("Invalid Item Code!");
+            }
+            else {
+                MessageBox.Show("Selected supplier doesn't offer that item!");
             }
             Console.WriteLine("In Add Btn: Current Index2: " + dataGridView4.DisplayedRowCount(true));
 
@@ -341,7 +344,7 @@ namespace rpc_working
             addItemQty.Clear();
             dataGridView4.DataSource = null;
             dataGridView4.Rows.Clear();
-
+            setPoNum();
         }
 
         private void print_btn_Click(object sender, EventArgs e)

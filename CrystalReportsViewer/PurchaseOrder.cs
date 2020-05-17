@@ -22,17 +22,40 @@ namespace rpc_working.CrystalReportsViewer
         private void PurchaseOrderReportViewer_Load(object sender, EventArgs e)
         {
 
+            DataTable potbltemp = new DataTable();
             DataTable potbl = new DataTable();
-
+            potbl.Columns.Add("material_id");
+            potbl.Columns.Add("name");
+            potbl.Columns.Add("qty");
+            potbl.Columns.Add("unit_price");
+            
 
             Console.WriteLine("PO ID " + Purchasing.selectedPONo);
             try
             {
-                String query = "SELECT purchaseorder_item.material_id, raw_material.name, purchaseorder_item.qty, raw_material.unit_price FROM purchaseorder_item INNER JOIN raw_material ON purchaseorder_item.material_id = raw_material.material_id  WHERE purchaseorder_item.po_id= '" + Purchasing.selectedPONo + "'";
+                String query = "SELECT purchaseorder_item.material_id, raw_material.name, purchaseorder_item.qty FROM purchaseorder_item INNER JOIN raw_material ON purchaseorder_item.material_id = raw_material.material_id  WHERE purchaseorder_item.po_id= '" + Purchasing.selectedPONo + "'";
                 var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
                 var commandBuilder = new MySqlCommandBuilder(dataAdapter);
-                dataAdapter.Fill(potbl);
-                Console.WriteLine(potbl.Rows.Count);
+                dataAdapter.Fill(potbltemp);
+                Console.WriteLine(potbltemp.Rows.Count);
+                string suppler_id = DatabaseHandler.returnOneValueWithoutParams("SELECT supplier_id FROM purchaseorder WHERE po_id='" + Purchasing.selectedPONo + "'", "supplier_id");
+                Console.WriteLine("supplier id"+ suppler_id);
+                //adding data to potbl
+
+                int noOfRows2 = potbltemp.Rows.Count;
+                for (int i = 0; i < noOfRows2; i++)
+                {
+                    DataRow rw = potbl.NewRow();
+                    rw["material_id"] = potbltemp.Rows[i][0];
+                    rw["name"] = potbltemp.Rows[i][1];
+                    rw["qty"] = potbltemp.Rows[i][2];
+                    string material_id= potbltemp.Rows[i][0].ToString();
+                    string unit_price = DatabaseHandler.returnOneValueWithoutParams("SELECT unit_price FROM supplier_material where material_id='" + material_id + "' AND supplier_id='" + suppler_id + "' ", "unit_price").ToString() ;
+                    rw["unit_price"] = unit_price;
+                    Console.WriteLine("unit_price" + unit_price);
+                    potbl.Rows.Add(rw);
+                }
+
 
                 ParameterFields From = new ParameterFields();
                 ParameterField PID = new ParameterField();

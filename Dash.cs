@@ -19,8 +19,7 @@ namespace rpc_working
         public Dash()
         {
             InitializeComponent();
-            item_order_chart.Titles.Add("Item Orders");
-            purchase_order_chart.Titles.Add("Purchase Orders");
+        
         }
 
 
@@ -52,7 +51,7 @@ namespace rpc_working
             purchase_order_chart.Series["purchaseOrder"].Points.AddXY("Approved", approved);
             purchase_order_chart.Series["purchaseOrder"].Points.AddXY("Pending", pending);
             purchase_order_chart.Series["purchaseOrder"].Points.AddXY("Declined", declined);
-            purchase_order_chart.Series["purchaseOrder"].Points.AddXY("Released", recieved);
+            purchase_order_chart.Series["purchaseOrder"].Points.AddXY("Recieved", recieved);
 
         }
 

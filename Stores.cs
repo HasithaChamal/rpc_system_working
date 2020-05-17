@@ -30,7 +30,7 @@ namespace rpc_working
         {
             string query = "SELECT item_id as 'Item Code', name as 'Item Name', qty as 'Available Quantity', unit_price as 'Unit Price' FROM item";
             DatabaseHandler.populateGridViewWithBinding(query, dataGridView1);
-            string selectStatement4 = "SELECT raw_material.material_id as 'Material ID', raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price',  SUPPLIER.supplier_ID as 'Supplier ID', raw_material.qty as 'Available Quantity' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id ";
+            string selectStatement4 = "SELECT raw_material.material_id as 'Material ID', raw_material.name as 'Material Name', raw_material.qty as 'Available Quantity' FROM raw_material";
            // DatabaseHandler.populateViewwithNoParameters(selectStatement4, dataGridView2);
            // string query1 = "SELECT material_id as 'Item Code', name as 'Item Name', qty as 'Available Quantity', unit_price as 'Unit Price', supplier as FROM raw_material";
             DatabaseHandler.populateGridViewWithBinding(selectStatement4, dataGridView2);
@@ -40,7 +40,7 @@ namespace rpc_working
         {
             string query = "SELECT item_id as 'Item Code', name as 'Item Name', qty as 'Available Quantity', unit_price as 'Unit Price'FROM item WHERE name like '%" + findProductName.Text + "%'";
             DatabaseHandler.populateGridViewWithBinding(query, dataGridView1);
-            string selectStatement = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price', SUPPLIER.supplier_ID as 'Supplier ID', raw_material.qty as 'Available Quantity' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id WHERE raw_material.name like '%" + findProductName.Text + "%'";
+            string selectStatement = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.qty as 'Available Quantity' FROM raw_material WHERE raw_material.name like '%" + findProductName.Text + "%'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView2);
         }
 
@@ -48,7 +48,7 @@ namespace rpc_working
         {
             string query = "SELECT item_id as 'Item Code', name as 'Item Name', qty as 'Available Quantity', unit_price as 'Unit Price'FROM item WHERE item_id like '%" + findProductId.Text + "%'";
             DatabaseHandler.populateGridViewWithBinding(query, dataGridView1);
-            string selectStatement = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price', SUPPLIER.supplier_ID as 'Supplier ID',raw_material.qty as 'Available Quantity' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id WHERE raw_material.material_id like '%" + findProductId.Text + "%'";
+            string selectStatement = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.qty as 'Available Quantity' FROM raw_material WHERE raw_material.material_id like '%" + findProductId.Text + "%'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView2);
         }
 
@@ -56,7 +56,7 @@ namespace rpc_working
         {
             string query = "SELECT item_id as 'Item Code', name as 'Item Name', qty as 'Available Quantity', unit_price as 'Unit Price'FROM item WHERE item_id like '%" + findProductId.Text + "%'";
             DatabaseHandler.populateGridViewWithBinding(query, dataGridView1);
-            string selectStatement = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price', SUPPLIER.supplier_ID as 'Supplier ID', raw_material.qty as 'Available Quantity' FROM SUPPLIER INNER JOIN raw_material ON SUPPLIER.supplier_id = raw_material.supplier_id WHERE raw_material.material_id like '%" + findProductId.Text + "%'";
+            string selectStatement = "SELECT raw_material.material_id as 'Material ID',  raw_material.name as 'Material Name', raw_material.qty as 'Available Quantity' FROM raw_material WHERE raw_material.material_id like '%" + findProductId.Text + "%'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView2);
         }
 

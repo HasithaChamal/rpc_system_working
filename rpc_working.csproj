@@ -218,12 +218,6 @@
     </Compile>
     <Compile Include="Email.cs" />
     <Compile Include="GlobalLoginData.cs" />
-    <Compile Include="Home.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Home.designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
     <Compile Include="ItemDispatch.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -339,9 +333,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemDispatch.resx">
       <DependentUpon>ItemDispatch.cs</DependentUpon>

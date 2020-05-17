@@ -63,7 +63,6 @@
             this.client1 = new rpc_working.Client();
             this.supplier1 = new rpc_working.Supplier();
             this.users1 = new rpc_working.Users();
-            this.home1 = new rpc_working.Home();
             this.dash1 = new rpc_working.Dash();
             this.reports1 = new rpc_working.Reports();
             this.panel2.SuspendLayout();
@@ -513,14 +512,6 @@
             this.users1.Size = new System.Drawing.Size(1165, 742);
             this.users1.TabIndex = 6;
             // 
-            // home1
-            // 
-            this.home1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.home1.Location = new System.Drawing.Point(210, 28);
-            this.home1.Name = "home1";
-            this.home1.Size = new System.Drawing.Size(1165, 742);
-            this.home1.TabIndex = 5;
-            // 
             // dash1
             // 
             this.dash1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -532,9 +523,9 @@
             // 
             // reports1
             // 
-            this.reports1.Location = new System.Drawing.Point(213, 26);
+            this.reports1.Location = new System.Drawing.Point(212, 25);
             this.reports1.Name = "reports1";
-            this.reports1.Size = new System.Drawing.Size(1165, 742);
+            this.reports1.Size = new System.Drawing.Size(1158, 724);
             this.reports1.TabIndex = 17;
             // 
             // Dashboard
@@ -555,7 +546,6 @@
             this.Controls.Add(this.client1);
             this.Controls.Add(this.supplier1);
             this.Controls.Add(this.users1);
-            this.Controls.Add(this.home1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -593,7 +583,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Users users1;
-        private Home home1;
+       
         private Supplier supplier1;
         private System.Windows.Forms.Button materialDispatch;
         private System.Windows.Forms.Button ItemdispatchBtn;

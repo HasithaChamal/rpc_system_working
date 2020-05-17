@@ -39,7 +39,6 @@ D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.Cry
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.productionReportViewer.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.Dash.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.Dashboard.resources
-D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.Home.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.ItemDispatch.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.Login.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.ProductionOrder.resources

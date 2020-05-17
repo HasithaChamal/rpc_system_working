@@ -92,7 +92,7 @@ namespace rpc_working
             else
             {
               
-                string selectStatement = "SELECT bom_item.material_id as 'Material ID', bom_item.qty as 'Quantity', raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price' FROM raw_material INNER JOIN bom_item ON bom_item.material_id = raw_material.material_id WHERE bom_item.bom_id = '" + bomId + "' ";
+                string selectStatement = "SELECT bom_item.material_id as 'Material ID', bom_item.qty as 'Quantity', raw_material.name as 'Material Name' FROM raw_material INNER JOIN bom_item ON bom_item.material_id = raw_material.material_id WHERE bom_item.bom_id = '" + bomId + "' ";
                 DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView4);
 
             }       
@@ -244,7 +244,7 @@ namespace rpc_working
             {
                 string val = dataGridView.SelectedRows[0].Cells["BOM ID"].Value.ToString();
 
-                string selectStatement = "SELECT bom_item.material_id as 'Material ID', bom_item.qty as 'Quantity', raw_material.name as 'Material Name', raw_material.unit_price as 'Unit Price' FROM raw_material INNER JOIN bom_item ON bom_item.material_id = raw_material.material_id WHERE bom_item.bom_id = '" + val + "' ";
+                string selectStatement = "SELECT bom_item.material_id as 'Material ID', bom_item.qty as 'Quantity', raw_material.name as 'Material Name' FROM raw_material INNER JOIN bom_item ON bom_item.material_id = raw_material.material_id WHERE bom_item.bom_id = '" + val + "' ";
                 DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView6);
 
                
@@ -252,13 +252,15 @@ namespace rpc_working
                 string itemCode = null;
                 string itemQty = null;
                 string itemName = null;
+                Console.WriteLine("Row count "+ dataGridView6.DisplayedRowCount(true));
+
                 for (int i = 0; i < dataGridView6.DisplayedRowCount(true) - 1; i++)
                 {
                     try
                     {
-                        itemCode = dataGridView6.Rows[i].Cells[1].Value.ToString();
-                        itemQty = dataGridView6.Rows[i].Cells[2].Value.ToString();
-                        itemName = dataGridView6.Rows[i].Cells[3].Value.ToString();
+                        itemCode = dataGridView6.Rows[i].Cells[0].Value.ToString();
+                        itemQty = dataGridView6.Rows[i].Cells[1].Value.ToString();
+                        itemName = dataGridView6.Rows[i].Cells[2].Value.ToString();
                         List<MySqlParameter> paramlist = new List<MySqlParameter>();
                         paramlist.Clear();
                         paramlist.Add(new MySqlParameter("@itemCode", itemCode));
@@ -268,7 +270,7 @@ namespace rpc_working
                         string queryGetQtyCondition = "SELECT IF(qty >= @value,'Yes','No') AS possibility FROM raw_material WHERE material_id = @itemCode";
                         string possibility = DatabaseHandler.returnOneValue(queryGetQtyCondition, paramlist, "possibility");
 
-                        if (string.Compare(possibility, "Yes") == 0)
+                        if (string.Compare(possibility, "No") != 1)
                         {
                             List<MySqlParameter> paramlist2 = new List<MySqlParameter>();
                             paramlist2.Clear();
