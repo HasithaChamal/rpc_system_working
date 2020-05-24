@@ -20,6 +20,7 @@ namespace rpc_working
         public void Supplier_Load(object sender, EventArgs e)
         {
             populateGrid();
+            setId();
             if (GlobalLoginData.userRole != "Owner")
             {
                 addSupplierBtn.Enabled = false;
@@ -354,6 +355,63 @@ namespace rpc_working
             catch (Exception err)
             {
                 Console.WriteLine(err);
+            }
+        }
+        private void setId()
+        {
+            string lastId = DatabaseHandler.returnOneValueWithoutParams("SELECT * FROM supplier", "supplier_id");
+            string nextId;
+            string lastId2 = DatabaseHandler.returnOneValueWithoutParams("SELECT * FROM raw_material", "material_id");
+            string nextId2;
+            if (lastId == "Null Data!")
+            {
+                nextId = "&0001";
+            }
+            else
+            {
+                var prefix = System.Text.RegularExpressions.Regex.Match(lastId, "^\\&+").Value;
+                var number = System.Text.RegularExpressions.Regex.Replace(lastId, "^\\&+", "");
+                var i = int.Parse(number) + 1;
+                nextId = (prefix + i.ToString(new string('0', number.Length))).ToString();
+            }
+
+            supplierCodeTxt.Text = nextId;
+
+            if (lastId2 == "Null Data!")
+            {
+                nextId2 = "$0001";
+            }
+            else
+            {
+                var prefix = System.Text.RegularExpressions.Regex.Match(lastId2, "^\\$+").Value;
+                var number = System.Text.RegularExpressions.Regex.Replace(lastId2, "^\\$+", "");
+                var i = int.Parse(number) + 1;
+                nextId2 = (prefix + i.ToString(new string('0', number.Length))).ToString();
+            }
+            Console.WriteLine("next material Id"+ nextId2);
+            Console.WriteLine("next item Id" + nextId);
+
+            itemIdTxt.Text = "";
+            itemIdTxt.Text = nextId2;
+
+
+        }
+
+        private void unitPriceText_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(unitPriceText.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter numbers only..");
+                unitPriceText.Text = unitPriceText.Text.Remove(unitPriceText.Text.Length - 1);
+            }
+        }
+
+        private void leadTime_txt_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(leadTime_txt.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter numbers only..");
+                leadTime_txt.Text = leadTime_txt.Text.Remove(leadTime_txt.Text.Length - 1);
             }
         }
     }

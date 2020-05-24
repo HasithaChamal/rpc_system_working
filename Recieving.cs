@@ -96,7 +96,7 @@ namespace rpc_working
 
                 int rowsAffected = DatabaseHandler.insertOrDeleteRow(updateQuery, paramList);
 
-                int rows = dataGridView3.RowCount;
+                int rows = dataGridView3.Rows.Count;
                 string itemid = null;
                 string qty = null;
                 for (int i = 0; i < rows - 1; i++)

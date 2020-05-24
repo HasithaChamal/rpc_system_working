@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.emailTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.contactNumberTxt = new System.Windows.Forms.TextBox();
@@ -47,11 +47,11 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.itemIdTxt = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.itemSupplierCodeTxt = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.itemGroupBox = new System.Windows.Forms.GroupBox();
+            this.itemIdTxt = new System.Windows.Forms.TextBox();
             this.addNewMaterial_btn = new System.Windows.Forms.Button();
             this.itemNameTxt = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -243,15 +243,6 @@
             this.label11.TabIndex = 114;
             this.label11.Text = "Add Supplier Raw Material";
             // 
-            // itemIdTxt
-            // 
-            this.itemIdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemIdTxt.Location = new System.Drawing.Point(132, 19);
-            this.itemIdTxt.Name = "itemIdTxt";
-            this.itemIdTxt.Size = new System.Drawing.Size(155, 20);
-            this.itemIdTxt.TabIndex = 116;
-            this.itemIdTxt.Leave += new System.EventHandler(this.itemIdTxt_Leave);
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -283,10 +274,10 @@
             // 
             // itemGroupBox
             // 
+            this.itemGroupBox.Controls.Add(this.itemIdTxt);
             this.itemGroupBox.Controls.Add(this.addNewMaterial_btn);
             this.itemGroupBox.Controls.Add(this.itemNameTxt);
             this.itemGroupBox.Controls.Add(this.label16);
-            this.itemGroupBox.Controls.Add(this.itemIdTxt);
             this.itemGroupBox.Controls.Add(this.label12);
             this.itemGroupBox.Location = new System.Drawing.Point(101, 346);
             this.itemGroupBox.Name = "itemGroupBox";
@@ -294,6 +285,14 @@
             this.itemGroupBox.TabIndex = 121;
             this.itemGroupBox.TabStop = false;
             this.itemGroupBox.Text = "Raw Material Information";
+            // 
+            // itemIdTxt
+            // 
+            this.itemIdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemIdTxt.Location = new System.Drawing.Point(133, 19);
+            this.itemIdTxt.Name = "itemIdTxt";
+            this.itemIdTxt.Size = new System.Drawing.Size(155, 20);
+            this.itemIdTxt.TabIndex = 128;
             // 
             // addNewMaterial_btn
             // 
@@ -331,6 +330,7 @@
             this.unitPriceText.Name = "unitPriceText";
             this.unitPriceText.Size = new System.Drawing.Size(155, 20);
             this.unitPriceText.TabIndex = 122;
+            this.unitPriceText.TextChanged += new System.EventHandler(this.unitPriceText_TextChanged);
             // 
             // label18
             // 
@@ -473,23 +473,23 @@
             // 
             // dataGridView5
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView5.Location = new System.Drawing.Point(442, 650);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.Size = new System.Drawing.Size(622, 77);
@@ -502,6 +502,7 @@
             this.leadTime_txt.Name = "leadTime_txt";
             this.leadTime_txt.Size = new System.Drawing.Size(155, 20);
             this.leadTime_txt.TabIndex = 127;
+            this.leadTime_txt.TextChanged += new System.EventHandler(this.leadTime_txt_TextChanged);
             // 
             // label17
             // 
@@ -585,7 +586,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox itemIdTxt;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox itemSupplierCodeTxt;
         private System.Windows.Forms.Label label15;
@@ -610,5 +610,6 @@
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.TextBox leadTime_txt;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox itemIdTxt;
     }
 }

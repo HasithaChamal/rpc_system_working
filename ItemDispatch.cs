@@ -26,7 +26,8 @@ namespace rpc_working
             latestDeliveryTimeCal.MaxSelectionCount = 1;
             latestDeliveryTimeCal.MaxSelectionCount = 1;
             latestDeliveryTimeCal.MinDate = DateTime.Today;
-          
+            populateDataGrid();
+
             if (GlobalLoginData.userRole == "StoreKeeper")
             {
                 approveBtn.Enabled = false;
@@ -37,7 +38,7 @@ namespace rpc_working
 
             }
             setReqNum();
-            populateDataGrid();
+            
             populateDispatchCombo();
             try
             {
@@ -120,7 +121,7 @@ namespace rpc_working
             string itemCode;
             string itemQty;
             string itemName;
-            Console.WriteLine("In Add Btn: Current Index1: " + dataGridView4.DisplayedRowCount(true));
+            Console.WriteLine("In Add Btn: Current Index1: " + dataGridView4.Rows.Count);
             try
             {
                 itemCode = dataGridView5.SelectedRows[0].Cells["Item Code"].Value.ToString();
@@ -136,7 +137,7 @@ namespace rpc_working
             }
             else
             {
-                int i = dataGridView4.DisplayedRowCount(true);
+                int i = dataGridView4.Rows.Count;
                 for (int row = 0; row < i - 1; row++)
                 {
                     if (dataGridView4.Rows[row].Cells[0].Value.ToString()== itemCode) 
@@ -146,7 +147,7 @@ namespace rpc_working
                     }
                 
                 }
-                    itemQty = qtyTxt.Text;
+                itemQty = qtyTxt.Text;
                 itemName = dataGridView5.SelectedRows[0].Cells["Item Name"].Value.ToString();
 
                 List<MySqlParameter> paramlist = new List<MySqlParameter>();
@@ -165,24 +166,17 @@ namespace rpc_working
                     string available_qty = DatabaseHandler.returnOneValue(query, paramlist2, "qty");
                     Console.WriteLine("Availabel qty " + available_qty);
                     //Add to dataViewGrid7
-                    int index2 = dataGridView7.DisplayedRowCount(true);
-                    dataGridView7.Rows.Add();
-                    dataGridView7.Rows[index2 - 1].Cells[0].Value = itemCode;
-                    dataGridView7.Rows[index2- 1].Cells[1].Value = itemName;
-                    dataGridView7.Rows[index2 - 1].Cells[2].Value = Int32.Parse(itemQty)- Int32.Parse(available_qty);
-
-
+                 
+                    dataGridView7.Rows.Add(itemCode, itemName,(Int32.Parse(itemQty) - Int32.Parse(available_qty)) );
+                   
 
                 }
 
 
                     //Add to dataViewGrid4
-                    int index = dataGridView4.DisplayedRowCount(true);
-                    dataGridView4.Rows.Add();
-                    dataGridView4.Rows[index - 1].Cells[0].Value = itemCode;
-                    dataGridView4.Rows[index - 1].Cells[1].Value = itemName;
-                    dataGridView4.Rows[index - 1].Cells[2].Value = itemQty;
-                    Console.WriteLine("In Add Btn: Current Index2: " + dataGridView4.DisplayedRowCount(true));
+                   
+                   dataGridView4.Rows.Add(itemCode, itemName, itemQty);
+                   Console.WriteLine("In Add Btn: Current Index2: " + dataGridView4.Rows.Count);
                 itemNameTxt.Clear();
                 qtyTxt.Clear();
 
@@ -253,8 +247,8 @@ namespace rpc_working
                     
                     try
                     {
-                        Console.WriteLine("displayed rows" + dataGridView4.DisplayedRowCount(true));
-                        int i = dataGridView4.DisplayedRowCount(true);
+                        Console.WriteLine("displayed rows" + dataGridView4.Rows.Count);
+                        int i = dataGridView4.Rows.Count;
                         string itemid;
                         string qty;
 
@@ -329,7 +323,7 @@ namespace rpc_working
                 string itemCode= null;
                 string itemQty= null;
                 string itemName = null;
-                for (int i = 0; i < dataGridView6.DisplayedRowCount(true) - 1; i++)
+                for (int i = 0; i < dataGridView6.Rows.Count - 1; i++)
                 {
                     try
                     {
@@ -354,10 +348,7 @@ namespace rpc_working
                             Console.WriteLine("Available qty " + available_qty);
                             //Add to dataViewGrid7
                             int index2 = dataGridView7.DisplayedRowCount(true);
-                            dataGridView7.Rows.Add();
-                            dataGridView7.Rows[index2 - 1].Cells[0].Value = itemCode;
-                            dataGridView7.Rows[index2 - 1].Cells[1].Value = itemName;
-                            dataGridView7.Rows[index2 - 1].Cells[2].Value = Int32.Parse(itemQty) - Int32.Parse(available_qty);
+                            dataGridView7.Rows.Add(itemCode, itemName,(Int32.Parse(itemQty) - Int32.Parse(available_qty)));                    
                         }
                     }
 
@@ -463,7 +454,7 @@ namespace rpc_working
                 string putout;
                string putoutqty;
                 
-               for (int i = 0; i < dataGridView6.DisplayedRowCount(true) - 1; i++)
+               for (int i = 0; i < dataGridView6.Rows.Count - 1; i++)
               {
                 try
               {
@@ -471,7 +462,7 @@ namespace rpc_working
                         putoutqty = dataGridView6.Rows[i].Cells["Qty"].Value.ToString();
                         putout = "UPDATE item SET qty = qty - @putoutQty WHERE item_id = @itemCode";
 
-                        Console.WriteLine("GridView Row Count: " + dataGridView6.DisplayedRowCount(true));
+                        Console.WriteLine("GridView Row Count: " + dataGridView6.Rows.Count);
                         Console.WriteLine("itemCodeTemp: " + itemCodeTemp);
                         Console.WriteLine("putoutqty " + putoutqty);
 
@@ -528,6 +519,28 @@ namespace rpc_working
             qtyTxt.Clear();
             dataGridView4.Rows.Clear();
             dataGridView7.Rows.Clear();
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void apply_btn_Click(object sender, EventArgs e)
+        {
+            string theDate = dateTimePicker1.Value.ToShortDateString();
+            Console.WriteLine("date" + theDate);
+            string selectStatement1 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User', itemorder.latest_delivery_time as 'Latest Delivery Time' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Pending' AND itemorder.released='No' AND itemorder.latest_delivery_time='" + theDate + "'";
+            DatabaseHandler.populateGridViewWithBinding(selectStatement1, dataGridView1);
+
+            string selectStatement2 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User', itemorder.latest_delivery_time as 'Latest Delivery Time' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Approved' AND itemorder.released='No'  AND itemorder.latest_delivery_time='" + theDate + "'";
+            DatabaseHandler.populateGridViewWithBinding(selectStatement1, dataGridView1); 
+            DatabaseHandler.populateGridViewWithBinding(selectStatement2, dataGridView2);
+        }
+
+        private void clearDate_btn_Click(object sender, EventArgs e)
+        {
+            populateDataGrid();
         }
     }
 

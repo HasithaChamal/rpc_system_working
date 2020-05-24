@@ -109,14 +109,10 @@ namespace rpc_working
                 String unitPrice = DatabaseHandler.returnOneValueWithoutParams("SELECT unit_price as 'Material Price' from supplier_material where material_id='" + itemCode + "' AND supplier_id='" + selectedSupplier + "'", "Material Price");
 
                 //Add to dataViewGrid4
-                int index = dataGridView4.DisplayedRowCount(true);
-                dataGridView4.Rows.Add();
+                int index = dataGridView4.Rows.Count;
+                dataGridView4.Rows.Add(itemCode, itemName, itemQty, unitPrice);
                 Console.WriteLine("In Add Btn: Current Index: " + index);
-                dataGridView4.Rows[index - 1].Cells[0].Value = itemCode;
-                dataGridView4.Rows[index - 1].Cells[1].Value = itemName;
-                dataGridView4.Rows[index - 1].Cells[2].Value = itemQty;
-                dataGridView4.Rows[index - 1].Cells[3].Value = unitPrice;
-
+               
                 supplierComboBox.Enabled = false;
             }
             else if (returnedRowCount == 0)
@@ -183,7 +179,7 @@ namespace rpc_working
                 MessageBox.Show("Error Occured! Please check input details!");
             }
 
-            int i = dataGridView4.DisplayedRowCount(true);
+            int i = dataGridView4.Rows.Count;
             Console.WriteLine("Special i Value: " + i);
             string itemid;
             string qty;

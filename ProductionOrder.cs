@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -81,12 +82,9 @@ namespace rpc_working
 
                 //Add to dataViewGrid4
                 int index = dataGridView4.DisplayedRowCount(true);
-                dataGridView4.Rows.Add();
+                dataGridView4.Rows.Add(itemCode, itemName, itemQty);
                 Console.WriteLine("In Add Btn: Current Index: " + index);
-                dataGridView4.Rows[index-1].Cells[0].Value = itemCode;
-                dataGridView4.Rows[index-1].Cells[1].Value = itemName;
-                dataGridView4.Rows[index-1].Cells[2].Value = itemQty;
-
+               
             }
             else
             {
@@ -145,7 +143,7 @@ namespace rpc_working
             {
                 MessageBox.Show("Error Occured! Please check input details!");
             }
-            int i = dataGridView4.DisplayedRowCount(true);
+            int i = dataGridView4.Rows.Count;
             Console.WriteLine("Special i Value: " + i);
             string itemid;
             string qty;
@@ -190,8 +188,8 @@ namespace rpc_working
             addItemCodeTxt.Text = "";
             addItemQty.Text = "";
             dataGridView4.Rows.Clear();
-            Console.WriteLine("Current Row Count: " + dataGridView4.RowCount);
-            Console.WriteLine("Current Displayed Row Count: " + dataGridView4.DisplayedRowCount(true));
+            Console.WriteLine("Current Row Count: " + dataGridView4.Rows.Count);
+          
 
         }
 
@@ -316,7 +314,7 @@ namespace rpc_working
 
                 int rowsAffected = DatabaseHandler.insertOrDeleteRow(updateQuery, paramList);
 
-                int rows = dataGridView5.RowCount;
+                int rows = dataGridView5.Rows.Count;
                 string itemid = null;
                 string qty = null;
                 for (int i = 0; i < rows - 1; i++)

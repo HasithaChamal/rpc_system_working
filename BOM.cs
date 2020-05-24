@@ -146,7 +146,7 @@ namespace rpc_working
 
 
 
-            int i = dataGridView2.DisplayedRowCount(true);
+            int i = dataGridView2.Rows.Count;
             Console.WriteLine("Special i Value: " + i);
             string itemid;
             string qty;
@@ -165,7 +165,7 @@ namespace rpc_working
 
 
 
-            int j = dataGridView1.DisplayedRowCount(true);
+            int j = dataGridView1.Rows.Count;
             Console.WriteLine("Special j Value: " + j);
 
             int temp = 0;

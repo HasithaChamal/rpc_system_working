@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace rpc_working
 {
     public partial class Client : UserControl
@@ -20,6 +21,7 @@ namespace rpc_working
         public void Client_Load(object sender, EventArgs e)
         {
             populateGrid();
+            setId();
             if (GlobalLoginData.userRole != "Owner")
             {
                 addBtnTxt.Enabled = false;
@@ -140,5 +142,28 @@ namespace rpc_working
                 MessageBox.Show("Error! Client doesn't exsist");
             }
         }
+
+
+        private void setId()
+        {
+            string lastId = DatabaseHandler.returnOneValueWithoutParams("SELECT * FROM client", "client_id");
+            string nextId;
+            if (lastId == "Null Data!")
+            {
+                nextId = "#1001";
+            }
+            else
+            {
+                var prefix = System.Text.RegularExpressions.Regex.Match(lastId, "^\\#+").Value;
+                var number = System.Text.RegularExpressions.Regex.Replace(lastId, "^\\#+", "");
+                var i = int.Parse(number) + 1;
+                nextId = (prefix + i.ToString(new string('0', number.Length))).ToString();
+            }
+
+            identifierTxt.Text = nextId;
+
+
+        }
+
     }
 }

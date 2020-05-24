@@ -27,7 +27,7 @@ namespace rpc_working
 
            int approved = DatabaseHandler.returnRowCountWithoutParams("SELECT * from itemorder WHERE approval='Approved'");
            int pending = DatabaseHandler.returnRowCountWithoutParams("SELECT * from itemorder WHERE approval='Pending'");
-           int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from itemorder WHERE approval='Approved'");
+           int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from itemorder WHERE approval='Declined'");
            int released = DatabaseHandler.returnRowCountWithoutParams("SELECT * from itemorder WHERE released='Yes'");
 
             item_order_chart.Series["itemOder"].IsValueShownAsLabel = true;
@@ -44,7 +44,7 @@ namespace rpc_working
 
             int approved = DatabaseHandler.returnRowCountWithoutParams("SELECT * from purchaseorder WHERE approval='Approved'");
             int pending = DatabaseHandler.returnRowCountWithoutParams("SELECT * from purchaseorder WHERE approval='Pending'");
-            int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from purchaseorder WHERE approval='Approved'");
+            int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from purchaseorder WHERE approval='Declined'");
             int recieved = DatabaseHandler.returnRowCountWithoutParams("SELECT * from purchaseorder WHERE recieved='Yes'");
 
             purchase_order_chart.Series["purchaseOrder"].IsValueShownAsLabel = true;
@@ -60,7 +60,7 @@ namespace rpc_working
 
             int approved = DatabaseHandler.returnRowCountWithoutParams("SELECT * from productionorder WHERE approval='Approved'");
             int pending = DatabaseHandler.returnRowCountWithoutParams("SELECT * from productionorder WHERE approval='Pending'");
-            int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from productionorder WHERE approval='Approved'");
+            int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from productionorder WHERE approval='Declined'");
             int recieved = DatabaseHandler.returnRowCountWithoutParams("SELECT * from productionorder WHERE recieved='Yes'");
 
             productionOrder_chart.Series["productionOrder"].IsValueShownAsLabel = true;
@@ -76,7 +76,7 @@ namespace rpc_working
 
             int approved = DatabaseHandler.returnRowCountWithoutParams("SELECT * from material_dispatch WHERE approval='Approved'");
             int pending = DatabaseHandler.returnRowCountWithoutParams("SELECT * from material_dispatch WHERE approval='Pending'");
-            int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from material_dispatch WHERE approval='Approved'");
+            int declined = DatabaseHandler.returnRowCountWithoutParams("SELECT * from material_dispatch WHERE approval='Declined'");
             int released = DatabaseHandler.returnRowCountWithoutParams("SELECT * from material_dispatch WHERE released='Yes'");
 
             raw_materialDispatch_chart.Series["material_dispatch"].IsValueShownAsLabel = true;

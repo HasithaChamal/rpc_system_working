@@ -15,6 +15,7 @@ namespace rpc_working
 
         public void Stores_Load(object sender, EventArgs e)
         {
+            setId();
             populateGrid();
             if (GlobalLoginData.userRole != "Owner")
             {
@@ -22,6 +23,7 @@ namespace rpc_working
                 button2.Enabled = false;
                 removeProduct_btn.Enabled = false;
                 clear_btn.Enabled = false;
+                
             }
         }
 
@@ -245,7 +247,7 @@ namespace rpc_working
 
         private void AddItemBtn_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("In Add Btn: Current Index1: " + composition_dataGridView.DisplayedRowCount(true));
+            Console.WriteLine("In Add Btn: Current Index1: " + composition_dataGridView.Rows.Count);
 
             string itemCode = addmaterialCodeTxt.Text;
             string itemQty = addmaterialQty.Text;
@@ -263,12 +265,12 @@ namespace rpc_working
 
 
                 //Add to composition_dataGridView
-                int index = composition_dataGridView.DisplayedRowCount(true);
-                composition_dataGridView.Rows.Add();
+               // int index = composition_dataGridView.DisplayedRowCount(true);
+                composition_dataGridView.Rows.Add(itemCode, itemName, itemQty);
 
-                composition_dataGridView.Rows[index - 1].Cells[0].Value = itemCode;
-                composition_dataGridView.Rows[index - 1].Cells[1].Value = itemName;
-                composition_dataGridView.Rows[index - 1].Cells[2].Value = itemQty;
+               // composition_dataGridView.Rows[index - 1].Cells[0].Value = itemCode;
+               // composition_dataGridView.Rows[index - 1].Cells[1].Value = itemName;
+                //composition_dataGridView.Rows[index - 1].Cells[2].Value = itemQty;
 
             }
             else
@@ -276,7 +278,7 @@ namespace rpc_working
                 MessageBox.Show("Invalid Material Code!");
             }
 
-            Console.WriteLine("In Add Btn: Current Index2: " + composition_dataGridView.DisplayedRowCount(true));
+            Console.WriteLine("In Add Btn: Current Index2: " + composition_dataGridView.Rows.Count);
 
         }
 
@@ -285,7 +287,7 @@ namespace rpc_working
             String product_id = prodctId_txt.Text;
             String productName = productName_txt.Text;
             String unitPrice = unitPrice_txt.Text;
-            int i = composition_dataGridView.DisplayedRowCount(true);
+            int i = composition_dataGridView.Rows.Count;
             Console.WriteLine("Special i Value: " + i);
 
             try
@@ -396,30 +398,7 @@ namespace rpc_working
             DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
             string itemCode = Convert.ToString(selectedRow.Cells["Item Code"].Value);
 
-            try
-            {
-                string query = "DELETE FROM item WHERE item_id=@itemCode";
-                
-                List<MySqlParameter> paramList = new List<MySqlParameter>();
-                paramList.Clear();
-                paramList.Add(new MySqlParameter("@itemCode", itemCode));
-                int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
-
-                if (rowsAffected != 0)
-                {
-                   //MessageBox.Show("Item Removed Successfully!");
-                   populateGrid();
-                }
-                else
-                {
-                    MessageBox.Show("Error!");
-                }
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Item doesn't exist!");
-            }
+           
 
             try
             {
@@ -446,6 +425,31 @@ namespace rpc_working
                 MessageBox.Show("Item doesn't exist!");
             }
 
+            try
+            {
+                string query = "DELETE FROM item WHERE item_id=@itemCode";
+
+                List<MySqlParameter> paramList = new List<MySqlParameter>();
+                paramList.Clear();
+                paramList.Add(new MySqlParameter("@itemCode", itemCode));
+                int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
+
+                if (rowsAffected != 0)
+                {
+                    //MessageBox.Show("Item Removed Successfully!");
+                    populateGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Error!");
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Item doesn't exist!");
+            }
+
 
         }
 
@@ -459,5 +463,28 @@ namespace rpc_working
             addmaterialCodeTxt.Clear();
             addmaterialQty.Clear();
         }
+
+        private void setId()
+        {
+            string lastId = DatabaseHandler.returnOneValueWithoutParams("SELECT * FROM item", "item_id");
+            string nextId;
+            if (lastId == "Null Data!")
+            {
+                nextId = "#0001";
+            }
+            else
+            {
+                var prefix = System.Text.RegularExpressions.Regex.Match(lastId, "^\\#+").Value;
+                var number = System.Text.RegularExpressions.Regex.Replace(lastId, "^\\#+", "");
+                var i = int.Parse(number) + 1;
+                nextId = (prefix + i.ToString(new string('0', number.Length))).ToString();
+            }
+
+            prodctId_txt.Text = nextId;
+
+
+        }
+
+
     }
 }

@@ -252,9 +252,9 @@ namespace rpc_working
                 string itemCode = null;
                 string itemQty = null;
                 string itemName = null;
-                Console.WriteLine("Row count "+ dataGridView6.DisplayedRowCount(true));
+                Console.WriteLine("Row count "+ dataGridView6.Rows.Count);
 
-                for (int i = 0; i < dataGridView6.DisplayedRowCount(true) - 1; i++)
+                for (int i = 0; i < dataGridView6.Rows.Count - 1; i++)
                 {
                     try
                     {
@@ -279,11 +279,8 @@ namespace rpc_working
                             string available_qty = DatabaseHandler.returnOneValue(query, paramlist2, "qty");
                             Console.WriteLine("Available qty " + available_qty);
                             //Add to dataViewGrid7
-                            int index2 = dataGridView7.DisplayedRowCount(true);
-                            dataGridView7.Rows.Add();
-                            dataGridView7.Rows[index2 - 1].Cells[0].Value = itemCode;
-                            dataGridView7.Rows[index2 - 1].Cells[1].Value = itemName;
-                            dataGridView7.Rows[index2 - 1].Cells[2].Value = (Int32.Parse(itemQty) - Int32.Parse(available_qty)).ToString();
+                           
+                            dataGridView7.Rows.Add(itemCode, itemName, (float.Parse(itemQty) - float.Parse(available_qty)));
                         }
                     }
 
@@ -347,21 +344,24 @@ namespace rpc_working
                 string itemCodeTemp;
                 string putout;
                 string putoutqty;
+                string existqty;
 
-                for (int i = 0; i < dataGridView6.RowCount - 1; i++)
+                for (int i = 0; i < dataGridView6.Rows.Count - 1; i++)
                 {
                     try
                     {
                         itemCodeTemp = dataGridView6.SelectedRows[i].Cells["Material ID"].Value.ToString();
                         putoutqty = dataGridView6.SelectedRows[i].Cells["Quantity"].Value.ToString();
-                        putout = "UPDATE raw_material SET qty = qty - @putoutQty WHERE material_id = @itemCode";
+                        existqty = DatabaseHandler.returnOneValueWithoutParams("select qty from raw_material where material_id='" + itemCodeTemp + "'", "qty");
+
+                        putout = "UPDATE raw_material SET qty=@remainqty WHERE material_id = @itemCode";
 
                         Console.WriteLine("GridView Row Count: " + dataGridView6.RowCount);
                         Console.WriteLine("itemCodeTemp: " + itemCodeTemp);
-                        Console.WriteLine("putoutqty " + putoutqty);
+                        Console.WriteLine("putoutqty " + float.Parse(putoutqty));
 
                         List<MySqlParameter> paramList2 = new List<MySqlParameter>();
-                        paramList2.Add(new MySqlParameter("@putoutQty", putoutqty));
+                        paramList2.Add(new MySqlParameter("@remainqty",  (float.Parse(existqty) -float.Parse(putoutqty))));
                         paramList2.Add(new MySqlParameter("@itemCode", itemCodeTemp));
 
                         Console.WriteLine("query :" + putout);
