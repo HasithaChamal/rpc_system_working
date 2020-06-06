@@ -15,6 +15,8 @@ namespace rpc_working
         string selectedClient = null;
         DataRowView selectedRow;
         int globalLastRo;
+        public static string declineOrderNO = null;
+        public static string declineOrderClient = null;
 
         public ItemDispatch()
         {
@@ -97,6 +99,10 @@ namespace rpc_working
 
             string selectStatement3 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User', itemorder.latest_delivery_time as 'Latest Delivery Time' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Approved' AND itemorder.released='Yes'";
             DatabaseHandler.populateGridViewWithBinding(selectStatement3, dataGridView3);
+
+            string selectStatement4 = "SELECT itemorder.io_id as 'Order #', client.name as 'Client Name', itemorder.creation_time as 'Posted Time', itemorder.postedUser as 'User', itemorder.latest_delivery_time as 'Latest Delivery Time' FROM itemorder inner join client on itemorder.client_id = client.client_id WHERE itemorder.approval = 'Declined' AND itemorder.released='No'";
+            DatabaseHandler.populateGridViewWithBinding(selectStatement4, dataGridView8);
+
             dataGridView6.DataSource = null;
             dataGridView6.Rows.Clear();
         }
@@ -404,25 +410,14 @@ namespace rpc_working
         private void declineBtn_Click(object sender, EventArgs e)
         {
             string val = dataGridView1.SelectedRows[0].Cells["Order #"].Value.ToString();
-            string update = "UPDATE itemorder set approval='Declined' where io_id=@ronum";
+            declineOrderNO = val;
+            declineOrderClient = dataGridView1.SelectedRows[0].Cells["Client Name"].Value.ToString();
 
+            ItemOrderDeclineInfo info = new ItemOrderDeclineInfo();
+            info.StartPosition = FormStartPosition.CenterScreen;
+            info.Show();
 
-       
-            List<MySqlParameter> paramList = new List<MySqlParameter>();
-            paramList.Add(new MySqlParameter("@ronum", val));
-
-            int rowsAffected = DatabaseHandler.insertOrDeleteRow(update, paramList);
-
-            if (rowsAffected != 0)
-            {
-               
-                MessageBox.Show("Item Order Declined!");
-                populateDataGrid();
-            }
-            else
-            {
-                MessageBox.Show("Error Occured! Please check Selection!");
-            }
+            populateDataGrid();
         }
 
         private void dispatchBtn_Click(object sender, EventArgs e)
@@ -541,6 +536,37 @@ namespace rpc_working
         private void clearDate_btn_Click(object sender, EventArgs e)
         {
             populateDataGrid();
+        }
+
+        private void reApprove_btn_Click(object sender, EventArgs e)
+        {
+
+            string val = dataGridView8.SelectedRows[0].Cells["Order #"].Value.ToString();
+            string update = "UPDATE itemorder set approval='Approved' where io_id=@ronum";
+            List<MySqlParameter> paramList = new List<MySqlParameter>();
+            paramList.Add(new MySqlParameter("@ronum", val));
+
+            int rowsAffected = DatabaseHandler.insertOrDeleteRow(update, paramList);
+
+            if (rowsAffected != 0)
+            {
+                MessageBox.Show("Declined Item Order re-Confirmed!");
+                populateDataGrid();
+            }
+            else
+            {
+                MessageBox.Show("Error Occured! Please check Selection!");
+            }
+        }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+            populateDataGrid();
+        }
+
+        private void dataGridView8_SelectionChanged(object sender, EventArgs e)
+        {
+            populateItemGrid(dataGridView8);
         }
     }
 

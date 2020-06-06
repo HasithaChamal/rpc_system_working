@@ -79,6 +79,7 @@ namespace rpc_working
                     if (rowsAffected != 0)
                     {
                         MessageBox.Show("User Added Successfully!");
+                         populateGrid();
                     }
                     else
                     {

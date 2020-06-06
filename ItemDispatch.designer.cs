@@ -36,6 +36,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dispatchRequestBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,6 +60,9 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.reApprove_btn = new System.Windows.Forms.Button();
+            this.dataGridView8 = new System.Windows.Forms.DataGridView();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,6 +94,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
@@ -109,9 +117,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(39, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 20);
+            this.label1.Size = new System.Drawing.Size(240, 20);
             this.label1.TabIndex = 31;
-            this.label1.Text = "Create Item Dispatch Order";
+            this.label1.Text = "Create Item Dispatch Order :";
             // 
             // label2
             // 
@@ -185,12 +193,14 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(536, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(593, 557);
             this.tabControl1.TabIndex = 51;
+            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tabPage1
             // 
@@ -202,7 +212,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(585, 531);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Pending Dispatch Orders";
+            this.tabPage1.Text = "Pending Item Orders";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // declineBtn
@@ -261,7 +271,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(585, 531);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Approved Dispatch Orders";
+            this.tabPage2.Text = "Approved Item Orders";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dispatchBtn
@@ -309,7 +319,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(585, 531);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Finished Dispatch Orders";
+            this.tabPage3.Text = "Finished Item Orders";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // dataGridView3
@@ -378,6 +388,63 @@
             this.dataGridView5.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellClick);
             this.dataGridView5.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView5_CellContentClick);
             this.dataGridView5.SelectionChanged += new System.EventHandler(this.dataGridView5_SelectionChanged);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.reApprove_btn);
+            this.tabPage5.Controls.Add(this.dataGridView8);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(585, 531);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Declined Item Orders";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // reApprove_btn
+            // 
+            this.reApprove_btn.Location = new System.Drawing.Point(454, 500);
+            this.reApprove_btn.Name = "reApprove_btn";
+            this.reApprove_btn.Size = new System.Drawing.Size(103, 23);
+            this.reApprove_btn.TabIndex = 39;
+            this.reApprove_btn.Text = "Approve";
+            this.reApprove_btn.UseVisualStyleBackColor = true;
+            this.reApprove_btn.Click += new System.EventHandler(this.reApprove_btn_Click);
+            // 
+            // dataGridView8
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView8.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView8.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridView8.Location = new System.Drawing.Point(6, 13);
+            this.dataGridView8.Name = "dataGridView8";
+            this.dataGridView8.ReadOnly = true;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView8.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridView8.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView8.Size = new System.Drawing.Size(572, 481);
+            this.dataGridView8.TabIndex = 3;
+            this.dataGridView8.SelectionChanged += new System.EventHandler(this.dataGridView8_SelectionChanged);
             // 
             // dataGridView4
             // 
@@ -628,6 +695,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
@@ -681,5 +750,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button apply_btn;
         private System.Windows.Forms.Button clearDate_btn;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.DataGridView dataGridView8;
+        private System.Windows.Forms.Button reApprove_btn;
     }
 }

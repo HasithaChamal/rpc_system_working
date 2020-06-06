@@ -224,6 +224,12 @@
     <Compile Include="ItemDispatch.designer.cs">
       <DependentUpon>ItemDispatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemOrderDeclineInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemOrderDeclineInfo.Designer.cs">
+      <DependentUpon>ItemOrderDeclineInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemDispatch.resx">
       <DependentUpon>ItemDispatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemOrderDeclineInfo.resx">
+      <DependentUpon>ItemOrderDeclineInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
