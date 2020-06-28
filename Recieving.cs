@@ -73,7 +73,7 @@ namespace rpc_working
         public void Recieving_Load(object sender, EventArgs e)
         {
             populateGrids();
-            commitBtn.Enabled = false;
+            
         }
 
         private void populateGrids()

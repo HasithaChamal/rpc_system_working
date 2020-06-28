@@ -75,7 +75,7 @@ namespace rpc_working
 
         private void populateGrid()
         {
-            string selectStatement = "SELECT supplier_material.material_id as 'Material Code', raw_material.name as 'Material Name', supplier_material.supplier_id as 'Supplier ID', supplier_material.unit_price as 'Unit Price' FROM supplier_material INNER JOIN raw_material ON raw_material.material_id = supplier_material.material_id WHERE supplier_material.supplier_id = '" + selectedSupplier+"'";
+            string selectStatement = "SELECT supplier_material.material_id as 'Material Code', raw_material.name as 'Material Name', raw_material.qty as 'Available Quantity', supplier_material.unit_price as 'Unit Price' FROM supplier_material INNER JOIN raw_material ON raw_material.material_id = supplier_material.material_id WHERE supplier_material.supplier_id = '" + selectedSupplier+"'";
             DatabaseHandler.populateViewwithNoParameters(selectStatement, dataGridView1);
 
             populateNonComboGrids();
@@ -95,7 +95,17 @@ namespace rpc_working
         {
             string itemCode = addItemCodeTxt.Text;
             string itemQty = addItemQty.Text;
+           
+            int i = dataGridView4.Rows.Count;
+            for (int row = 0; row < i - 1; row++)
+            {
+                if (dataGridView4.Rows[row].Cells[0].Value.ToString() == itemCode)
+                {
+                    MessageBox.Show("Item already entered !!!");
+                    return;
+                }
 
+            }
             List<MySqlParameter> paramList = new List<MySqlParameter>();
             paramList.Add(new MySqlParameter("@itemCode", itemCode));
             int returnedRowCount = DatabaseHandler.returnRowCount("SELECT * FROM raw_material WHERE material_id = @itemCode", paramList);
@@ -341,6 +351,7 @@ namespace rpc_working
             dataGridView4.DataSource = null;
             dataGridView4.Rows.Clear();
             setPoNum();
+            supplierComboBox.Enabled = true;
         }
 
         private void print_btn_Click(object sender, EventArgs e)
@@ -365,6 +376,11 @@ namespace rpc_working
                 poview.ShowDialog();
             }
            
+        }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            dataGridView5.DataSource = null;
         }
     }
 }

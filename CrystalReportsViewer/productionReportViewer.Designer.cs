@@ -50,7 +50,7 @@
             this.ClientSize = new System.Drawing.Size(1149, 703);
             this.Controls.Add(this.productionrptViwer);
             this.Name = "productionReportViewer";
-            this.Text = "productionReportViewer";
+            this.Text = "Production Report ";
             this.Load += new System.EventHandler(this.productionReportViewer_Load);
             this.ResumeLayout(false);
 

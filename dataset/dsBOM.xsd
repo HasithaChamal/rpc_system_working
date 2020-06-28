@@ -12,13 +12,12 @@
   <xs:element name="dsBOM" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsBOM" msprop:Generator_UserDSName="dsBOM">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="bomtbl" msprop:Generator_TableClassName="bomtblDataTable" msprop:Generator_TableVarName="tablebomtbl" msprop:Generator_RowChangedName="bomtblRowChanged" msprop:Generator_TablePropName="bomtbl" msprop:Generator_RowDeletingName="bomtblRowDeleting" msprop:Generator_RowChangingName="bomtblRowChanging" msprop:Generator_RowEvHandlerName="bomtblRowChangeEventHandler" msprop:Generator_RowDeletedName="bomtblRowDeleted" msprop:Generator_RowClassName="bomtblRow" msprop:Generator_UserTableName="bomtbl" msprop:Generator_RowEvArgName="bomtblRowChangeEvent">
+        <xs:element name="bomtbl" msprop:Generator_TableClassName="bomtblDataTable" msprop:Generator_TableVarName="tablebomtbl" msprop:Generator_TablePropName="bomtbl" msprop:Generator_RowDeletingName="bomtblRowDeleting" msprop:Generator_RowChangingName="bomtblRowChanging" msprop:Generator_RowEvHandlerName="bomtblRowChangeEventHandler" msprop:Generator_RowDeletedName="bomtblRowDeleted" msprop:Generator_UserTableName="bomtbl" msprop:Generator_RowChangedName="bomtblRowChanged" msprop:Generator_RowEvArgName="bomtblRowChangeEvent" msprop:Generator_RowClassName="bomtblRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="material_id" msprop:Generator_ColumnVarNameInTable="columnmaterial_id" msprop:Generator_ColumnPropNameInRow="material_id" msprop:Generator_ColumnPropNameInTable="material_idColumn" msprop:Generator_UserColumnName="material_id" type="xs:int" minOccurs="0" />
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
               <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:int" minOccurs="0" />
-              <xs:element name="unit_price" msprop:Generator_ColumnVarNameInTable="columnunit_price" msprop:Generator_ColumnPropNameInRow="unit_price" msprop:Generator_ColumnPropNameInTable="unit_priceColumn" msprop:Generator_UserColumnName="unit_price" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

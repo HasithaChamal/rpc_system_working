@@ -101,6 +101,12 @@
     <Compile Include="CrystalReportsViewer\itemOrderReportViewer.Designer.cs">
       <DependentUpon>itemOrderReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReportsViewer\MaterialStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\MaterialStock.Designer.cs">
+      <DependentUpon>MaterialStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="CrystalReportsViewer\materialUseageVeiwer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="CrystalReportsViewer\productionReportViewer.Designer.cs">
       <DependentUpon>productionReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\ProductStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportsViewer\ProductStock.Designer.cs">
+      <DependentUpon>ProductStock.cs</DependentUpon>
     </Compile>
     <Compile Include="CrystalReportsViewer\PurchaseOrder.cs">
       <SubType>Form</SubType>
@@ -131,10 +143,22 @@
       <DependentUpon>BOMReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CrystalReports\productStockReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>productStockReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrystalReports\itemOrderReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>itemOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\materialStockReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>materialStockReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReports\MaterialUseage.cs">
@@ -190,6 +214,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>itemOrder.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dataset\MaterialStockData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialStockData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dataset\MaterialuseageData.cs">
       <DependentUpon>MaterialuseageData.xsd</DependentUpon>
     </Compile>
@@ -202,6 +231,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>productionOrder.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\ProductStockData.cs">
+      <DependentUpon>ProductStockData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\ProductStockData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductStockData.xsd</DependentUpon>
     </Compile>
     <Compile Include="dataset\PurchaseOrderData.cs">
       <DependentUpon>PurchaseOrderData.xsd</DependentUpon>
@@ -298,11 +335,17 @@
     <EmbeddedResource Include="CrystalReportsViewer\itemOrderReportViewer.resx">
       <DependentUpon>itemOrderReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\MaterialStock.resx">
+      <DependentUpon>MaterialStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReportsViewer\materialUseageVeiwer.resx">
       <DependentUpon>materialUseageVeiwer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReportsViewer\productionReportViewer.resx">
       <DependentUpon>productionReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportsViewer\ProductStock.resx">
+      <DependentUpon>ProductStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReportsViewer\PurchaseOrder.resx">
       <DependentUpon>PurchaseOrder.cs</DependentUpon>
@@ -314,9 +357,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BOMReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\productStockReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>productStockReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\itemOrderReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>itemOrderReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\materialStockReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>materialStockReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\MaterialUseage.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -405,6 +456,17 @@
     <None Include="dataset\itemOrder.xss">
       <DependentUpon>itemOrder.xsd</DependentUpon>
     </None>
+    <None Include="dataset\MaterialStockData.xsc">
+      <DependentUpon>MaterialStockData.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\MaterialStockData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MaterialStockData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\MaterialStockData.xss">
+      <DependentUpon>MaterialStockData.xsd</DependentUpon>
+    </None>
     <None Include="dataset\MaterialuseageData.xsc">
       <DependentUpon>MaterialuseageData.xsd</DependentUpon>
     </None>
@@ -426,6 +488,17 @@
     </None>
     <None Include="dataset\productionOrder.xss">
       <DependentUpon>productionOrder.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\ProductStockData.xsc">
+      <DependentUpon>ProductStockData.xsd</DependentUpon>
+    </None>
+    <None Include="dataset\ProductStockData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProductStockData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dataset\ProductStockData.xss">
+      <DependentUpon>ProductStockData.xsd</DependentUpon>
     </None>
     <None Include="dataset\PurchaseOrderData.xsc">
       <DependentUpon>PurchaseOrderData.xsd</DependentUpon>

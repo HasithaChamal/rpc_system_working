@@ -29,7 +29,7 @@ namespace rpc_working.CrystalReportsViewer
             Console.WriteLine("BOM ID "+BOM.globalLastbom);
             try
             {
-                String query = "SELECT bom_item.material_id, raw_material.name, bom_item.qty, raw_material.unit_price FROM bom_item INNER JOIN raw_material ON bom_item.material_id = raw_material.material_id  WHERE bom_id= '" + BOM.globalLastbom + "'";
+                String query = "SELECT bom_item.material_id, raw_material.name, bom_item.qty FROM bom_item INNER JOIN raw_material ON bom_item.material_id = raw_material.material_id  WHERE bom_id= '" + BOM.globalLastbom + "'";
                 var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
                 var commandBuilder = new MySqlCommandBuilder(dataAdapter);
                 dataAdapter.Fill(bomtbl);

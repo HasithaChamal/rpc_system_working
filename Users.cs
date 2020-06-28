@@ -192,5 +192,14 @@ namespace rpc_working
                 Console.WriteLine(err);
             }
         }
+
+        private void clear_btn_Click(object sender, EventArgs e)
+        {
+            nameTxt.Text = "";
+            passwordTxt.Text = "";
+            retypePasswordTxt.Text = "";
+            usernameTxt.Text = "";
+            emailText.Text = "";
+        }
     }
 }

@@ -50,7 +50,7 @@
             this.ClientSize = new System.Drawing.Size(1149, 703);
             this.Controls.Add(this.itemOrderrptViewer);
             this.Name = "itemOrderReportViewer";
-            this.Text = "itemOrderReportViewer";
+            this.Text = "Item Order Report";
             this.Load += new System.EventHandler(this.itemOrderReportViewer_Load);
             this.ResumeLayout(false);
 

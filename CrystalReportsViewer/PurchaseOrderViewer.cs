@@ -57,7 +57,15 @@ namespace rpc_working.CrystalReportsViewer
             //create po id table
             try
             {
-                String query = "SELECT po_id, creation_time, supplier_id  FROM purchaseorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
+                String query;
+                if (Reports.sortbysupclient == false)
+                {
+                    query = "SELECT po_id, creation_time, supplier_id  FROM purchaseorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
+                }
+                else 
+                {
+                    query = "SELECT po_id, creation_time, supplier_id  FROM purchaseorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  AND supplier_id='" + Reports.supclientval + "' ";
+                }
                 var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
                 var commandBuilder = new MySqlCommandBuilder(dataAdapter);
                 dataAdapter.Fill(idtbl);

@@ -42,6 +42,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.cachedBOMReport1 = new rpc_working.CrystalReports.CachedBOMReport();
+            this.label5 = new System.Windows.Forms.Label();
+            this.supplierClientcmb = new System.Windows.Forms.ComboBox();
+            this.sort_supp_client_checkbx = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +62,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 228);
+            this.label2.Location = new System.Drawing.Point(56, 281);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 22);
             this.label2.TabIndex = 1;
@@ -73,11 +76,14 @@
             "Raw Material Useage",
             "Item Orders",
             "Production Orders",
-            "Material Purchase Orders"});
-            this.rpt_typ_cmb.Location = new System.Drawing.Point(225, 116);
+            "Material Purchase Orders",
+            "Raw Material Inventory",
+            "Product Inventory"});
+            this.rpt_typ_cmb.Location = new System.Drawing.Point(285, 116);
             this.rpt_typ_cmb.Name = "rpt_typ_cmb";
-            this.rpt_typ_cmb.Size = new System.Drawing.Size(181, 21);
+            this.rpt_typ_cmb.Size = new System.Drawing.Size(282, 21);
             this.rpt_typ_cmb.TabIndex = 2;
+            this.rpt_typ_cmb.SelectedIndexChanged += new System.EventHandler(this.rpt_typ_cmb_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -100,7 +106,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(558, 228);
+            this.label4.Location = new System.Drawing.Point(558, 281);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 5;
@@ -152,7 +158,7 @@
             this.groupBox1.Controls.Add(this.from_calander);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.to_calander);
-            this.groupBox1.Location = new System.Drawing.Point(220, 183);
+            this.groupBox1.Location = new System.Drawing.Point(220, 236);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(677, 237);
             this.groupBox1.TabIndex = 12;
@@ -169,10 +175,42 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "From :";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(55, 165);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(199, 22);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Sort By supplier/client  :";
+            // 
+            // supplierClientcmb
+            // 
+            this.supplierClientcmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.supplierClientcmb.FormattingEnabled = true;
+            this.supplierClientcmb.Location = new System.Drawing.Point(285, 165);
+            this.supplierClientcmb.Name = "supplierClientcmb";
+            this.supplierClientcmb.Size = new System.Drawing.Size(282, 21);
+            this.supplierClientcmb.TabIndex = 14;
+            // 
+            // sort_supp_client_checkbx
+            // 
+            this.sort_supp_client_checkbx.AutoSize = true;
+            this.sort_supp_client_checkbx.Location = new System.Drawing.Point(591, 173);
+            this.sort_supp_client_checkbx.Name = "sort_supp_client_checkbx";
+            this.sort_supp_client_checkbx.Size = new System.Drawing.Size(15, 14);
+            this.sort_supp_client_checkbx.TabIndex = 15;
+            this.sort_supp_client_checkbx.UseVisualStyleBackColor = true;
+            this.sort_supp_client_checkbx.CheckedChanged += new System.EventHandler(this.sort_supp_client_checkbx_CheckedChanged);
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.sort_supp_client_checkbx);
+            this.Controls.Add(this.supplierClientcmb);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.generate_btn);
@@ -207,5 +245,8 @@
         private System.Windows.Forms.Label label7;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private CrystalReports.CachedBOMReport cachedBOMReport1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox supplierClientcmb;
+        private System.Windows.Forms.CheckBox sort_supp_client_checkbx;
     }
 }

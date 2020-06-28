@@ -34,6 +34,7 @@ namespace rpc_working
             {
                 approveBtn.Enabled = false;
                 declineBtn.Enabled = false;
+                reApprove_btn.Enabled = false;
                 latestDeliveryTimeCal.MaxSelectionCount = 1;
                 latestDeliveryTimeCal.MaxSelectionCount = 1;
                 latestDeliveryTimeCal.MinDate = DateTime.Today;
@@ -190,11 +191,7 @@ namespace rpc_working
           
         }
 
-        private void dataGridView5_SelectionChanged(object sender, EventArgs e)
-        {
-           
-           
-        }
+        
 
         private void dataGridView5_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -203,6 +200,8 @@ namespace rpc_working
                 itemNameTxt.Text = dataGridView5.SelectedRows[0].Cells["Item Name"].Value.ToString();
                 dataGridView6.DataSource = null;
                 dataGridView6.Rows.Clear();
+                dataGridView7.DataSource = null;
+                dataGridView7.Rows.Clear();
             }
             catch (Exception)
             {
@@ -568,6 +567,8 @@ namespace rpc_working
         {
             populateItemGrid(dataGridView8);
         }
+
+        
     }
 
 }

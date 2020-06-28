@@ -485,6 +485,30 @@ namespace rpc_working
 
         }
 
+        private void dataGridView2_Click(object sender, EventArgs e)
+        {
+            dataGridView5.DataSource = null;
+            
+        }
 
+        private void unitPrice_txt_TextChanged(object sender, EventArgs e)
+        {
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(unitPrice_txt.Text, @"^[0-9]*(?:\.[0-9]*)?$"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                unitPrice_txt.Text = unitPrice_txt.Text.Remove(unitPrice_txt.Text.Length - 1);
+            }
+        }
+
+        private void addmaterialQty_TextChanged(object sender, EventArgs e)
+        {
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(addmaterialQty.Text, @"^[0-9]*(?:\.[0-9]*)?$"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                addmaterialQty.Text = addmaterialQty.Text.Remove(addmaterialQty.Text.Length - 1);
+            }
+        }
     }
 }

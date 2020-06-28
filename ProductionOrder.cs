@@ -68,6 +68,18 @@ namespace rpc_working
             string itemCode = addItemCodeTxt.Text;
             string itemQty = addItemQty.Text;
 
+
+            int i = dataGridView4.Rows.Count;
+            for (int row = 0; row < i - 1; row++)
+            {
+                if (dataGridView4.Rows[row].Cells[0].Value.ToString() == itemCode)
+                {
+                    MessageBox.Show("Item already entered !!!");
+                    return;
+                }
+
+            }
+
             List<MySqlParameter> paramList = new List<MySqlParameter>();
             paramList.Add(new MySqlParameter("@itemCode", itemCode));
             int returnedRowCount = DatabaseHandler.returnRowCount("SELECT*FROM item WHERE item_id=@itemCode", paramList);
@@ -372,6 +384,19 @@ namespace rpc_working
 
         }
 
-       
+        private void dataGridView6_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string val = dataGridView6.SelectedRows[0].Cells["Order #"].Value.ToString();
+
+                string select = "SELECT productionorder_item.pro_id as 'Order #', productionorder_item.item_id as 'Item Code', item.name as 'Item Name',  productionorder_item.qty as 'Qty' FROM productionorder_item INNER JOIN item ON productionorder_item.item_id = item.item_id WHERE productionorder_item.pro_id = '" + val + "'";
+                DatabaseHandler.populateGridViewWithBinding(select, dataGridView5);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+            }
+        }
     }
 }

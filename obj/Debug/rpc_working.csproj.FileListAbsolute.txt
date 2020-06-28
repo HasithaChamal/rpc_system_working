@@ -59,3 +59,5 @@ D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.csp
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.PurchaseOrderReportViewer.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.PurchaseOrderViewer.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.ItemOrderDeclineInfo.resources
+D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.MaterialStock.resources
+D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.ProductStock.resources

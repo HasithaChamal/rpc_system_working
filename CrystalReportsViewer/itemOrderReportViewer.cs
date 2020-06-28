@@ -56,7 +56,16 @@ namespace rpc_working.CrystalReportsViewer
             //create item id table
             try
             {
-                String query = "SELECT io_id , client_id, creation_time  FROM itemorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
+                String query;
+                if (Reports.sortbysupclient == false)
+                {
+                     query = "SELECT io_id , client_id, creation_time  FROM itemorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
+                }
+                else 
+                {
+                    
+                    query = "SELECT io_id , client_id, creation_time  FROM itemorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "' AND client_id='" + Reports.supclientval + "'  ";
+                }
                 var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
                 var commandBuilder = new MySqlCommandBuilder(dataAdapter);
                 dataAdapter.Fill(idtbl);

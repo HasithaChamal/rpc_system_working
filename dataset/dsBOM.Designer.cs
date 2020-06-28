@@ -285,8 +285,6 @@ namespace rpc_working.dataset {
             
             private global::System.Data.DataColumn columnqty;
             
-            private global::System.Data.DataColumn columnunit_price;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bomtblDataTable() {
@@ -346,14 +344,6 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn unit_priceColumn {
-                get {
-                    return this.columnunit_price;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +379,12 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bomtblRow AddbomtblRow(int material_id, string name, int qty, string unit_price) {
+            public bomtblRow AddbomtblRow(int material_id, string name, int qty) {
                 bomtblRow rowbomtblRow = ((bomtblRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         material_id,
                         name,
-                        qty,
-                        unit_price};
+                        qty};
                 rowbomtblRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowbomtblRow);
                 return rowbomtblRow;
@@ -421,7 +410,6 @@ namespace rpc_working.dataset {
                 this.columnmaterial_id = base.Columns["material_id"];
                 this.columnname = base.Columns["name"];
                 this.columnqty = base.Columns["qty"];
-                this.columnunit_price = base.Columns["unit_price"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -433,8 +421,6 @@ namespace rpc_working.dataset {
                 base.Columns.Add(this.columnname);
                 this.columnqty = new global::System.Data.DataColumn("qty", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnqty);
-                this.columnunit_price = new global::System.Data.DataColumn("unit_price", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnunit_price);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -625,22 +611,6 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string unit_price {
-                get {
-                    try {
-                        return ((string)(this[this.tablebomtbl.unit_priceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'unit_price\' in table \'bomtbl\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablebomtbl.unit_priceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Ismaterial_idNull() {
                 return this.IsNull(this.tablebomtbl.material_idColumn);
             }
@@ -673,18 +643,6 @@ namespace rpc_working.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetqtyNull() {
                 this[this.tablebomtbl.qtyColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isunit_priceNull() {
-                return this.IsNull(this.tablebomtbl.unit_priceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setunit_priceNull() {
-                this[this.tablebomtbl.unit_priceColumn] = global::System.Convert.DBNull;
             }
         }
         

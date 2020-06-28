@@ -53,6 +53,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.reports1 = new rpc_working.Reports();
+            this.dash1 = new rpc_working.Dash();
             this.rawMaterialDispatch1 = new rpc_working.rawMaterialDispatch();
             this.bom1 = new rpc_working.BOM();
             this.productionOrder1 = new rpc_working.ProductionOrder();
@@ -63,8 +65,6 @@
             this.client1 = new rpc_working.Client();
             this.supplier1 = new rpc_working.Supplier();
             this.users1 = new rpc_working.Users();
-            this.dash1 = new rpc_working.Dash();
-            this.reports1 = new rpc_working.Reports();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -186,10 +186,10 @@
             this.storeBtn.ForeColor = System.Drawing.Color.White;
             this.storeBtn.Image = ((System.Drawing.Image)(resources.GetObject("storeBtn.Image")));
             this.storeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.storeBtn.Location = new System.Drawing.Point(8, 120);
+            this.storeBtn.Location = new System.Drawing.Point(25, 131);
             this.storeBtn.Name = "storeBtn";
             this.storeBtn.Padding = new System.Windows.Forms.Padding(10);
-            this.storeBtn.Size = new System.Drawing.Size(182, 52);
+            this.storeBtn.Size = new System.Drawing.Size(179, 52);
             this.storeBtn.TabIndex = 1;
             this.storeBtn.Text = "     Store";
             this.storeBtn.UseVisualStyleBackColor = true;
@@ -227,10 +227,10 @@
             this.bom_btn.ForeColor = System.Drawing.Color.White;
             this.bom_btn.Image = ((System.Drawing.Image)(resources.GetObject("bom_btn.Image")));
             this.bom_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bom_btn.Location = new System.Drawing.Point(14, 670);
+            this.bom_btn.Location = new System.Drawing.Point(28, 380);
             this.bom_btn.Name = "bom_btn";
             this.bom_btn.Padding = new System.Windows.Forms.Padding(10);
-            this.bom_btn.Size = new System.Drawing.Size(219, 52);
+            this.bom_btn.Size = new System.Drawing.Size(213, 52);
             this.bom_btn.TabIndex = 14;
             this.bom_btn.Text = "       Bill of Material ";
             this.bom_btn.UseVisualStyleBackColor = true;
@@ -245,10 +245,10 @@
             this.productionOrder_btn.ForeColor = System.Drawing.Color.White;
             this.productionOrder_btn.Image = ((System.Drawing.Image)(resources.GetObject("productionOrder_btn.Image")));
             this.productionOrder_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.productionOrder_btn.Location = new System.Drawing.Point(14, 601);
+            this.productionOrder_btn.Location = new System.Drawing.Point(15, 307);
             this.productionOrder_btn.Name = "productionOrder_btn";
             this.productionOrder_btn.Padding = new System.Windows.Forms.Padding(10);
-            this.productionOrder_btn.Size = new System.Drawing.Size(219, 52);
+            this.productionOrder_btn.Size = new System.Drawing.Size(226, 52);
             this.productionOrder_btn.TabIndex = 13;
             this.productionOrder_btn.Text = "      Production Order";
             this.productionOrder_btn.UseVisualStyleBackColor = true;
@@ -263,7 +263,7 @@
             this.rpt_btn.ForeColor = System.Drawing.Color.White;
             this.rpt_btn.Image = ((System.Drawing.Image)(resources.GetObject("rpt_btn.Image")));
             this.rpt_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rpt_btn.Location = new System.Drawing.Point(11, 70);
+            this.rpt_btn.Location = new System.Drawing.Point(24, 71);
             this.rpt_btn.Name = "rpt_btn";
             this.rpt_btn.Padding = new System.Windows.Forms.Padding(10);
             this.rpt_btn.Size = new System.Drawing.Size(179, 52);
@@ -281,12 +281,13 @@
             this.materialDispatch.ForeColor = System.Drawing.Color.White;
             this.materialDispatch.Image = ((System.Drawing.Image)(resources.GetObject("materialDispatch.Image")));
             this.materialDispatch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.materialDispatch.Location = new System.Drawing.Point(14, 294);
+            this.materialDispatch.Location = new System.Drawing.Point(17, 451);
             this.materialDispatch.Name = "materialDispatch";
             this.materialDispatch.Padding = new System.Windows.Forms.Padding(10);
-            this.materialDispatch.Size = new System.Drawing.Size(219, 52);
+            this.materialDispatch.Size = new System.Drawing.Size(214, 48);
             this.materialDispatch.TabIndex = 11;
             this.materialDispatch.Text = "       Material Dispatch";
+            this.materialDispatch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.materialDispatch.UseVisualStyleBackColor = true;
             this.materialDispatch.Click += new System.EventHandler(this.MaterialDispatch_Click);
             // 
@@ -299,10 +300,10 @@
             this.ItemdispatchBtn.ForeColor = System.Drawing.Color.White;
             this.ItemdispatchBtn.Image = ((System.Drawing.Image)(resources.GetObject("ItemdispatchBtn.Image")));
             this.ItemdispatchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ItemdispatchBtn.Location = new System.Drawing.Point(8, 352);
+            this.ItemdispatchBtn.Location = new System.Drawing.Point(28, 513);
             this.ItemdispatchBtn.Name = "ItemdispatchBtn";
             this.ItemdispatchBtn.Padding = new System.Windows.Forms.Padding(10);
-            this.ItemdispatchBtn.Size = new System.Drawing.Size(202, 52);
+            this.ItemdispatchBtn.Size = new System.Drawing.Size(203, 52);
             this.ItemdispatchBtn.TabIndex = 10;
             this.ItemdispatchBtn.Text = "       Item Dispatch";
             this.ItemdispatchBtn.UseVisualStyleBackColor = true;
@@ -325,10 +326,10 @@
             this.clientsBtn.ForeColor = System.Drawing.Color.White;
             this.clientsBtn.Image = ((System.Drawing.Image)(resources.GetObject("clientsBtn.Image")));
             this.clientsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.clientsBtn.Location = new System.Drawing.Point(11, 468);
+            this.clientsBtn.Location = new System.Drawing.Point(25, 629);
             this.clientsBtn.Name = "clientsBtn";
             this.clientsBtn.Padding = new System.Windows.Forms.Padding(10);
-            this.clientsBtn.Size = new System.Drawing.Size(184, 52);
+            this.clientsBtn.Size = new System.Drawing.Size(181, 52);
             this.clientsBtn.TabIndex = 7;
             this.clientsBtn.Text = "       Clients";
             this.clientsBtn.UseVisualStyleBackColor = true;
@@ -343,10 +344,10 @@
             this.suppliersBtn.ForeColor = System.Drawing.Color.White;
             this.suppliersBtn.Image = ((System.Drawing.Image)(resources.GetObject("suppliersBtn.Image")));
             this.suppliersBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.suppliersBtn.Location = new System.Drawing.Point(12, 410);
+            this.suppliersBtn.Location = new System.Drawing.Point(22, 571);
             this.suppliersBtn.Name = "suppliersBtn";
             this.suppliersBtn.Padding = new System.Windows.Forms.Padding(10);
-            this.suppliersBtn.Size = new System.Drawing.Size(184, 52);
+            this.suppliersBtn.Size = new System.Drawing.Size(182, 52);
             this.suppliersBtn.TabIndex = 6;
             this.suppliersBtn.Text = "           Suppliers";
             this.suppliersBtn.UseVisualStyleBackColor = true;
@@ -361,7 +362,7 @@
             this.userBtn.ForeColor = System.Drawing.Color.White;
             this.userBtn.Image = ((System.Drawing.Image)(resources.GetObject("userBtn.Image")));
             this.userBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.userBtn.Location = new System.Drawing.Point(14, 526);
+            this.userBtn.Location = new System.Drawing.Point(22, 685);
             this.userBtn.Name = "userBtn";
             this.userBtn.Padding = new System.Windows.Forms.Padding(10);
             this.userBtn.Size = new System.Drawing.Size(184, 52);
@@ -379,10 +380,10 @@
             this.purchasingBtn.ForeColor = System.Drawing.Color.White;
             this.purchasingBtn.Image = ((System.Drawing.Image)(resources.GetObject("purchasingBtn.Image")));
             this.purchasingBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.purchasingBtn.Location = new System.Drawing.Point(14, 236);
+            this.purchasingBtn.Location = new System.Drawing.Point(23, 184);
             this.purchasingBtn.Name = "purchasingBtn";
             this.purchasingBtn.Padding = new System.Windows.Forms.Padding(10, 10, 0, 10);
-            this.purchasingBtn.Size = new System.Drawing.Size(194, 52);
+            this.purchasingBtn.Size = new System.Drawing.Size(173, 52);
             this.purchasingBtn.TabIndex = 4;
             this.purchasingBtn.Text = "          Purchasing";
             this.purchasingBtn.UseVisualStyleBackColor = true;
@@ -397,10 +398,10 @@
             this.recievingBtn.ForeColor = System.Drawing.Color.White;
             this.recievingBtn.Image = ((System.Drawing.Image)(resources.GetObject("recievingBtn.Image")));
             this.recievingBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.recievingBtn.Location = new System.Drawing.Point(8, 178);
+            this.recievingBtn.Location = new System.Drawing.Point(23, 242);
             this.recievingBtn.Name = "recievingBtn";
             this.recievingBtn.Padding = new System.Windows.Forms.Padding(10);
-            this.recievingBtn.Size = new System.Drawing.Size(184, 52);
+            this.recievingBtn.Size = new System.Drawing.Size(178, 52);
             this.recievingBtn.TabIndex = 3;
             this.recievingBtn.Text = "           Recieving";
             this.recievingBtn.UseVisualStyleBackColor = true;
@@ -428,10 +429,29 @@
             this.panel6.Size = new System.Drawing.Size(0, 0);
             this.panel6.TabIndex = 4;
             // 
+            // reports1
+            // 
+            this.reports1.Location = new System.Drawing.Point(212, 25);
+            this.reports1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.reports1.Name = "reports1";
+            this.reports1.Size = new System.Drawing.Size(1158, 724);
+            this.reports1.TabIndex = 17;
+            // 
+            // dash1
+            // 
+            this.dash1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.dash1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dash1.Location = new System.Drawing.Point(210, 26);
+            this.dash1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dash1.Name = "dash1";
+            this.dash1.Size = new System.Drawing.Size(1160, 720);
+            this.dash1.TabIndex = 16;
+            // 
             // rawMaterialDispatch1
             // 
             this.rawMaterialDispatch1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.rawMaterialDispatch1.Location = new System.Drawing.Point(210, 26);
+            this.rawMaterialDispatch1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rawMaterialDispatch1.Name = "rawMaterialDispatch1";
             this.rawMaterialDispatch1.Size = new System.Drawing.Size(1165, 742);
             this.rawMaterialDispatch1.TabIndex = 15;
@@ -440,6 +460,7 @@
             // 
             this.bom1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.bom1.Location = new System.Drawing.Point(210, 26);
+            this.bom1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bom1.Name = "bom1";
             this.bom1.Size = new System.Drawing.Size(1160, 723);
             this.bom1.TabIndex = 14;
@@ -449,14 +470,16 @@
             this.productionOrder1.AutoSize = true;
             this.productionOrder1.BackColor = System.Drawing.Color.White;
             this.productionOrder1.Location = new System.Drawing.Point(210, 27);
+            this.productionOrder1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.productionOrder1.Name = "productionOrder1";
-            this.productionOrder1.Size = new System.Drawing.Size(1133, 739);
+            this.productionOrder1.Size = new System.Drawing.Size(1133, 740);
             this.productionOrder1.TabIndex = 13;
             // 
             // itemDispatch1
             // 
             this.itemDispatch1.BackColor = System.Drawing.Color.White;
             this.itemDispatch1.Location = new System.Drawing.Point(210, 26);
+            this.itemDispatch1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.itemDispatch1.Name = "itemDispatch1";
             this.itemDispatch1.Size = new System.Drawing.Size(1165, 742);
             this.itemDispatch1.TabIndex = 12;
@@ -466,6 +489,7 @@
             // 
             this.recieving1.BackColor = System.Drawing.Color.White;
             this.recieving1.Location = new System.Drawing.Point(210, 26);
+            this.recieving1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.recieving1.Name = "recieving1";
             this.recieving1.Size = new System.Drawing.Size(1165, 742);
             this.recieving1.TabIndex = 11;
@@ -475,8 +499,9 @@
             this.purchasing1.AutoSize = true;
             this.purchasing1.BackColor = System.Drawing.Color.White;
             this.purchasing1.Location = new System.Drawing.Point(210, 26);
+            this.purchasing1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.purchasing1.Name = "purchasing1";
-            this.purchasing1.Size = new System.Drawing.Size(1133, 719);
+            this.purchasing1.Size = new System.Drawing.Size(1133, 720);
             this.purchasing1.TabIndex = 10;
             // 
             // stores1
@@ -492,6 +517,7 @@
             // 
             this.client1.BackColor = System.Drawing.Color.White;
             this.client1.Location = new System.Drawing.Point(210, 26);
+            this.client1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.client1.Name = "client1";
             this.client1.Size = new System.Drawing.Size(1165, 742);
             this.client1.TabIndex = 8;
@@ -500,6 +526,7 @@
             // 
             this.supplier1.BackColor = System.Drawing.Color.White;
             this.supplier1.Location = new System.Drawing.Point(210, 26);
+            this.supplier1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.supplier1.Name = "supplier1";
             this.supplier1.Size = new System.Drawing.Size(1165, 723);
             this.supplier1.TabIndex = 7;
@@ -508,25 +535,10 @@
             // 
             this.users1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.users1.Location = new System.Drawing.Point(210, 26);
+            this.users1.Margin = new System.Windows.Forms.Padding(2);
             this.users1.Name = "users1";
             this.users1.Size = new System.Drawing.Size(1165, 742);
             this.users1.TabIndex = 6;
-            // 
-            // dash1
-            // 
-            this.dash1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.dash1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dash1.Location = new System.Drawing.Point(210, 26);
-            this.dash1.Name = "dash1";
-            this.dash1.Size = new System.Drawing.Size(1160, 720);
-            this.dash1.TabIndex = 16;
-            // 
-            // reports1
-            // 
-            this.reports1.Location = new System.Drawing.Point(212, 25);
-            this.reports1.Name = "reports1";
-            this.reports1.Size = new System.Drawing.Size(1158, 724);
-            this.reports1.TabIndex = 17;
             // 
             // Dashboard
             // 

@@ -37,9 +37,13 @@ namespace rpc_working
             string email = emailTxt.Text;
             if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(id) || String.IsNullOrEmpty(contactNum) || String.IsNullOrEmpty(email))
             {
-                MessageBox.Show("One or more fields empty");
+                MessageBox.Show("One or more fields empty!");
             }
-           else if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(id) && !String.IsNullOrEmpty(contactNum) && !String.IsNullOrEmpty(email))
+            else if(contactNum.Length != 10)
+            {
+                MessageBox.Show("Invalied contact number!");
+            }
+            else if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(id) && !String.IsNullOrEmpty(contactNum) && !String.IsNullOrEmpty(email))
             {
                 try
                 {
@@ -55,10 +59,10 @@ namespace rpc_working
                     if (rowsAffected != 0)
                     {
                         MessageBox.Show("Supplier Added Successfully!");
-                        ClientNameTxt.Text="";
-                        identifierTxt.Text="";
-                        contactNumTxt.Text="";
-                        emailTxt.Text="";
+                        ClientNameTxt.Text = "";
+                        identifierTxt.Text = "";
+                        contactNumTxt.Text = "";
+                        emailTxt.Text = "";
                         populateGrid();
                     }
                     else
@@ -165,5 +169,12 @@ namespace rpc_working
 
         }
 
+        private void clear_btn_Click(object sender, EventArgs e)
+        {
+            ClientNameTxt.Text = "";
+            identifierTxt.Text = "";
+            contactNumTxt.Text = "";
+            emailTxt.Text = "";
+        }
     }
 }

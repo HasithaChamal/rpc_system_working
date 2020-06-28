@@ -52,7 +52,11 @@ namespace rpc_working
             {
                 MessageBox.Show("One or more feilds are empty!");
             }
-             else if (!String.IsNullOrEmpty(supplierName) && !String.IsNullOrEmpty(supplierCode) && !String.IsNullOrEmpty(contactNumber)  && !String.IsNullOrEmpty(email))
+            else if (contactNumber.Length != 10) 
+            {
+                MessageBox.Show("Incorrect Contact Number!");
+            }
+            else if (!String.IsNullOrEmpty(supplierName) && !String.IsNullOrEmpty(supplierCode) && !String.IsNullOrEmpty(contactNumber) && !String.IsNullOrEmpty(email))
             {
                 try
                 {
@@ -65,20 +69,20 @@ namespace rpc_working
 
                     int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
 
-                    if(rowsAffected != 0)
+                    if (rowsAffected != 0)
                     {
                         MessageBox.Show("Supplier Added Successfully!");
                         populateGrid();
-                        supplierNameTxt.Text="";
-                        supplierCodeTxt.Text="";
-                        contactNumberTxt.Text="";
-                        emailTxt.Text="";
+                        supplierNameTxt.Text = "";
+                        supplierCodeTxt.Text = "";
+                        contactNumberTxt.Text = "";
+                        emailTxt.Text = "";
                     }
                     else
                     {
                         MessageBox.Show("Error Occured! Please check if the Supplier already exists!");
                     }
-                   
+
                 }
                 catch (Exception)
                 {
@@ -399,13 +403,12 @@ namespace rpc_working
 
         private void unitPriceText_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(unitPriceText.Text, "[^0-9]"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(unitPriceText.Text, @"^[0-9]*(?:\.[0-9]*)?$"))
             {
                 MessageBox.Show("Please enter numbers only..");
                 unitPriceText.Text = unitPriceText.Text.Remove(unitPriceText.Text.Length - 1);
             }
         }
-
         private void leadTime_txt_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(leadTime_txt.Text, "[^0-9]"))
@@ -413,6 +416,37 @@ namespace rpc_working
                 MessageBox.Show("Please enter numbers only..");
                 leadTime_txt.Text = leadTime_txt.Text.Remove(leadTime_txt.Text.Length - 1);
             }
+        }
+
+        private void clear_btn_Click(object sender, EventArgs e)
+        {
+            supplierNameTxt.Text = "";
+            supplierCodeTxt.Text = "";
+            contactNumberTxt.Text = "";
+            emailTxt.Text = "";
+        }
+
+        private void itemIdTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (DatabaseHandler.returnRowCountWithoutParams("SELECT * FROM raw_material where material_id='" + itemIdTxt.Text + "'") != 0)
+            {
+                String matrialName;
+                matrialName = DatabaseHandler.returnOneValueWithoutParams("SELECT name FROM raw_material WHERE material_id='" + itemIdTxt.Text + "'", "name").ToString();
+                itemNameTxt.Text = matrialName;
+                itemNameTxt.Enabled = false;
+                addNewMaterial_btn.Enabled = false;
+                addItemBtn.Enabled = true;
+
+
+            }
+            else
+            {
+                itemNameTxt.Enabled = true;
+                addNewMaterial_btn.Enabled = true;
+                addItemBtn.Enabled = false;
+                itemNameTxt.Text = "";
+            }
+
         }
     }
 }

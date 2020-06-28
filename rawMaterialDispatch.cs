@@ -46,6 +46,7 @@ namespace rpc_working
             {
                 approveBtn.Enabled = false;
                 declineBtn.Enabled = false;
+                remove_btn.Enabled = false;
             }
             setReqNum();
             populateDataGrid();
