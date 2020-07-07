@@ -12,7 +12,7 @@
   <xs:element name="purchaseOrderRptData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="purchaseOrderRptData" msprop:Generator_UserDSName="purchaseOrderRptData">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="materialtbl" msprop:Generator_TableClassName="materialtblDataTable" msprop:Generator_TableVarName="tablematerialtbl" msprop:Generator_TablePropName="materialtbl" msprop:Generator_RowDeletingName="materialtblRowDeleting" msprop:Generator_RowChangingName="materialtblRowChanging" msprop:Generator_RowEvHandlerName="materialtblRowChangeEventHandler" msprop:Generator_RowDeletedName="materialtblRowDeleted" msprop:Generator_UserTableName="materialtbl" msprop:Generator_RowChangedName="materialtblRowChanged" msprop:Generator_RowEvArgName="materialtblRowChangeEvent" msprop:Generator_RowClassName="materialtblRow">
+        <xs:element name="materialtbl" msprop:Generator_TableClassName="materialtblDataTable" msprop:Generator_TableVarName="tablematerialtbl" msprop:Generator_RowChangedName="materialtblRowChanged" msprop:Generator_TablePropName="materialtbl" msprop:Generator_RowDeletingName="materialtblRowDeleting" msprop:Generator_RowChangingName="materialtblRowChanging" msprop:Generator_RowEvHandlerName="materialtblRowChangeEventHandler" msprop:Generator_RowDeletedName="materialtblRowDeleted" msprop:Generator_RowClassName="materialtblRow" msprop:Generator_UserTableName="materialtbl" msprop:Generator_RowEvArgName="materialtblRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="po_id" msprop:Generator_ColumnVarNameInTable="columnpo_id" msprop:Generator_ColumnPropNameInRow="po_id" msprop:Generator_ColumnPropNameInTable="po_idColumn" msprop:Generator_UserColumnName="po_id" type="xs:string" minOccurs="0" />
@@ -21,6 +21,15 @@
               <xs:element name="material_id" msprop:Generator_ColumnVarNameInTable="columnmaterial_id" msprop:Generator_ColumnPropNameInRow="material_id" msprop:Generator_ColumnPropNameInTable="material_idColumn" msprop:Generator_UserColumnName="material_id" type="xs:string" minOccurs="0" />
               <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="materialsumtbl" msprop:Generator_TableClassName="materialsumtblDataTable" msprop:Generator_TableVarName="tablematerialsumtbl" msprop:Generator_TablePropName="materialsumtbl" msprop:Generator_RowDeletingName="materialsumtblRowDeleting" msprop:Generator_RowChangingName="materialsumtblRowChanging" msprop:Generator_RowEvHandlerName="materialsumtblRowChangeEventHandler" msprop:Generator_RowDeletedName="materialsumtblRowDeleted" msprop:Generator_UserTableName="materialsumtbl" msprop:Generator_RowChangedName="materialsumtblRowChanged" msprop:Generator_RowEvArgName="materialsumtblRowChangeEvent" msprop:Generator_RowClassName="materialsumtblRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="material_id" msprop:Generator_ColumnVarNameInTable="columnmaterial_id" msprop:Generator_ColumnPropNameInRow="material_id" msprop:Generator_ColumnPropNameInTable="material_idColumn" msprop:Generator_UserColumnName="material_id" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

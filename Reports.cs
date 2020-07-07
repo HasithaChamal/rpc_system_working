@@ -15,6 +15,7 @@ namespace rpc_working
         public static string startDate;
         public static string endDate;
         public static bool sortbysupclient;
+        public static bool summarize;
         public static string supclientval;
         public Reports()
         {
@@ -24,7 +25,7 @@ namespace rpc_working
         private void generate_btn_Click(object sender, EventArgs e)
         {
             sortbysupclient = sort_supp_client_checkbx.Checked;
-
+            summarize = summarize_checkbox.Checked;
 
             startDate = from_calander.SelectionRange.Start.ToString("yyyy/MM/dd");
             endDate = to_calander.SelectionRange.Start.ToString("yyyy/MM/dd");
@@ -125,6 +126,10 @@ namespace rpc_working
             from_calander.MaxDate = DateTime.Today;
             to_calander.MaxDate = DateTime.Today.AddDays(1);
             supplierClientcmb.Enabled = false;
+            sort_supp_client_checkbx.Checked = false;
+            sort_supp_client_checkbx.Enabled = false;
+            summarize_checkbox.Checked = false;
+            summarize_checkbox.Enabled = false;
         }
 
         private void rpt_typ_cmb_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,6 +138,10 @@ namespace rpc_working
             {
                 from_calander.Enabled = false;
                 to_calander.Enabled = false;
+                sort_supp_client_checkbx.Checked = false;
+                sort_supp_client_checkbx.Enabled = false;
+                summarize_checkbox.Checked = false;
+                summarize_checkbox.Enabled = false;
             }
             else 
             {
@@ -143,6 +152,7 @@ namespace rpc_working
             {
                 supplierClientcmb.Enabled = true;
                 sort_supp_client_checkbx.Enabled = true;
+                summarize_checkbox.Enabled = true;
                 sort_supp_client_checkbx.Checked = true;
                 string selectStatement = "SELECT client_id as 'Client Id', name as 'Client Name' FROM client";
                 DatabaseHandler.populateDispatchCombobox(selectStatement, supplierClientcmb);
@@ -152,16 +162,27 @@ namespace rpc_working
                 supplierClientcmb.Enabled = true;
                 sort_supp_client_checkbx.Enabled = true;
                 sort_supp_client_checkbx.Checked = true;
+                summarize_checkbox.Enabled = true;
                 string selectStatement = "SELECT supplier_id as 'Supplier Code', name as 'Supplier' FROM SUPPLIER";
                 DatabaseHandler.populateCombobox(selectStatement, supplierClientcmb);
             }
-            else 
+            else if(rpt_typ_cmb.SelectedIndex == 2)
             {
                 supplierClientcmb.DataSource = null;
                 supplierClientcmb.Items.Clear();
                 supplierClientcmb.Enabled = false;
                 sort_supp_client_checkbx.Checked = false;
                 sort_supp_client_checkbx.Enabled = false;
+                summarize_checkbox.Enabled = true;
+            }
+            else if (rpt_typ_cmb.SelectedIndex == 0)
+            {
+                supplierClientcmb.DataSource = null;
+                supplierClientcmb.Items.Clear();
+                supplierClientcmb.Enabled = false;
+                sort_supp_client_checkbx.Checked = false;
+                sort_supp_client_checkbx.Enabled = false;
+                summarize_checkbox.Enabled = true;
             }
         }
 

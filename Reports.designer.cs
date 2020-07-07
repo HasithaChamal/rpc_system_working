@@ -45,6 +45,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.supplierClientcmb = new System.Windows.Forms.ComboBox();
             this.sort_supp_client_checkbx = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.summarize_checkbox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 281);
+            this.label2.Location = new System.Drawing.Point(56, 369);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 22);
             this.label2.TabIndex = 1;
@@ -106,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(558, 281);
+            this.label4.Location = new System.Drawing.Point(558, 369);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 5;
@@ -123,7 +125,7 @@
             // reset_btn
             // 
             this.reset_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reset_btn.Location = new System.Drawing.Point(697, 572);
+            this.reset_btn.Location = new System.Drawing.Point(697, 677);
             this.reset_btn.Name = "reset_btn";
             this.reset_btn.Size = new System.Drawing.Size(89, 34);
             this.reset_btn.TabIndex = 9;
@@ -134,7 +136,7 @@
             // generate_btn
             // 
             this.generate_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.generate_btn.Location = new System.Drawing.Point(238, 572);
+            this.generate_btn.Location = new System.Drawing.Point(238, 677);
             this.generate_btn.Name = "generate_btn";
             this.generate_btn.Size = new System.Drawing.Size(137, 34);
             this.generate_btn.TabIndex = 10;
@@ -158,7 +160,7 @@
             this.groupBox1.Controls.Add(this.from_calander);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.to_calander);
-            this.groupBox1.Location = new System.Drawing.Point(220, 236);
+            this.groupBox1.Location = new System.Drawing.Point(220, 324);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(677, 237);
             this.groupBox1.TabIndex = 12;
@@ -204,10 +206,31 @@
             this.sort_supp_client_checkbx.UseVisualStyleBackColor = true;
             this.sort_supp_client_checkbx.CheckedChanged += new System.EventHandler(this.sort_supp_client_checkbx_CheckedChanged);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(56, 231);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(162, 22);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Summarized View :";
+            // 
+            // summarize_checkbox
+            // 
+            this.summarize_checkbox.AutoSize = true;
+            this.summarize_checkbox.Location = new System.Drawing.Point(257, 239);
+            this.summarize_checkbox.Name = "summarize_checkbox";
+            this.summarize_checkbox.Size = new System.Drawing.Size(15, 14);
+            this.summarize_checkbox.TabIndex = 17;
+            this.summarize_checkbox.UseVisualStyleBackColor = true;
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.summarize_checkbox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.sort_supp_client_checkbx);
             this.Controls.Add(this.supplierClientcmb);
             this.Controls.Add(this.label5);
@@ -248,5 +271,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox supplierClientcmb;
         private System.Windows.Forms.CheckBox sort_supp_client_checkbx;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox summarize_checkbox;
     }
 }

@@ -123,13 +123,56 @@ namespace rpc_working.CrystalReportsViewer
             }
             Console.WriteLine("item tbl rows" + itemtbl.Rows.Count);
 
-            CrystalReports.ProductionReport productionrpt = new CrystalReports.ProductionReport();
+            int noOfRows3 = itemtbl.Rows.Count;
+            DataTable itemsumtbl = new DataTable();
+            itemsumtbl.Columns.Add("item_id");
+            itemsumtbl.Columns.Add("name");
+            itemsumtbl.Columns.Add("qty");
+            int noOfRows4 = 0;
+            for (int i = 0; i < noOfRows3; i++)
+            {
+                noOfRows4 = itemsumtbl.Rows.Count;
+                int count = 0;
+                for (int j = 0; j < noOfRows4; j++)
+                {
+                    if (itemtbl.Rows[i][2].ToString() == itemsumtbl.Rows[j][0].ToString())
+                    {
+                        itemsumtbl.Rows[j][2] = Convert.ToDouble(itemtbl.Rows[i][3].ToString()) + Convert.ToDouble(itemsumtbl.Rows[j][2].ToString());
+                        count++;
+                    }
+                }
+                if (count == 0)
+                {
+                    DataRow rw = itemsumtbl.NewRow();
+                    rw["item_id"] = itemtbl.Rows[i][2];
+                    rw["name"] = itemtbl.Rows[i][4];
+                    rw["qty"] = itemtbl.Rows[i][3];
+                    itemsumtbl.Rows.Add(rw);
+                }
+            }
 
-            productionrpt.Database.Tables["itemtbl"].SetDataSource(itemtbl);
+            if (Reports.summarize == true)
+            {
+                CrystalReports.ProductionSummarizedReport productionsumrpt = new CrystalReports.ProductionSummarizedReport();
+
+                productionsumrpt.Database.Tables["itemsumtbl"].SetDataSource(itemsumtbl);
+                productionrptViwer.ReportSource = null;
+                productionrptViwer.ReportSource = productionsumrpt;
+
+            }
+            else
+            {
+                CrystalReports.ProductionReport productionrpt = new CrystalReports.ProductionReport();
+
+                productionrpt.Database.Tables["itemtbl"].SetDataSource(itemtbl);
 
 
-            productionrptViwer.ReportSource = null;
-            productionrptViwer.ReportSource = productionrpt; 
+                productionrptViwer.ReportSource = null;
+                productionrptViwer.ReportSource = productionrpt;
+
+            }
+
+           
 
         }
     }

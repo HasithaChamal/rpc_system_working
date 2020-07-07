@@ -131,14 +131,52 @@ namespace rpc_working.CrystalReportsViewer
                 itemtbl.Rows.Add(rw);
             }
             Console.WriteLine("item tbl rows"+itemtbl.Rows.Count);
+            int noOfRows3 = itemtbl.Rows.Count;
 
-           CrystalReports.itemOrderReport itemrpt = new CrystalReports.itemOrderReport();
-         
-            itemrpt.Database.Tables["itemtbl"].SetDataSource(itemtbl);
+            DataTable itemsumtbl = new DataTable();
+            itemsumtbl.Columns.Add("item_id");
+            itemsumtbl.Columns.Add("name");
+            itemsumtbl.Columns.Add("qty");
+            int noOfRows4= 0;
+            for (int i=0; i<noOfRows3; i++) 
+            { 
+                noOfRows4 = itemsumtbl.Rows.Count;
+                int count = 0;
+                for (int j=0; j<noOfRows4; j++) 
+                {  
+                    if (itemtbl.Rows[i][3].ToString() == itemsumtbl.Rows[j][0].ToString())
+                    {
+                        itemsumtbl.Rows[j][2] = Convert.ToInt32(itemtbl.Rows[i][4].ToString()) + Convert.ToInt32(itemsumtbl.Rows[j][2].ToString());
+                        count++;
+                    }
+                }
+                if (count == 0)
+                {
+                    DataRow rw = itemsumtbl.NewRow();
+                    rw["item_id"] = itemtbl.Rows[i][3];
+                    rw["qty"] = itemtbl.Rows[i][4];
+                    rw["name"] = itemtbl.Rows[i][5];
+                    itemsumtbl.Rows.Add(rw);
+                }
+            }
 
+            if (Reports.summarize == true)
+            {
+                CrystalReports.itemOrderSummarizedReport itemsumrpt = new CrystalReports.itemOrderSummarizedReport();
 
-            itemOrderrptViewer.ReportSource = null;
-            itemOrderrptViewer.ReportSource = itemrpt;
+                itemsumrpt.Database.Tables["itemsumtbl"].SetDataSource(itemsumtbl);
+                itemOrderrptViewer.ReportSource = null;
+                itemOrderrptViewer.ReportSource = itemsumrpt;
+
+            }
+            else
+            {
+                CrystalReports.itemOrderReport itemrpt = new CrystalReports.itemOrderReport();
+
+                itemrpt.Database.Tables["itemtbl"].SetDataSource(itemtbl);
+                itemOrderrptViewer.ReportSource = null;
+                itemOrderrptViewer.ReportSource = itemrpt;
+            }
 
         }
     }

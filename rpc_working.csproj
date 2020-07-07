@@ -101,6 +101,12 @@
     <Compile Include="CrystalReportsViewer\itemOrderReportViewer.Designer.cs">
       <DependentUpon>itemOrderReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReports\itemOrderSummarizedReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>itemOrderSummarizedReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrystalReportsViewer\MaterialStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,18 @@
       <DependentUpon>BOMReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CrystalReports\materialUseageSummarizedReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>materialUseageSummarizedReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\ProductionSummarizedReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionSummarizedReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrystalReports\productStockReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +195,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseOrderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReports\purchaseOrderSummarizedReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>purchaseOrderSummarizedReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReports\purchaseOrder_rpt.cs">
@@ -226,6 +250,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MaterialuseageData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dataset\productionOrder.cs">
+      <DependentUpon>productionOrder.xsd</DependentUpon>
     </Compile>
     <Compile Include="dataset\productionOrder.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -335,6 +362,10 @@
     <EmbeddedResource Include="CrystalReportsViewer\itemOrderReportViewer.resx">
       <DependentUpon>itemOrderReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\itemOrderSummarizedReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>itemOrderSummarizedReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReportsViewer\MaterialStock.resx">
       <DependentUpon>MaterialStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -356,6 +387,14 @@
     <EmbeddedResource Include="CrystalReports\BOMReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BOMReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\materialUseageSummarizedReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>materialUseageSummarizedReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\ProductionSummarizedReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionSummarizedReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\productStockReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -380,6 +419,10 @@
     <EmbeddedResource Include="CrystalReports\PurchaseOrderReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchaseOrderReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReports\purchaseOrderSummarizedReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>purchaseOrderSummarizedReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\purchaseOrder_rpt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

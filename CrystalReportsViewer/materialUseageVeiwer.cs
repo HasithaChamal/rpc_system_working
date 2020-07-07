@@ -122,13 +122,54 @@ namespace rpc_working.CrystalReportsViewer
             }
             Console.WriteLine("material tbl rows" + materialtbl.Rows.Count);
 
+            int noOfRows3 = materialtbl.Rows.Count;
+            DataTable materialsumtbl = new DataTable();
+            materialsumtbl.Columns.Add("material_id");
+            materialsumtbl.Columns.Add("name");
+            materialsumtbl.Columns.Add("qty");
+            int noOfRows4 = 0;
+            for (int i = 0; i < noOfRows3; i++)
+            {
+                noOfRows4 = materialsumtbl.Rows.Count;
+                int count = 0;
+                for (int j = 0; j < noOfRows4; j++)
+                {
+                    if (materialtbl.Rows[i][3].ToString() == materialsumtbl.Rows[j][0].ToString())
+                    {
+                        materialsumtbl.Rows[j][2] = Convert.ToDouble(materialtbl.Rows[i][4].ToString()) + Convert.ToDouble(materialsumtbl.Rows[j][2].ToString());
+                        count++;
+                    }
+                }
+                if (count == 0)
+                {
+                    DataRow rw = materialsumtbl.NewRow();
+                    rw["material_id"] = materialtbl.Rows[i][3];
+                    rw["qty"] = materialtbl.Rows[i][4];
+                    rw["name"] = materialtbl.Rows[i][5];
+                    materialsumtbl.Rows.Add(rw);
+                }
+            }
 
-            CrystalReports.MaterialUseage materialrpt = new CrystalReports.MaterialUseage();
-            materialrpt.Database.Tables["materialtbl"].SetDataSource(materialtbl);
-          
+            if (Reports.summarize == true)
+            {
+                CrystalReports.materialUseageSummarizedReport materialsumrpt = new CrystalReports.materialUseageSummarizedReport();
 
-            materialUseagerptviewer.ReportSource = null;
-            materialUseagerptviewer.ReportSource = materialrpt;
+                materialsumrpt.Database.Tables["materialsumtbl"].SetDataSource(materialsumtbl);
+                materialUseagerptviewer.ReportSource = null;
+                materialUseagerptviewer.ReportSource = materialsumrpt;
+
+            }
+            else
+            {
+                CrystalReports.MaterialUseage materialrpt = new CrystalReports.MaterialUseage();
+                materialrpt.Database.Tables["materialtbl"].SetDataSource(materialtbl);
+
+
+                materialUseagerptviewer.ReportSource = null;
+                materialUseagerptviewer.ReportSource = materialrpt;
+
+            }
+
 
 
         }

@@ -23,6 +23,15 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="itemsumtbl" msprop:Generator_TableClassName="itemsumtblDataTable" msprop:Generator_TableVarName="tableitemsumtbl" msprop:Generator_RowChangedName="itemsumtblRowChanged" msprop:Generator_TablePropName="itemsumtbl" msprop:Generator_RowDeletingName="itemsumtblRowDeleting" msprop:Generator_RowChangingName="itemsumtblRowChanging" msprop:Generator_RowEvHandlerName="itemsumtblRowChangeEventHandler" msprop:Generator_RowDeletedName="itemsumtblRowDeleted" msprop:Generator_RowClassName="itemsumtblRow" msprop:Generator_UserTableName="itemsumtbl" msprop:Generator_RowEvArgName="itemsumtblRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item_id" msprop:Generator_ColumnVarNameInTable="columnitem_id" msprop:Generator_ColumnPropNameInRow="item_id" msprop:Generator_ColumnPropNameInTable="item_idColumn" msprop:Generator_UserColumnName="item_id" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
