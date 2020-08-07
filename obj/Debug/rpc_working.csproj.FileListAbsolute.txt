@@ -61,3 +61,15 @@ D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.Cry
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.ItemOrderDeclineInfo.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.MaterialStock.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.ProductStock.resources
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\CrystalReports\itemOrderSummarizedReport.rpt
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\CrystalReports\itemOrderReport.rpt
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\CrystalReports\itemOrderSummarizedReport.cs
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\CrystalReports\itemOrderReport.cs
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ClosedXML.dll
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ExcelNumberFormat.dll
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\System.IO.Packaging.dll
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ClosedXML.pdb
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ClosedXML.xml
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ExcelNumberFormat.xml

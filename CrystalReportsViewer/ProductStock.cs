@@ -12,8 +12,11 @@ using CrystalDecisions.Shared;
 
 namespace rpc_working.CrystalReportsViewer
 {
+
     public partial class ProductStock : Form
     {
+        DataTable stocktbl = new DataTable();
+
         public ProductStock()
         {
             InitializeComponent();
@@ -22,7 +25,7 @@ namespace rpc_working.CrystalReportsViewer
         private void ProductStock_Load(object sender, EventArgs e)
         {
 
-            DataTable stocktbl = new DataTable();
+            
             stocktbl.Columns.Add("item_id");
             stocktbl.Columns.Add("name");
             stocktbl.Columns.Add("qty");
@@ -62,6 +65,11 @@ namespace rpc_working.CrystalReportsViewer
             {
                 MessageBox.Show("Error Occured! Please check input details!");
             }
+        }
+
+        private void export_btn_Click(object sender, EventArgs e)
+        {
+            stocktbl.ExportToExcel();
         }
     }
 }

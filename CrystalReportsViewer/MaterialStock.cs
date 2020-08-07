@@ -14,6 +14,7 @@ namespace rpc_working.CrystalReportsViewer
 {
     public partial class MaterialStock : Form
     {
+        DataTable stocktbl = new DataTable();
         public MaterialStock()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace rpc_working.CrystalReportsViewer
         {
 
             
-            DataTable stocktbl = new DataTable();
+            
             stocktbl.Columns.Add("material_id");
             stocktbl.Columns.Add("name");
             stocktbl.Columns.Add("qty");
@@ -62,6 +63,11 @@ namespace rpc_working.CrystalReportsViewer
             {
                 MessageBox.Show("Error Occured! Please check input details!");
             }
+        }
+
+        private void export_btn_Click(object sender, EventArgs e)
+        {
+            stocktbl.ExportToExcel();
         }
     }
 }

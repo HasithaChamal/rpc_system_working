@@ -14,6 +14,9 @@ namespace rpc_working.CrystalReportsViewer
 {
     public partial class materialUseageVeiwer : Form
     {
+        DataTable materialsumtbl = new DataTable();
+        DataTable materialtbl = new DataTable();
+
         public materialUseageVeiwer()
         {
             InitializeComponent();
@@ -43,7 +46,7 @@ namespace rpc_working.CrystalReportsViewer
 
 
             //create data table 
-            DataTable materialtbl = new DataTable();
+            
             DataTable idtbl = new DataTable();
             DataTable materialtblTemp = new DataTable();
             materialtbl.Columns.Add("id");
@@ -123,7 +126,7 @@ namespace rpc_working.CrystalReportsViewer
             Console.WriteLine("material tbl rows" + materialtbl.Rows.Count);
 
             int noOfRows3 = materialtbl.Rows.Count;
-            DataTable materialsumtbl = new DataTable();
+            
             materialsumtbl.Columns.Add("material_id");
             materialsumtbl.Columns.Add("name");
             materialsumtbl.Columns.Add("qty");
@@ -172,6 +175,18 @@ namespace rpc_working.CrystalReportsViewer
 
 
 
+        }
+
+        private void export_btn_Click(object sender, EventArgs e)
+        {
+            if (Reports.summarize == true)
+            {
+                materialsumtbl.ExportToExcel();
+            }
+            else
+            {
+                materialtbl.ExportToExcel();
+            }
         }
     }
 }

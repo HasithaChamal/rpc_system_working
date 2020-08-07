@@ -133,7 +133,7 @@
             this.logoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutBtn.ForeColor = System.Drawing.Color.White;
             this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logoutBtn.Location = new System.Drawing.Point(3, 1);
+            this.logoutBtn.Location = new System.Drawing.Point(1, 3);
             this.logoutBtn.Name = "logoutBtn";
             this.logoutBtn.Size = new System.Drawing.Size(140, 26);
             this.logoutBtn.TabIndex = 8;
@@ -150,9 +150,9 @@
             this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExitBtn.ForeColor = System.Drawing.Color.White;
             this.ExitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ExitBtn.Location = new System.Drawing.Point(1075, 1);
+            this.ExitBtn.Location = new System.Drawing.Point(1062, 4);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(85, 24);
+            this.ExitBtn.Size = new System.Drawing.Size(97, 24);
             this.ExitBtn.TabIndex = 9;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = false;
@@ -431,7 +431,7 @@
             // 
             // reports1
             // 
-            this.reports1.Location = new System.Drawing.Point(212, 25);
+            this.reports1.Location = new System.Drawing.Point(210, 32);
             this.reports1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.reports1.Name = "reports1";
             this.reports1.Size = new System.Drawing.Size(1158, 724);
@@ -440,8 +440,10 @@
             // dash1
             // 
             this.dash1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.dash1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.dash1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dash1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dash1.Location = new System.Drawing.Point(210, 26);
+            this.dash1.Location = new System.Drawing.Point(210, 30);
             this.dash1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dash1.Name = "dash1";
             this.dash1.Size = new System.Drawing.Size(1160, 720);
@@ -450,7 +452,7 @@
             // rawMaterialDispatch1
             // 
             this.rawMaterialDispatch1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.rawMaterialDispatch1.Location = new System.Drawing.Point(210, 26);
+            this.rawMaterialDispatch1.Location = new System.Drawing.Point(210, 30);
             this.rawMaterialDispatch1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rawMaterialDispatch1.Name = "rawMaterialDispatch1";
             this.rawMaterialDispatch1.Size = new System.Drawing.Size(1165, 742);
@@ -459,7 +461,7 @@
             // bom1
             // 
             this.bom1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bom1.Location = new System.Drawing.Point(210, 26);
+            this.bom1.Location = new System.Drawing.Point(210, 30);
             this.bom1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bom1.Name = "bom1";
             this.bom1.Size = new System.Drawing.Size(1160, 723);
@@ -469,7 +471,7 @@
             // 
             this.productionOrder1.AutoSize = true;
             this.productionOrder1.BackColor = System.Drawing.Color.White;
-            this.productionOrder1.Location = new System.Drawing.Point(210, 27);
+            this.productionOrder1.Location = new System.Drawing.Point(210, 30);
             this.productionOrder1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.productionOrder1.Name = "productionOrder1";
             this.productionOrder1.Size = new System.Drawing.Size(1133, 740);
@@ -478,7 +480,7 @@
             // itemDispatch1
             // 
             this.itemDispatch1.BackColor = System.Drawing.Color.White;
-            this.itemDispatch1.Location = new System.Drawing.Point(210, 26);
+            this.itemDispatch1.Location = new System.Drawing.Point(210, 30);
             this.itemDispatch1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.itemDispatch1.Name = "itemDispatch1";
             this.itemDispatch1.Size = new System.Drawing.Size(1165, 742);
@@ -488,7 +490,7 @@
             // recieving1
             // 
             this.recieving1.BackColor = System.Drawing.Color.White;
-            this.recieving1.Location = new System.Drawing.Point(210, 26);
+            this.recieving1.Location = new System.Drawing.Point(210, 30);
             this.recieving1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.recieving1.Name = "recieving1";
             this.recieving1.Size = new System.Drawing.Size(1165, 742);
@@ -498,17 +500,17 @@
             // 
             this.purchasing1.AutoSize = true;
             this.purchasing1.BackColor = System.Drawing.Color.White;
-            this.purchasing1.Location = new System.Drawing.Point(210, 26);
+            this.purchasing1.Location = new System.Drawing.Point(211, 32);
             this.purchasing1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.purchasing1.Name = "purchasing1";
-            this.purchasing1.Size = new System.Drawing.Size(1133, 720);
+            this.purchasing1.Size = new System.Drawing.Size(1159, 720);
             this.purchasing1.TabIndex = 10;
             // 
             // stores1
             // 
             this.stores1.BackColor = System.Drawing.Color.White;
             this.stores1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stores1.Location = new System.Drawing.Point(210, 26);
+            this.stores1.Location = new System.Drawing.Point(211, 33);
             this.stores1.Name = "stores1";
             this.stores1.Size = new System.Drawing.Size(1165, 742);
             this.stores1.TabIndex = 9;
@@ -516,7 +518,7 @@
             // client1
             // 
             this.client1.BackColor = System.Drawing.Color.White;
-            this.client1.Location = new System.Drawing.Point(210, 26);
+            this.client1.Location = new System.Drawing.Point(212, 33);
             this.client1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.client1.Name = "client1";
             this.client1.Size = new System.Drawing.Size(1165, 742);
@@ -525,7 +527,7 @@
             // supplier1
             // 
             this.supplier1.BackColor = System.Drawing.Color.White;
-            this.supplier1.Location = new System.Drawing.Point(210, 26);
+            this.supplier1.Location = new System.Drawing.Point(211, 34);
             this.supplier1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.supplier1.Name = "supplier1";
             this.supplier1.Size = new System.Drawing.Size(1165, 723);
@@ -534,7 +536,7 @@
             // users1
             // 
             this.users1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.users1.Location = new System.Drawing.Point(210, 26);
+            this.users1.Location = new System.Drawing.Point(211, 34);
             this.users1.Margin = new System.Windows.Forms.Padding(2);
             this.users1.Name = "users1";
             this.users1.Size = new System.Drawing.Size(1165, 742);
@@ -548,9 +550,9 @@
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.reports1);
             this.Controls.Add(this.dash1);
+            this.Controls.Add(this.productionOrder1);
             this.Controls.Add(this.rawMaterialDispatch1);
             this.Controls.Add(this.bom1);
-            this.Controls.Add(this.productionOrder1);
             this.Controls.Add(this.itemDispatch1);
             this.Controls.Add(this.recieving1);
             this.Controls.Add(this.purchasing1);

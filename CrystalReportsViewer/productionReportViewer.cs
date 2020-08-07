@@ -13,6 +13,9 @@ namespace rpc_working.CrystalReportsViewer
 {
     public partial class productionReportViewer : Form
     {
+        DataTable itemsumtbl = new DataTable();
+        DataTable itemtbl = new DataTable();
+
         public productionReportViewer()
         {
             InitializeComponent();
@@ -46,7 +49,7 @@ namespace rpc_working.CrystalReportsViewer
 
             //create data table 
             DataTable itemtblTemp = new DataTable();
-            DataTable itemtbl = new DataTable();
+            
             DataTable idtbl = new DataTable();
             itemtbl.Columns.Add("pro_id");
             itemtbl.Columns.Add("creation_time");
@@ -124,7 +127,7 @@ namespace rpc_working.CrystalReportsViewer
             Console.WriteLine("item tbl rows" + itemtbl.Rows.Count);
 
             int noOfRows3 = itemtbl.Rows.Count;
-            DataTable itemsumtbl = new DataTable();
+            
             itemsumtbl.Columns.Add("item_id");
             itemsumtbl.Columns.Add("name");
             itemsumtbl.Columns.Add("qty");
@@ -174,6 +177,18 @@ namespace rpc_working.CrystalReportsViewer
 
            
 
+        }
+
+        private void export_btn_Click(object sender, EventArgs e)
+        {
+            if (Reports.summarize == true)
+            {
+                itemsumtbl.ExportToExcel();
+            }
+            else
+            {
+                itemtbl.ExportToExcel();
+            }
         }
     }
 }

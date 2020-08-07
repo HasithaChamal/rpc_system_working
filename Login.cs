@@ -66,5 +66,10 @@ namespace rpc_working
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

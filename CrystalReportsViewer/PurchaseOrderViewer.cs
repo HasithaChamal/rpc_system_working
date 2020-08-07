@@ -14,6 +14,8 @@ namespace rpc_working.CrystalReportsViewer
 {
     public partial class PurchaseOrderViewer : Form
     {
+        DataTable materialsumtbl = new DataTable();
+        DataTable materialtbl = new DataTable();
         public PurchaseOrderViewer()
         {
             InitializeComponent();
@@ -43,7 +45,7 @@ namespace rpc_working.CrystalReportsViewer
 
 
             //create data table 
-            DataTable materialtbl = new DataTable();
+           
             DataTable idtbl = new DataTable();
             DataTable materialtblTemp = new DataTable();
      
@@ -53,6 +55,7 @@ namespace rpc_working.CrystalReportsViewer
             materialtbl.Columns.Add("material_id");
             materialtbl.Columns.Add("qty");
             materialtbl.Columns.Add("name");
+            materialtbl.Columns.Add("recieved");
 
             //create po id table
             try
@@ -60,11 +63,11 @@ namespace rpc_working.CrystalReportsViewer
                 String query;
                 if (Reports.sortbysupclient == false)
                 {
-                    query = "SELECT po_id, creation_time, supplier_id  FROM purchaseorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
+                    query = "SELECT po_id, creation_time, supplier_id, recieved  FROM purchaseorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
                 }
                 else 
                 {
-                    query = "SELECT po_id, creation_time, supplier_id  FROM purchaseorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  AND supplier_id='" + Reports.supclientval + "' ";
+                    query = "SELECT po_id, creation_time, supplier_id, recieved  FROM purchaseorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  AND supplier_id='" + Reports.supclientval + "' ";
                 }
                 var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
                 var commandBuilder = new MySqlCommandBuilder(dataAdapter);
@@ -118,12 +121,14 @@ namespace rpc_working.CrystalReportsViewer
                 rw["material_id"] = materialtblTemp.Rows[i][1];
                 rw["qty"] = materialtblTemp.Rows[i][2];
                 rw["name"] = materialtblTemp.Rows[i][3];
+
                 for (int j = 0; j < noOfRows; j++)
                 {
                     if (materialtblTemp.Rows[i][0].ToString() == idtbl.Rows[j][0].ToString())
                     {
                         rw["supplier_id"] = idtbl.Rows[j][2];
                         rw["creation_time"] = idtbl.Rows[j][1];
+                        rw["recieved"] = idtbl.Rows[j][3];
                     }
 
                 }
@@ -131,7 +136,7 @@ namespace rpc_working.CrystalReportsViewer
             }
 
             int noOfRows3 = materialtbl.Rows.Count;
-            DataTable materialsumtbl = new DataTable();
+            
             materialsumtbl.Columns.Add("material_id");
             materialsumtbl.Columns.Add("name");
             materialsumtbl.Columns.Add("qty");
@@ -177,6 +182,19 @@ namespace rpc_working.CrystalReportsViewer
                 porptviewer.ReportSource = po_order_rpt;
             }
 
+
+        }
+
+        private void export_btn_Click(object sender, EventArgs e)
+        {
+            if (Reports.summarize == true)
+            {
+                materialsumtbl.ExportToExcel();
+            }
+            else
+            {
+                materialtbl.ExportToExcel();
+            }
 
         }
     }

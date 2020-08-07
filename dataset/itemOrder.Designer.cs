@@ -960,6 +960,10 @@ namespace rpc_working.dataset {
             
             private global::System.Data.DataColumn columnname;
             
+            private global::System.Data.DataColumn columnreleased;
+            
+            private global::System.Data.DataColumn columnlatest_delivery_time;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public itemtblDataTable() {
@@ -1043,6 +1047,22 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn releasedColumn {
+                get {
+                    return this.columnreleased;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn latest_delivery_timeColumn {
+                get {
+                    return this.columnlatest_delivery_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1078,7 +1098,7 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public itemtblRow AdditemtblRow(string io_id, string client_id, string creation_time, string item_id, string qty, string name) {
+            public itemtblRow AdditemtblRow(string io_id, string client_id, string creation_time, string item_id, string qty, string name, string released, string latest_delivery_time) {
                 itemtblRow rowitemtblRow = ((itemtblRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         io_id,
@@ -1086,7 +1106,9 @@ namespace rpc_working.dataset {
                         creation_time,
                         item_id,
                         qty,
-                        name};
+                        name,
+                        released,
+                        latest_delivery_time};
                 rowitemtblRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowitemtblRow);
                 return rowitemtblRow;
@@ -1115,6 +1137,8 @@ namespace rpc_working.dataset {
                 this.columnitem_id = base.Columns["item_id"];
                 this.columnqty = base.Columns["qty"];
                 this.columnname = base.Columns["name"];
+                this.columnreleased = base.Columns["released"];
+                this.columnlatest_delivery_time = base.Columns["latest_delivery_time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1132,6 +1156,10 @@ namespace rpc_working.dataset {
                 base.Columns.Add(this.columnqty);
                 this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnname);
+                this.columnreleased = new global::System.Data.DataColumn("released", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreleased);
+                this.columnlatest_delivery_time = new global::System.Data.DataColumn("latest_delivery_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlatest_delivery_time);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1871,6 +1899,38 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string released {
+                get {
+                    try {
+                        return ((string)(this[this.tableitemtbl.releasedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'released\' in table \'itemtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableitemtbl.releasedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string latest_delivery_time {
+                get {
+                    try {
+                        return ((string)(this[this.tableitemtbl.latest_delivery_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'latest_delivery_time\' in table \'itemtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableitemtbl.latest_delivery_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isio_idNull() {
                 return this.IsNull(this.tableitemtbl.io_idColumn);
             }
@@ -1939,6 +1999,30 @@ namespace rpc_working.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnameNull() {
                 this[this.tableitemtbl.nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsreleasedNull() {
+                return this.IsNull(this.tableitemtbl.releasedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetreleasedNull() {
+                this[this.tableitemtbl.releasedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Islatest_delivery_timeNull() {
+                return this.IsNull(this.tableitemtbl.latest_delivery_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setlatest_delivery_timeNull() {
+                this[this.tableitemtbl.latest_delivery_timeColumn] = global::System.Convert.DBNull;
             }
         }
         

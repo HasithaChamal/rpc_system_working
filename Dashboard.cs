@@ -115,6 +115,10 @@ namespace rpc_working
                 userBtn.Enabled = false;
 
             }
+            if (GlobalLoginData.userRole == "StoreKeeper")
+            {
+               rpt_btn.Enabled = false;
+            }
         }
 
         private void ItemDispatch1_Load(object sender, EventArgs e)

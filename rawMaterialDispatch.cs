@@ -85,14 +85,21 @@ namespace rpc_working
             string bomId;
            
            bomId = bomId_txt.Text;
-                
             if (bomId == null)
             {
                 MessageBox.Show("Invalid Selection!");
+                return;
+            }
+            int rowcount = DatabaseHandler.returnRowCountWithoutParams("select id from material_dispatch where bom_id='" + bomId + "'");
+            
+             if (rowcount==1) 
+            {
+                MessageBox.Show("MATERIAL DISPATCH ORDER EXISTS FOR THE SELECTED BOM ID!!!");
+                return;
             }
             else
             {
-              
+
                 string selectStatement = "SELECT bom_item.material_id as 'Material ID', bom_item.qty as 'Quantity', raw_material.name as 'Material Name' FROM raw_material INNER JOIN bom_item ON bom_item.material_id = raw_material.material_id WHERE bom_item.bom_id = '" + bomId + "' ";
                 DatabaseHandler.populateGridViewWithBinding(selectStatement, dataGridView4);
 

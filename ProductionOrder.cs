@@ -317,8 +317,28 @@ namespace rpc_working
                     MessageBox.Show("ENTRY NOT SELECTED!");
                     return;
                 }
+                string bomId = null;
+                 bomId = DatabaseHandler.returnOneValueWithoutParams("select bom_id from bom where pro_id='" + val + "'", "bom_id");
+                if (bomId == "Null Data!" || bomId==null) 
+                {
+                    MessageBox.Show("ERROR !!! BILL OF MATERIAL HAS NOT BEEN CREATED FOR THE SELECTED PRODUCTON ORDER!");
+                    return;
+                }
+                String materialreleased = null;
+                 materialreleased = DatabaseHandler.returnOneValueWithoutParams("select released from material_dispatch where bom_id='" + bomId + "'", "released");
+                
+                if (materialreleased == "Null Data!" || materialreleased == null)
+                {
+                    MessageBox.Show("ERROR !!! MATERIAL DISPATCH ORDER HAS NOT BEEN CREATED FOR THE SELECTED PRODUCTON ORDER!");
+                    return;
+                }
 
-               
+                if (materialreleased == "No") 
+                {
+                    MessageBox.Show("ERROR!!! MATERIAL HAS NOT BEEN RELEASED FOR THE SELECTED PRODUCTION ORDER!");
+                    return;
+                }
+
                 string updateQuery = "update productionorder set recieved = 'Yes' where pro_id=@poNum";
                 List<MySqlParameter> paramList = new List<MySqlParameter>();
                 paramList.Clear();

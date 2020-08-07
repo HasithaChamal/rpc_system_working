@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.Shared;
 using MySql.Data.MySqlClient;
+using CrystalDecisions.CrystalReports.Engine;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace rpc_working.CrystalReportsViewer
 {
     public partial class itemOrderReportViewer : Form
     {
+        DataTable itemsumtbl = new DataTable();
+        DataTable itemtbl = new DataTable();
+
         public itemOrderReportViewer()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace rpc_working.CrystalReportsViewer
 
             //create data table 
             DataTable itemtblTemp = new DataTable();
-            DataTable itemtbl = new DataTable();
+
             DataTable idtbl = new DataTable();
             itemtbl.Columns.Add("io_id");
             itemtbl.Columns.Add("client_id");
@@ -52,6 +52,8 @@ namespace rpc_working.CrystalReportsViewer
             itemtbl.Columns.Add("item_id");
             itemtbl.Columns.Add("qty");
             itemtbl.Columns.Add("name");
+            itemtbl.Columns.Add("released");
+            itemtbl.Columns.Add("latest_delivery_time");
 
             //create item id table
             try
@@ -59,17 +61,17 @@ namespace rpc_working.CrystalReportsViewer
                 String query;
                 if (Reports.sortbysupclient == false)
                 {
-                     query = "SELECT io_id , client_id, creation_time  FROM itemorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
+                    query = "SELECT io_id , client_id, creation_time, released, latest_delivery_time  FROM itemorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "'  ";
                 }
-                else 
+                else
                 {
-                    
-                    query = "SELECT io_id , client_id, creation_time  FROM itemorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "' AND client_id='" + Reports.supclientval + "'  ";
+
+                    query = "SELECT io_id , client_id, creation_time, released , latest_delivery_time  FROM itemorder where  approval='Approved' AND creation_time between '" + Reports.startDate + "' and '" + Reports.endDate + "' AND client_id='" + Reports.supclientval + "'  ";
                 }
                 var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
                 var commandBuilder = new MySqlCommandBuilder(dataAdapter);
                 dataAdapter.Fill(idtbl);
-                Console.WriteLine("Rows are "+idtbl.Rows.Count);
+                Console.WriteLine("Rows are " + idtbl.Rows.Count);
                 if (idtbl.Rows.Count == 0)
                 {
                     MessageBox.Show("NO Entries available");
@@ -93,20 +95,20 @@ namespace rpc_working.CrystalReportsViewer
 
                 try
                 {
-                  
+
                     String query = "SELECT itemorder_item.io_id, itemorder_item.item_id ,itemorder_item.qty , item.name FROM itemorder_item INNER JOIN item ON itemorder_item.item_id = item.item_id  where itemorder_item.io_id= '" + idtbl.Rows[i][0].ToString() + "' ";
                     var dataAdapter = new MySqlDataAdapter(query, DatabaseHandler.MySQLConnectionString);
                     var commandBuilder = new MySqlCommandBuilder(dataAdapter);
                     dataAdapter.Fill(itemtblTemp);
                     Console.WriteLine(itemtblTemp.Rows.Count);
-                   
+
                 }
                 catch (Exception er)
                 {
                     MessageBox.Show(er.Message);
                 }
             }
-            if (itemtblTemp.Rows.Count == 0) 
+            if (itemtblTemp.Rows.Count == 0)
             {
                 MessageBox.Show("Error Occured! Please check input details!");
                 return;
@@ -121,29 +123,31 @@ namespace rpc_working.CrystalReportsViewer
                 rw["name"] = itemtblTemp.Rows[i][3];
                 for (int j = 0; j < noOfRows; j++)
                 {
-                    if (itemtblTemp.Rows[i][0].ToString() == idtbl.Rows[j][0].ToString()) 
+                    if (itemtblTemp.Rows[i][0].ToString() == idtbl.Rows[j][0].ToString())
                     {
                         rw["client_id"] = idtbl.Rows[j][1];
                         rw["creation_time"] = idtbl.Rows[j][2];
+                        rw["released"] = idtbl.Rows[j][3];
+                        rw["latest_delivery_time"] = idtbl.Rows[j][4];
                     }
 
                 }
                 itemtbl.Rows.Add(rw);
             }
-            Console.WriteLine("item tbl rows"+itemtbl.Rows.Count);
+            Console.WriteLine("item tbl rows" + itemtbl.Rows.Count);
             int noOfRows3 = itemtbl.Rows.Count;
 
-            DataTable itemsumtbl = new DataTable();
+
             itemsumtbl.Columns.Add("item_id");
             itemsumtbl.Columns.Add("name");
             itemsumtbl.Columns.Add("qty");
-            int noOfRows4= 0;
-            for (int i=0; i<noOfRows3; i++) 
-            { 
+            int noOfRows4 = 0;
+            for (int i = 0; i < noOfRows3; i++)
+            {
                 noOfRows4 = itemsumtbl.Rows.Count;
                 int count = 0;
-                for (int j=0; j<noOfRows4; j++) 
-                {  
+                for (int j = 0; j < noOfRows4; j++)
+                {
                     if (itemtbl.Rows[i][3].ToString() == itemsumtbl.Rows[j][0].ToString())
                     {
                         itemsumtbl.Rows[j][2] = Convert.ToInt32(itemtbl.Rows[i][4].ToString()) + Convert.ToInt32(itemsumtbl.Rows[j][2].ToString());
@@ -179,5 +183,22 @@ namespace rpc_working.CrystalReportsViewer
             }
 
         }
+
+        private void export_btn_Click(object sender, EventArgs e)
+        {
+            if (Reports.summarize == true)
+            {
+                itemsumtbl.ExportToExcel();
+            }
+            else
+            {
+                itemtbl.ExportToExcel();
+            }
+
+
+        }
     }
 }
+
+
+

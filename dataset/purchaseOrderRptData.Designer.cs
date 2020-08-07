@@ -326,6 +326,8 @@ namespace rpc_working.dataset {
             
             private global::System.Data.DataColumn columnname;
             
+            private global::System.Data.DataColumn columnrecieved;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public materialtblDataTable() {
@@ -409,6 +411,14 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn recievedColumn {
+                get {
+                    return this.columnrecieved;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -444,7 +454,7 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public materialtblRow AddmaterialtblRow(string po_id, string supplier_id, string creation_time, string material_id, string qty, string name) {
+            public materialtblRow AddmaterialtblRow(string po_id, string supplier_id, string creation_time, string material_id, string qty, string name, string recieved) {
                 materialtblRow rowmaterialtblRow = ((materialtblRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         po_id,
@@ -452,7 +462,8 @@ namespace rpc_working.dataset {
                         creation_time,
                         material_id,
                         qty,
-                        name};
+                        name,
+                        recieved};
                 rowmaterialtblRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmaterialtblRow);
                 return rowmaterialtblRow;
@@ -481,6 +492,7 @@ namespace rpc_working.dataset {
                 this.columnmaterial_id = base.Columns["material_id"];
                 this.columnqty = base.Columns["qty"];
                 this.columnname = base.Columns["name"];
+                this.columnrecieved = base.Columns["recieved"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -498,6 +510,8 @@ namespace rpc_working.dataset {
                 base.Columns.Add(this.columnqty);
                 this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnname);
+                this.columnrecieved = new global::System.Data.DataColumn("recieved", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrecieved);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1011,6 +1025,22 @@ namespace rpc_working.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string recieved {
+                get {
+                    try {
+                        return ((string)(this[this.tablematerialtbl.recievedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'recieved\' in table \'materialtbl\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablematerialtbl.recievedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Ispo_idNull() {
                 return this.IsNull(this.tablematerialtbl.po_idColumn);
             }
@@ -1079,6 +1109,18 @@ namespace rpc_working.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnameNull() {
                 this[this.tablematerialtbl.nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsrecievedNull() {
+                return this.IsNull(this.tablematerialtbl.recievedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetrecievedNull() {
+                this[this.tablematerialtbl.recievedColumn] = global::System.Convert.DBNull;
             }
         }
         
