@@ -21,14 +21,20 @@ namespace rpc_working
         {
             populateGrid();
             setId();
-            if (GlobalLoginData.userRole != "Owner")
+            if (GlobalLoginData.userRole == "StoreKeeper")
             {
                 addSupplierBtn.Enabled = false;
                 addItemBtn.Enabled = false;
                 removeSupplierBtn.Enabled = false;
                 removeItemBtn.Enabled = false;
-               
+                addNewMaterial_btn.Enabled = false;
 
+
+            }
+            else if (GlobalLoginData.userRole == "Accountant") 
+            {
+                addNewMaterial_btn.Enabled = false;
+                addItemBtn.Enabled = true;
             }
            
         }

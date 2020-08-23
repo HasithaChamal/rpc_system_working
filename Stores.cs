@@ -23,7 +23,7 @@ namespace rpc_working
                 button2.Enabled = false;
                 removeProduct_btn.Enabled = false;
                 clear_btn.Enabled = false;
-                
+                removeMaterialsbtn.Enabled = false; 
             }
         }
 
@@ -398,7 +398,18 @@ namespace rpc_working
             DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
             string itemCode = Convert.ToString(selectedRow.Cells["Item Code"].Value);
 
-           
+            string query2 = "DELETE FROM item WHERE item_id=@itemCode";
+
+            List<MySqlParameter> paramList2 = new List<MySqlParameter>();
+            paramList2.Clear();
+            paramList2.Add(new MySqlParameter("@itemCode", itemCode));
+            int rowsAffected2 = DatabaseHandler.insertOrDeleteRow(query2, paramList2);
+
+            if (rowsAffected2 == 0)
+            {
+                MessageBox.Show("Error! Item has existing client order items ! Remove client items first! ");
+                return;
+            }
 
             try
             {
@@ -508,6 +519,36 @@ namespace rpc_working
             {
                 MessageBox.Show("Please enter only numbers.");
                 addmaterialQty.Text = addmaterialQty.Text.Remove(addmaterialQty.Text.Length - 1);
+            }
+        }
+
+        private void removeMaterialsbtn_Click(object sender, EventArgs e)
+        {
+            int selectedRowIndex = dataGridView2.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGridView2.Rows[selectedRowIndex];
+            string materialCode = Convert.ToString(selectedRow.Cells["Material ID"].Value);
+            try
+            {
+                string query = "DELETE FROM raw_material WHERE material_id=@materialCode";
+                List<MySqlParameter> paramList = new List<MySqlParameter>();
+                paramList.Clear();
+                paramList.Add(new MySqlParameter("@materialCode", materialCode));
+                int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
+
+                if (rowsAffected != 0)
+                {
+                    MessageBox.Show("Material Removed Successfully!");
+                    populateGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Error! The material may have unremoved supplier items. Remove supplier items first!");
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error! The material may have unremoved supplier items. Remove supplier items first!");
             }
         }
     }

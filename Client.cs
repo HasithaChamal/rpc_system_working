@@ -22,7 +22,7 @@ namespace rpc_working
         {
             populateGrid();
             setId();
-            if (GlobalLoginData.userRole != "Owner")
+            if (GlobalLoginData.userRole == "StoreKeeper")
             {
                 addBtnTxt.Enabled = false;
                 removeBtn.Enabled = false;

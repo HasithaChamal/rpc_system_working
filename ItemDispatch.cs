@@ -295,7 +295,7 @@ namespace rpc_working
                     return;
                 }
                 MessageBox.Show("Item Order : Posted!");
-                Email.sendMail("RPC SYSTEM: Please release the Item dispatch order requisition, ID= " + reqestNum.Text);
+                Email.sendMail("RPC SYSTEM: Please approve the Item dispatch order requisition, ID= " + reqestNum.Text);
                 populateDataGrid();
                 itemNameTxt.Clear();
                 qtyTxt.Clear();
