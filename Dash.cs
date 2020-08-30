@@ -493,6 +493,11 @@ namespace rpc_working
         {
             toolTip1.Show("Displays the count of item orders which has been declined", panel7);
         }
+
+        private void powerBiLink_btn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://app.powerbi.com/reportEmbed?reportId=a20b15be-fc3f-4a78-9605-7230aea2271d&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D");
+        }
     }
 
 

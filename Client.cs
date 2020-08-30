@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace rpc_working
 {
@@ -124,11 +124,23 @@ namespace rpc_working
         {
             try
             {
+                string query1 = "SELECT * FROM client WHERE client_id= '" + removeClient.Text.ToString() + "' ";
+               
+                int count1= DatabaseHandler.returnRowCountWithoutParams(query1);
+                Console.WriteLine("Selected client " + removeClient.Text.ToString());
+                Console.WriteLine("Row count" + count1);
+                if (count1 == 0) 
+                {
+                    MessageBox.Show("Error! Client doesn't exist! ");
+                    return;
+                }
                 string query = "DELETE FROM CLIENT WHERE client_id=@ClientCode";
                 List<MySqlParameter> paramList = new List<MySqlParameter>();
-                paramList.Clear();
-                paramList.Add(new MySqlParameter("@clientCode", removeClient.Text));
+                
+                paramList.Add(new MySqlParameter("@clientCode", removeClient.Text.ToString()));
+                
                 int rowsAffected = DatabaseHandler.insertOrDeleteRow(query, paramList);
+                paramList.Clear();
 
                 if (rowsAffected != 0)
                 {
@@ -137,13 +149,13 @@ namespace rpc_working
                 }
                 else
                 {
-                    MessageBox.Show("Error! Client doesn't exsist");
+                    MessageBox.Show("Error! Client has already intracted with the system! Cannot remove!");
                 }
 
             }
             catch (Exception)
             {
-                MessageBox.Show("Error! Client doesn't exsist");
+                MessageBox.Show("Error! Client has already intracted with the system! Cannot remove!");
             }
         }
 

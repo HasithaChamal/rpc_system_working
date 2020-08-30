@@ -358,8 +358,8 @@ namespace rpc_working
                 {
                     try
                     {
-                        itemCodeTemp = dataGridView6.SelectedRows[i].Cells["Material ID"].Value.ToString();
-                        putoutqty = dataGridView6.SelectedRows[i].Cells["Quantity"].Value.ToString();
+                        itemCodeTemp = dataGridView6.Rows[i].Cells["Material ID"].Value.ToString();
+                        putoutqty = dataGridView6.Rows[i].Cells["Quantity"].Value.ToString();
                         existqty = DatabaseHandler.returnOneValueWithoutParams("select qty from raw_material where material_id='" + itemCodeTemp + "'", "qty");
 
                         putout = "UPDATE raw_material SET qty=@remainqty WHERE material_id = @itemCode";

@@ -179,6 +179,16 @@ namespace rpc_working
         {
             try
             {
+                string query1 = "SELECT * FROM SUPPLIER WHERE supplier_id= '" + removeSupplierId.Text.ToString() + "' ";
+
+                int count1 = DatabaseHandler.returnRowCountWithoutParams(query1);
+                Console.WriteLine("Selected supplier " + removeSupplierId.Text.ToString());
+                Console.WriteLine("Row count" + count1);
+                if (count1 == 0)
+                {
+                    MessageBox.Show("Error! Supplier doesn't exist! ");
+                    return;
+                }
                 string query = "DELETE FROM SUPPLIER WHERE supplier_id=@supplierCode";
                 List<MySqlParameter> paramList = new List<MySqlParameter>();
                 paramList.Clear();

@@ -82,6 +82,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.declinedOrders_lbl = new System.Windows.Forms.Label();
+            this.powerBiLink_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -665,6 +666,17 @@
             this.declinedOrders_lbl.TabIndex = 15;
             this.declinedOrders_lbl.Text = "0";
             // 
+            // powerBiLink_btn
+            // 
+            this.powerBiLink_btn.BackColor = System.Drawing.Color.Black;
+            this.powerBiLink_btn.Location = new System.Drawing.Point(894, 173);
+            this.powerBiLink_btn.Name = "powerBiLink_btn";
+            this.powerBiLink_btn.Size = new System.Drawing.Size(177, 23);
+            this.powerBiLink_btn.TabIndex = 25;
+            this.powerBiLink_btn.Text = "Power BI Dashboard";
+            this.powerBiLink_btn.UseVisualStyleBackColor = false;
+            this.powerBiLink_btn.Click += new System.EventHandler(this.powerBiLink_btn_Click);
+            // 
             // Dash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,6 +684,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.powerBiLink_btn);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.productionQtyChart);
@@ -750,5 +763,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label declinedOrders_lbl;
+        private System.Windows.Forms.Button powerBiLink_btn;
     }
 }

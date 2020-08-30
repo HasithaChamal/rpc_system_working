@@ -55,7 +55,6 @@ D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.csp
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.csproj.CopyComplete
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.exe
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.pdb
-D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.csprojAssemblyReference.cache
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.PurchaseOrderReportViewer.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.CrystalReportsViewer.PurchaseOrderViewer.resources
 D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.ItemOrderDeclineInfo.resources
@@ -73,3 +72,8 @@ D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ClosedXML.pdb
 D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ClosedXML.xml
 D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\DocumentFormat.OpenXml.xml
 D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\ExcelNumberFormat.xml
+D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.csprojAssemblyReference.cache
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\rpc_working.exe.manifest
+D:\Project\project\rpc_working\rpc_working\rpc_working\bin\Debug\rpc_working.application
+D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.exe.manifest
+D:\Project\project\rpc_working\rpc_working\rpc_working\obj\Debug\rpc_working.application

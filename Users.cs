@@ -104,11 +104,22 @@ namespace rpc_working
             if(removeUsername.Text == GlobalLoginData.username)
             {
                 MessageBox.Show("Sorry, you cannot remove the account in use.");
+                return;
             }
             else
             {
                 try
                 {
+                    string query1 = "SELECT * FROM USER WHERE username= '" + removeUsername.Text.ToString() + "' ";
+
+                    int count1 = DatabaseHandler.returnRowCountWithoutParams(query1);
+                    Console.WriteLine("Selected user " + removeUsername.Text.ToString());
+                    Console.WriteLine("Row count" + count1);
+                    if (count1 == 0)
+                    {
+                        MessageBox.Show("Error! User doesn't exist! ");
+                        return;
+                    }
                     string query = "DELETE FROM USER WHERE username=@username";
                     List<MySqlParameter> paramList = new List<MySqlParameter>();
                     paramList.Clear();
@@ -123,12 +134,14 @@ namespace rpc_working
                     else
                     {
                         MessageBox.Show("No such user found!");
+                        return;
                     }
                     
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("No such user found!");
+                    MessageBox.Show("User has had interations with System! Cannot Remove!");
+
                 }
             
             }
